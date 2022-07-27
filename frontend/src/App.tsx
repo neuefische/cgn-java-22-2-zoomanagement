@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import './App.css';
 import axios from "axios";
+import TruckGallery from "./components/TruckGallery";
+import useTrucks from "./hooks/useTrucks";
 
 export default function App() {
 
@@ -10,7 +12,14 @@ export default function App() {
         .then((response) => response.data)
         .then(setMessage)
 
+
+    const {trucks} = useTrucks()
+
+
     return (
-        <h1>{message}</h1>
-    );
+        <main>
+            <h1>{message}</h1>
+            <TruckGallery trucks={trucks}/>
+        </main>
+    )
 }
