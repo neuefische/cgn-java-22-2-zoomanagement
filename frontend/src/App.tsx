@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import './App.css';
 import axios from "axios";
+import usePlants from "./hooks/usePlants";
+import PlantList from "./components/PlantList";
 
 export default function App() {
 
@@ -10,7 +12,12 @@ export default function App() {
         .then((response) => response.data)
         .then(setMessage)
 
+    const {plants} = usePlants()
+
     return (
-        <h1>{message}</h1>
+        <div>
+            <h1>{message}</h1>
+            <PlantList plants={plants}/>
+        </div>
     );
 }
