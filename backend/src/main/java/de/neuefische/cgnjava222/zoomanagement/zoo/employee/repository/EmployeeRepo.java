@@ -10,7 +10,13 @@ import java.util.*;
 public class EmployeeRepo {
 
 
-    private final Map<String, Employee> employees = new HashMap<>();
+    private final HashMap<String, Employee> employees = new HashMap<>();
+
+    public EmployeeRepo() {
+        employees.put("1", new Employee("Clea Gruber"));
+        employees.put("2", new Employee("Reiner Zufall"));
+        employees.put("3", new Employee("Anna nass"));
+    }
 
 
     public Employee addEmployee(String name) {
