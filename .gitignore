@@ -5,5 +5,3 @@
 /backend/target
 /frontend/node_modules
 */*.iml
-/backend/src/test/test.iml
-/backend/src/main/main.iml
