@@ -13,6 +13,13 @@ public class EmployeeRepo {
     private final Map<String, Employee> employees = new HashMap<>();
 
 
+    public Employee addEmployee(String name) {
+        Employee employee = new Employee(name);
+        employees.put(employee.id(), employee);
+        return employee;
+    }
+
+
     public Map<String, Employee> getEmployees() {
         return employees;
     }
