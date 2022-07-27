@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/trucks")
+@RequestMapping("/api/trucks")
 
 public class TruckController {
 
-    private final TruckRepo truckRepo;
+    private final TruckService truckService;
 
-    public TruckController(TruckRepo truckRepo) {
-        this.truckRepo = truckRepo;
+    public TruckController(TruckService truckService) {
+        this.truckService = truckService;
     }
 
     @GetMapping
     public List<Truck> getAllTrucks() {
-        return truckRepo.getTrucks();
+        return truckService.getTrucks();
     }
 }

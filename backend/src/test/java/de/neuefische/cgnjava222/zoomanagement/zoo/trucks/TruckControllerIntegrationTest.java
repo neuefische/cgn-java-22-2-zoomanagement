@@ -19,12 +19,7 @@ class TruckControllerIntegrationTest {
 
     @Test
     void getAllTrucks() throws Exception {
-        // given
-
-        // when
         mockMvc.perform(get("/trucks"))
                 .andExpect(status().is(200));
-
-        // then
     }
 }
