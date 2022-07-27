@@ -1,16 +1,16 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
-import axios from "axios";
+import useAnimals from "./components/animals/hooks/useAnimals";
+import AnimalList from "./components/animals/AnimalList/AnimalList";
 
 export default function App() {
 
-    const [message, setMessage] = useState();
-
-    axios.get("/hello")
-        .then((response) => response.data)
-        .then(setMessage)
+    const {animals} = useAnimals();
 
     return (
-        <h1>{message}</h1>
+        <>
+            <h1>Zoo-Management</h1>
+            <AnimalList animals={animals}/>
+        </>
     );
 }
