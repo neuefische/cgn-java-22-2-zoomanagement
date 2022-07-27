@@ -12,7 +12,7 @@ public class TruckService {
         this.truckRepo = truckRepo;
     }
 
-    public List<Truck> getTrucks() {
+    public List<Truck> getAllTrucks() {
         return truckRepo.getTrucks();
     }
 }

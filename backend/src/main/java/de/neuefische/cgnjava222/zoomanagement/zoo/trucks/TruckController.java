@@ -19,6 +19,6 @@ public class TruckController {
 
     @GetMapping
     public List<Truck> getAllTrucks() {
-        return truckService.getTrucks();
+        return truckService.getAllTrucks();
     }
 }
