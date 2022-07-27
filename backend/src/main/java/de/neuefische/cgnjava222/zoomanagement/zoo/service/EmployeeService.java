@@ -24,5 +24,9 @@ public class EmployeeService {
                 return employeeRepo.listEmployees();
         }
 
+        public Employee addEmployee(String name) {
+                return employeeRepo.addEmployee(name);
+        }
+
 
 }
