@@ -6,7 +6,7 @@ export default function PlantList(props: { plants: Plant[] }) {
         <>
             <h2>Pflanzen</h2>
             <ul>
-                {props.plants.map(plant => <li key={plant.id}> {plant.name}</li>)}
+                {props.plants.map(plant => <li key={plant.id}>{plant.name}</li>)}
             </ul>
         </>
 

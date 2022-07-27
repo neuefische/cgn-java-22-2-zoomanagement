@@ -17,7 +17,7 @@ export default function App() {
     return (
         <div>
             <h1>{message}</h1>
-            <PlantList plants={plants}/>
+            {plants ? <PlantList plants={plants}/> : "Loading..."}
         </div>
     );
 }

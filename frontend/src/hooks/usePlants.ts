@@ -5,7 +5,7 @@ import {Plant} from "../components/Plant";
 
 export default function usePlants() {
 
-    const [plants, setPlants] = useState<Plant[]>([])
+    const [plants, setPlants] = useState<Plant[]>()
 
     const getAllPlants = () => {
         axios.get("/api/plants")
