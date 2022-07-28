@@ -1,22 +1,8 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.plant;
-
-import org.springframework.stereotype.Repository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
-import java.util.UUID;
 
-@Repository
-public class PlantRepo {
-
-    private final List<Plant> plants = List.of(
-            new Plant("Birke", UUID.randomUUID().toString()),
-            new Plant("Buche", UUID.randomUUID().toString()),
-            new Plant("Lärche", UUID.randomUUID().toString())
-    );
-
-
-    public List<Plant> getAllPlants() {
-        return plants;
-    }
-
+public interface PlantRepo extends MongoRepository<Plant, String> {
+    List<Plant> findAll();
 }
