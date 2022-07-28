@@ -13,7 +13,6 @@ public class PlantService {
     }
 
     public List<Plant> getAllPlants() {
-        return plantRepo.getAllPlants();
+        return plantRepo.findAll();
     }
-
 }
