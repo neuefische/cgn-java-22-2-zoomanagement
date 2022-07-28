@@ -1,10 +1,12 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.trucks;
 
+import org.springframework.data.annotation.Id;
+
 import java.util.UUID;
 
-public record Truck(String name, String id) {
+public record Truck(String name, @Id String id) {
 
-    public Truck(String name) {
-        this(name, String.valueOf(UUID.randomUUID()));
+    public static Truck of(String name) {
+        return new Truck(name, String.valueOf(UUID.randomUUID()));
     }
 }
