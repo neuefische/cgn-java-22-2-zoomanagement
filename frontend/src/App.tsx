@@ -10,9 +10,8 @@ import AnimalList from "./components/animals/AnimalList/AnimalList";
 export default function App() {
 
     const {animals} = useAnimals();
-
-    const {plants} = usePlants()
-    const {trucks} = useTrucks()
+    const {plants} = usePlants();
+    const {trucks} = useTrucks();
 
     return <>
         <h1>Zoo-Management</h1>

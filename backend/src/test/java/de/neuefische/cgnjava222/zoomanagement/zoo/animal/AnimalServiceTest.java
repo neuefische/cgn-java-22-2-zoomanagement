@@ -21,7 +21,7 @@ class AnimalServiceTest {
         );
 
         AnimalRepo animalRepo = mock(AnimalRepo.class);
-        when(animalRepo.getAnimals())
+        when(animalRepo.findAll())
                 .thenReturn(animals);
 
         AnimalService animalService = new AnimalService(animalRepo);
@@ -33,9 +33,6 @@ class AnimalServiceTest {
                 new Animal("3", "Giraffe")
         );
 
-
         assertThat(result).hasSameElementsAs(expectedResult);
     }
-
-
 }
