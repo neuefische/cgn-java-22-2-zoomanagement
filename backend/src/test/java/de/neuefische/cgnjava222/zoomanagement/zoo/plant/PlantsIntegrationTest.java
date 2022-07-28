@@ -1,4 +1,4 @@
-package de.neuefische.cgnjava222.zoomanagement.zoo.plants;
+package de.neuefische.cgnjava222.zoomanagement.zoo.plant;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

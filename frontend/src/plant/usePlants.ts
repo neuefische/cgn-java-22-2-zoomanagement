@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {Plant} from "../components/Plant";
+import {Plant} from "./Plant";
 
 
 export default function usePlants() {
