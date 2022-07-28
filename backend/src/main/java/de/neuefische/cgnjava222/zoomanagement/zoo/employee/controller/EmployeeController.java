@@ -3,7 +3,9 @@ package de.neuefische.cgnjava222.zoomanagement.zoo.employee.controller;
 
 import de.neuefische.cgnjava222.zoomanagement.zoo.employee.model.Employee;
 import de.neuefische.cgnjava222.zoomanagement.zoo.service.EmployeeService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -20,19 +22,11 @@ public class EmployeeController {
 
     @GetMapping
     public List<Employee> getAllEmployees() {
-        return employeeService.getListEmployees();
+        return employeeService.getAllEmployees();
 
     }
 
-    @PostMapping()
-    public Employee postEmployee(@RequestBody Employee employee) {
-        return employeeService.addEmployee(employee.name());
-    }
 
 
-    @GetMapping(path = "/{id}")
-    public Employee getEmployee(@PathVariable String id) {
-        return employeeService.getEmployee(id);
-    }
 }
 

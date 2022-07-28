@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+
 public class EmployeeService {
 
 
@@ -16,16 +17,9 @@ public class EmployeeService {
                 this.employeeRepo = employeeRepo;
         }
 
-        public Employee getEmployee(String id) {
-                return employeeRepo.getEmployee(id);
-        }
 
-        public List<Employee> getListEmployees() {
-                return employeeRepo.listEmployees();
-        }
-
-        public Employee addEmployee(String name) {
-                return employeeRepo.addEmployee(name);
+        public List<Employee> getAllEmployees() {
+                return employeeRepo.findAll();
         }
 
 
