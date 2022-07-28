@@ -1,4 +1,4 @@
-package de.neuefische.cgnjava222.zoomanagement.zoo.trucks;
+package de.neuefische.cgnjava222.zoomanagement.zoo.truck;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -8,10 +8,10 @@ import java.util.List;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-class TruckServiceTest {
+class TruckControllerTest {
 
-    private final TruckRepo testTruckRepo = mock(TruckRepo.class);
-    private final TruckService testTruckService = new TruckService(testTruckRepo);
+    private final TruckService testTruckService = mock(TruckService.class);
+    private final TruckController testTruckController = new TruckController(testTruckService);
     private final List<Truck> testList = List.of(
             new Truck("Currywurst Hannes"),
             new Truck("Margrets Gesunde Küche"),
@@ -20,9 +20,9 @@ class TruckServiceTest {
     @Test
     void getAllTrucksTest() {
         // given
-        when(testTruckRepo.getTrucks()).thenReturn(testList);
+        when(testTruckService.getAllTrucks()).thenReturn(testList);
         // when
-        List<Truck> actual = testTruckService.getAllTrucks();
+        List<Truck> actual = testTruckController.getAllTrucks();
         // then
         Assertions.assertArrayEquals(testList.toArray(), actual.toArray());
     }
