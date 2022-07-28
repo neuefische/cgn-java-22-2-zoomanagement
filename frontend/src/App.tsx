@@ -3,6 +3,8 @@ import './App.css';
 import axios from "axios";
 import usePlants from "./plant/usePlants";
 import PlantList from "./plant/PlantList";
+import TruckGallery from "./components/TruckGallery";
+import useTrucks from "./hooks/useTrucks";
 
 export default function App() {
 
@@ -13,11 +15,11 @@ export default function App() {
         .then(setMessage)
 
     const {plants} = usePlants()
+    const {trucks} = useTrucks()
 
-    return (
-        <div>
-            <h1>{message}</h1>
-            {plants ? <PlantList plants={plants}/> : "Loading..."}
-        </div>
-    );
+    return <>
+        <h1>{message}</h1>
+        {plants ? <PlantList plants={plants}/> : "Loading..."}
+        <TruckGallery trucks={trucks}/>
+    </>;
 }
