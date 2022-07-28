@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import './App.css';
 import axios from "axios";
+import usePlants from "./plant/usePlants";
+import PlantList from "./plant/PlantList";
 import ShowEmployees from "./employees/components/ShowEmployees";
 import useEmployee from "./employees/service/useEmployee";
 
@@ -13,11 +15,11 @@ export default function App() {
         .then((response) => response.data)
         .then(setMessage)
 
-    return (
-        <div>
-            <h1>{message}</h1>
+    const {plants} = usePlants()
 
-            <ShowEmployees employees={employees}/>
-        </div>
-    );
+    return <>
+        <h1>{message}</h1>
+        {plants ? <PlantList plants={plants}/> : "Loading..."}
+        <ShowEmployees employees={employees}/>
+    </>;
 }
