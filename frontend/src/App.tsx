@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import './App.css';
 import axios from "axios";
-import usePlants from "./hooks/usePlants";
-import PlantList from "./components/PlantList";
+import usePlants from "./plant/usePlants";
+import PlantList from "./plant/PlantList";
 
 export default function App() {
 
