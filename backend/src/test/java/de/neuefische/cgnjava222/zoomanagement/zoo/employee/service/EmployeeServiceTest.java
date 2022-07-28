@@ -1,4 +1,4 @@
-package de.neuefische.cgnjava222.zoomanagement.zoo.service;
+package de.neuefische.cgnjava222.zoomanagement.zoo.employee.service;
 
 import de.neuefische.cgnjava222.zoomanagement.zoo.employee.model.Employee;
 import de.neuefische.cgnjava222.zoomanagement.zoo.employee.repository.EmployeeRepo;
