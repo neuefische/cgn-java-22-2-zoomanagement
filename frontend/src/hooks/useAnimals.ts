@@ -1,7 +1,6 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
-import {Animal} from "../AnimalList/Animal";
-
+import {Animal} from "../components/animal/Animal";
 
 export default function useAnimals() {
 
@@ -13,7 +12,7 @@ export default function useAnimals() {
 
     const getAnimalList = () => {
         axios.get("/api/animals")
-            .then((response) => response.data)
+            .then(response => response.data)
             .then(setAnimals)
     }
 
