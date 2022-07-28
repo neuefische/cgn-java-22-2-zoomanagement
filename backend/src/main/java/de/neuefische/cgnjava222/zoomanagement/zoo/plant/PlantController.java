@@ -5,18 +5,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping(path = "/api/plants")
-public class PlantsController {
+public class PlantController {
+
+    private final PlantService plantService;
+
+    public PlantController(PlantService plantService) {
+        this.plantService = plantService;
+    }
+
 
     @GetMapping()
     List<Plant> getPlants() {
-        return List.of(
-                new Plant("Birke", UUID.randomUUID().toString()),
-                new Plant("Buche", UUID.randomUUID().toString()),
-                new Plant("Lärche", UUID.randomUUID().toString())
-        );
-    }
+        return plantService.getAllPlants();}
 }
