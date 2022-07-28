@@ -1,4 +1,5 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.plant;
+
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
