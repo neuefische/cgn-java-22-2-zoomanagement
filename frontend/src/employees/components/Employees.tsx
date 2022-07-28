@@ -4,7 +4,7 @@ type ShowEmployeesProps = {
     employees: Employee[],
 }
 
-export default function ShowEmployees(props: ShowEmployeesProps) {
+export default function Employees(props: ShowEmployeesProps) {
 
 
     return (

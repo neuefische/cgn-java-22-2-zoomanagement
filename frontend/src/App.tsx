@@ -1,23 +1,26 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
-import axios from "axios";
-import ShowEmployees from "./employees/components/ShowEmployees";
+import usePlants from "./plant/usePlants";
+import PlantList from "./plant/PlantList";
+import TruckGallery from "./components/TruckGallery";
+import useTrucks from "./hooks/useTrucks";
+import useAnimals from "./components/animals/hooks/useAnimals";
+import AnimalList from "./components/animals/AnimalList/AnimalList";
+import Employees from "./employees/components/Employees";
 import useEmployee from "./employees/service/useEmployee";
 
 export default function App() {
 
-    const [message, setMessage] = useState();
+    const {animals} = useAnimals();
+    const {plants} = usePlants()
+    const {trucks} = useTrucks()
+    const {employees} = useEmployee();
 
-    const {employees, getAllEmployees} = useEmployee();
-    axios.get("/hello")
-        .then((response) => response.data)
-        .then(setMessage)
-
-    return (
-        <div>
-            <h1>{message}</h1>
-
-            <ShowEmployees employees={employees}/>
-        </div>
-    );
+    return <>
+        <h1>Zoo-Management</h1>
+        {plants ? <PlantList plants={plants}/> : "Loading..."}
+        <TruckGallery trucks={trucks}/>
+        <AnimalList animals={animals}/>
+        <Employees employees={employees}/>
+    </>;
 }
