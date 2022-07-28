@@ -6,7 +6,7 @@ import TruckGallery from "./components/TruckGallery";
 import useTrucks from "./hooks/useTrucks";
 import useAnimals from "./components/animals/hooks/useAnimals";
 import AnimalList from "./components/animals/AnimalList/AnimalList";
-import ShowEmployees from "./employees/components/ShowEmployees";
+import Employees from "./employees/components/Employees";
 import useEmployee from "./employees/service/useEmployee";
 
 export default function App() {
@@ -14,13 +14,13 @@ export default function App() {
     const {animals} = useAnimals();
     const {plants} = usePlants()
     const {trucks} = useTrucks()
-    const {employees, getAllEmployees} = useEmployee();
+    const {employees} = useEmployee();
 
     return <>
-    <h1>Zoo-Management</h1>
-            {plants ? <PlantList plants={plants}/> : "Loading..."}
+        <h1>Zoo-Management</h1>
+        {plants ? <PlantList plants={plants}/> : "Loading..."}
         <TruckGallery trucks={trucks}/>
         <AnimalList animals={animals}/>
-        <ShowEmployees employees={employees}/>
+        <Employees employees={employees}/>
     </>;
 }
