@@ -1,25 +1,23 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
-import axios from "axios";
 import usePlants from "./plant/usePlants";
 import PlantList from "./plant/PlantList";
 import TruckGallery from "./components/TruckGallery";
 import useTrucks from "./hooks/useTrucks";
+import useAnimals from "./components/animals/hooks/useAnimals";
+import AnimalList from "./components/animals/AnimalList/AnimalList";
 
 export default function App() {
 
-    const [message, setMessage] = useState();
-
-    axios.get("/hello")
-        .then((response) => response.data)
-        .then(setMessage)
+    const {animals} = useAnimals();
 
     const {plants} = usePlants()
     const {trucks} = useTrucks()
 
     return <>
-        <h1>{message}</h1>
+        <h1>Zoo-Management</h1>
         {plants ? <PlantList plants={plants}/> : "Loading..."}
         <TruckGallery trucks={trucks}/>
+        <AnimalList animals={animals}/>
     </>;
 }
