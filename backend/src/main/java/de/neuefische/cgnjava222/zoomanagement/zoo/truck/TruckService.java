@@ -15,4 +15,8 @@ public class TruckService {
     public List<Truck> getAllTrucks() {
         return truckRepo.getTrucks();
     }
+
+    public Truck addTruck(String name) {
+        return truckRepo.addTruck(name);
+    }
 }
