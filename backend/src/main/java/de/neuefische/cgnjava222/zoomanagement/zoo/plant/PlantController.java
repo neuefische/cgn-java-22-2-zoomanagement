@@ -16,7 +16,6 @@ public class PlantController {
         this.plantService = plantService;
     }
 
-
     @GetMapping()
     List<Plant> getPlants() {
         return plantService.getAllPlants();}

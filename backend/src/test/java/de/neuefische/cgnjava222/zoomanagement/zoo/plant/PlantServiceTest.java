@@ -21,7 +21,7 @@ class PlantServiceTest {
 
     @Test
     void getAllPlantsTest() {
-        when(testPlantRepo.getAllPlants()).thenReturn(testList);
+        when(testPlantRepo.findAll()).thenReturn(testList);
         List<Plant> actual = testPlantService.getAllPlants();
         Assertions.assertArrayEquals(testList.toArray(), actual.toArray());
     }
