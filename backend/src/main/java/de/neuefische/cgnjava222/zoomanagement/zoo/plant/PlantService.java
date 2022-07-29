@@ -15,4 +15,8 @@ public class PlantService {
     public List<Plant> getAllPlants() {
         return plantRepo.findAll();
     }
+
+    public void addPlant(Plant plant) {
+        plantRepo.save(plant);
+    }
 }

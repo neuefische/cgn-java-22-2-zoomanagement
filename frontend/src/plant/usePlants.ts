@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {Plant} from "./Plant";
-
+import {Plant, PlantType} from "./Plant";
+import {toast} from "react-toastify";
 
 export default function usePlants() {
 
@@ -20,5 +20,19 @@ export default function usePlants() {
         () => getAllPlants(), []
     )
 
-    return {plants}
+    const notify = () => toast("cannot access database");
+
+    const addPlant = (name: string) => {
+        const nameJSON: PlantType = {"name": name};
+        console.log(name);
+        axios.post("/api/plants", nameJSON)
+            .then(response => console.log(response))
+            .then(getAllPlants)
+            .catch(error => {
+                notify();
+                console.error(error);
+            })
+    }
+
+    return {plants, addPlant}
 }
