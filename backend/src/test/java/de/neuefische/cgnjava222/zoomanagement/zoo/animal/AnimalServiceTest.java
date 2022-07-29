@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -32,5 +33,21 @@ class AnimalServiceTest {
 
         assertThat(actualResult).hasSameElementsAs(expectedResult);
     }
-    
+
+    @Test
+    void addAnimals() {
+
+        AnimalRepo animalRepo = mock(AnimalRepo.class);
+        when(animalRepo.save(any(Animal.class)))
+                .thenReturn(new Animal("1", "Schmetterling"));
+
+        AnimalService animalService = new AnimalService(animalRepo);
+
+        Animal actualResult = animalService.addAnimal("Schmetterling");
+        Animal expectedResult = new Animal("1", "Schmetterling");
+
+        assertThat(actualResult).isEqualTo(expectedResult);
+
+    }
+
 }
