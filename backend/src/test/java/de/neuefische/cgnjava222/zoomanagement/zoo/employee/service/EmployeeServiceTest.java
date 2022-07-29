@@ -18,7 +18,9 @@ class EmployeeServiceTest {
             new Employee("Anna nass", "3")
     );
     private final EmployeeRepo employeeRepo = mock(EmployeeRepo.class);
+    // private final EmployeeRepo employeeRepo = new EmployeeRepo;
     private final EmployeeService employeeService = new EmployeeService(employeeRepo);
+
     @Test
     void testGetListEmployees() {
         when(employeeRepo.findAll()).thenReturn(employeesList);
