@@ -18,7 +18,7 @@ export default function useEmployee() {
             .then(setEmployees)
     }
     return {
-        employees, getAllEmployees
+        employees,
 
     }
 }
