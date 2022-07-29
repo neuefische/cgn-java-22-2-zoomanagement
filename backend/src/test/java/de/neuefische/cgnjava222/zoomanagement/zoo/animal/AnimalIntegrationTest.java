@@ -38,7 +38,9 @@ class AnimalIntegrationTest {
         mockMvc.perform(post(
                         "/api/animals")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("Schmetterlong")
+                        .content("""
+                                {"name": "Schmetterlong"}
+                                """)
                 )
                 .andExpect(status().is(201))
                 .andExpect(content().json("""
