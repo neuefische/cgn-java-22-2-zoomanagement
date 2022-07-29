@@ -13,6 +13,6 @@ public class TruckService {
     }
 
     public List<Truck> getAllTrucks() {
-        return truckRepo.getTrucks();
+        return truckRepo.findAll();
     }
 }

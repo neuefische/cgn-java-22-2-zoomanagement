@@ -13,14 +13,14 @@ class TruckServiceTest {
     private final TruckRepo testTruckRepo = mock(TruckRepo.class);
     private final TruckService testTruckService = new TruckService(testTruckRepo);
     private final List<Truck> testList = List.of(
-            new Truck("Currywurst Hannes"),
-            new Truck("Margrets Gesunde Küche"),
-            new Truck("Annes knusprige Pommes"));
+            new Truck("Currywurst Hannes", "d67bc95f-cdc4-4930-b3e3-34a684806f20"),
+            new Truck("Margrets Gesunde Küche", "ec8bd7d2-bb00-4db7-ae4c-7879bb9b5512"),
+            new Truck("Annes knusprige Pommes", "e32ce324-279d-4e56-aed0-5dee6c919b89"));
 
     @Test
     void getAllTrucksTest() {
         // given
-        when(testTruckRepo.getTrucks()).thenReturn(testList);
+        when(testTruckRepo.findAll()).thenReturn(testList);
         // when
         List<Truck> actual = testTruckService.getAllTrucks();
         // then
