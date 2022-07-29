@@ -11,7 +11,7 @@ export default function Employees(props: EmployeesProps) {
         <div>
             <h2>Mitarbeiter</h2>
             <ul>
-                {props.employees.map((employee) => <li>{employee.name} key = {employee.id}</li>)}
+                {props.employees.map((employee) => <li key={employee.id}> {employee.name} </li>)}
             </ul>
 
         </div>
