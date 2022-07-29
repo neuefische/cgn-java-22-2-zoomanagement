@@ -1,6 +1,11 @@
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, FormEvent, useState} from "react";
+import {Employee} from "../model/Employee";
+import {showError} from "./ErrorEmployee";
 
-type AddEmployeeProps = {}
+
+type AddEmployeeProps = {
+    addEmployee: (name: string) => Promise<Employee>
+}
 
 
 export default function AddEmployee(props: AddEmployeeProps) {
@@ -12,13 +17,29 @@ export default function AddEmployee(props: AddEmployeeProps) {
         setName(event.target.value)
     }
 
+    const onEmployeeSubmit = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        if (!name) {
+            console.error("Name must not be empty")
+
+        } else {
+
+            props.addEmployee(name).then(s => setName("")).catch(error => showError());
+
+        }
+    }
+
     return (
         <div>
-            <form>
+
+            <form className="form" onSubmit={onEmployeeSubmit}>
 
                 <input value={name} onChange={onNameChange}/>
-                <button type="submit" onClick={}>Hinzufügen</button>
+                <button>Hinzufügen</button>
             </form>
+
+
         </div>
     )
 }

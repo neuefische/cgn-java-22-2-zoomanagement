@@ -8,13 +8,16 @@ import Employees from "./employees/components/Employees";
 import useEmployee from "./hooks/useEmployee";
 import useAnimals from "./hooks/useAnimals";
 import AnimalList from "./components/animal/AnimalList";
+import {ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
 
     const {animals} = useAnimals();
     const {plants} = usePlants()
     const {trucks} = useTrucks()
-    const {employees} = useEmployee();
+
+    const {employees, addEmployee} = useEmployee();
 
 
     return <>
@@ -22,6 +25,8 @@ export default function App() {
         {plants ? <PlantList plants={plants}/> : "Loading..."}
         <TruckGallery trucks={trucks}/>
         <AnimalList animals={animals}/>
-        <Employees employees={employees}/>
+        <ToastContainer/>
+        <Employees employees={employees} addEmployee={addEmployee}/>
+
     </>;
 }
