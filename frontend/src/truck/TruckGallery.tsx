@@ -3,7 +3,7 @@ import AddTruck from "./AddTruck";
 
 type TruckGalleryProps = {
     trucks: Truck[],
-    addTruck: (name: string) => Promise<void>
+    addTruck: (name: string) => Promise<void>,
 }
 
 export default function TruckGallery(props: TruckGalleryProps) {

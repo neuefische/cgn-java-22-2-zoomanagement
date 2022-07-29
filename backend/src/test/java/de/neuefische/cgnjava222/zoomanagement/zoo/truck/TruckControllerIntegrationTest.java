@@ -47,8 +47,7 @@ class TruckControllerIntegrationTest {
                         .contentType(APPLICATION_JSON)
                         .content("""
                                 {
-                                "name":"Dner1",
-                                "id":""
+                                "name":"Dner1"
                                 }
                                 """)
                 )
