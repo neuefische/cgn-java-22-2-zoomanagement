@@ -23,7 +23,7 @@ public class TruckController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Truck addTruck(@RequestBody Truck truck) {
+    public Truck addTruck(@RequestBody NewTruck truck) {
         return truckService.addTruck(truck);
     }
 }

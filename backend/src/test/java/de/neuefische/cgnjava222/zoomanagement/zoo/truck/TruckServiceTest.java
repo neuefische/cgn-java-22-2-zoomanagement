@@ -31,11 +31,12 @@ class TruckServiceTest {
     @Test
     void addTruckTest() {
         //given
-        Truck testTruck = Truck.of("Sometruck");
+        NewTruck testNewTruck = new NewTruck("Sometruck");
+        Truck testTruck = new Truck("Sometruck", "1231231");
         when(testTruckRepo.save(any(Truck.class))).thenReturn(testTruck);
         //when
-        Truck actual = testTruckService.addTruck(testTruck);
+        Truck actual = testTruckService.addTruck(testNewTruck);
         //then
-        Assertions.assertEquals(testTruck.name(), actual.name());
+        Assertions.assertEquals(testTruck, actual);
     }
 }
