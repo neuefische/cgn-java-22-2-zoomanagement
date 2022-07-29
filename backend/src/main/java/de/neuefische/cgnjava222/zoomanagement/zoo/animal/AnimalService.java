@@ -3,6 +3,7 @@ package de.neuefische.cgnjava222.zoomanagement.zoo.animal;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class AnimalService {
@@ -17,4 +18,13 @@ public class AnimalService {
         return animalRepo.findAll();
     }
 
+    public Animal addAnimal(String animalName) {
+
+        return animalRepo.save(new Animal(
+                        UUID.randomUUID().toString(),
+                        animalName
+                )
+        );
+    }
+    
 }

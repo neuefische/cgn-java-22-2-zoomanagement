@@ -1,8 +1,6 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.animal;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,4 +18,10 @@ public class AnimalController {
     public List<Animal> listAnimals() {
         return animalService.getAnimals();
     }
+
+    @PostMapping
+    public Animal addAnimal(@RequestBody String animalName) {
+        return animalService.addAnimal(animalName);
+    }
+
 }
