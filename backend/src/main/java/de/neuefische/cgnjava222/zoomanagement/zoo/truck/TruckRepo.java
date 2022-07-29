@@ -1,4 +1,4 @@
-package de.neuefische.cgnjava222.zoomanagement.zoo.trucks;
+package de.neuefische.cgnjava222.zoomanagement.zoo.truck;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 

@@ -26,4 +26,15 @@ class TruckControllerTest {
         // then
         Assertions.assertArrayEquals(testList.toArray(), actual.toArray());
     }
+
+    @Test
+    void addTruck() {
+        //given
+        Truck testTruck = new Truck("Döner", "kahdaihdölahdöalshdööah");
+        when(testTruckService.addTruck(testTruck.name())).thenReturn(testTruck);
+        //when
+        Truck actual = testTruckController.addTruck(testTruck.name());
+        //then
+        Assertions.assertEquals(testTruck, actual);
+    }
 }

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -25,5 +26,16 @@ class TruckServiceTest {
         List<Truck> actual = testTruckService.getAllTrucks();
         // then
         Assertions.assertArrayEquals(testList.toArray(), actual.toArray());
+    }
+
+    @Test
+    void addTruckTest() {
+        //given
+        Truck testTruck = Truck.of("Sometruck");
+        when(testTruckRepo.save(any(Truck.class))).thenReturn(testTruck);
+        //when
+        Truck actual = testTruckService.addTruck(testTruck.name());
+        //then
+        Assertions.assertEquals(testTruck.name(), actual.name());
     }
 }
