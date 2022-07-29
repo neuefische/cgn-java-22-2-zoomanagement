@@ -10,7 +10,7 @@ export default function TruckGallery(props: TruckGalleryProps) {
             <h2>Food-Trucks</h2>
             <ul>
                 {props.trucks
-                    .map(truck => <li>{truck.name}</li>
+                    .map(truck => <li key={truck.id}>{truck.name}</li>
                     )}
             </ul>
         </>

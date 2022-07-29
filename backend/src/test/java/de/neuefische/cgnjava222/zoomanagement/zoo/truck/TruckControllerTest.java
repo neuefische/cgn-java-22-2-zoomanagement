@@ -13,9 +13,9 @@ class TruckControllerTest {
     private final TruckService testTruckService = mock(TruckService.class);
     private final TruckController testTruckController = new TruckController(testTruckService);
     private final List<Truck> testList = List.of(
-            new Truck("Currywurst Hannes"),
-            new Truck("Margrets Gesunde Küche"),
-            new Truck("Annes knusprige Pommes"));
+            new Truck("Currywurst Hannes", "123ABC"),
+            new Truck("Margrets Gesunde Küche", "456DEF"),
+            new Truck("Annes knusprige Pommes", "789GHI"));
 
     @Test
     void getAllTrucksTest() {

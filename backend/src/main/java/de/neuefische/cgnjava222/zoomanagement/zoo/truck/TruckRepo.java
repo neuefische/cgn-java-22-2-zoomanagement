@@ -1,26 +1,7 @@
-package de.neuefische.cgnjava222.zoomanagement.zoo.truck;
-import org.springframework.stereotype.Repository;
+package de.neuefische.cgnjava222.zoomanagement.zoo.trucks;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-@Repository
-public class TruckRepo {
-    private final List<Truck> trucks = new ArrayList<>(
+public interface TruckRepo extends MongoRepository<Truck, String> {
 
-            List.of(
-            new Truck("Currywurst Hannes"),
-            new Truck("Margrets Gesunde Küche"),
-            new Truck("Annes knusprige Pommes")
-    ));
-
-    public Truck addTruck(String name) {
-       Truck truck = new Truck(name);
-       trucks.add(truck);
-       return truck;
-    }
-
-    public List<Truck> getTrucks() {
-        return trucks;
-    }
 }
