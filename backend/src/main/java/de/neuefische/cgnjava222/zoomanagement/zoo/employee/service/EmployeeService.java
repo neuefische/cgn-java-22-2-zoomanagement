@@ -1,10 +1,11 @@
-package de.neuefische.cgnjava222.zoomanagement.zoo.service;
+package de.neuefische.cgnjava222.zoomanagement.zoo.employee.service;
 
 import de.neuefische.cgnjava222.zoomanagement.zoo.employee.model.Employee;
 import de.neuefische.cgnjava222.zoomanagement.zoo.employee.repository.EmployeeRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class EmployeeService {
@@ -21,5 +22,13 @@ public class EmployeeService {
         return employeeRepo.findAll();
     }
 
+    public Employee addEmployee(String name) {
+        return employeeRepo.save(new Employee(name, getRandomId()));
+    }
+
+
+    public String getRandomId() {
+        return UUID.randomUUID().toString();
+    }
 
 }

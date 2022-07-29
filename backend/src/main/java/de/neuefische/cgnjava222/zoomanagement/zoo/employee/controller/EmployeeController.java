@@ -2,10 +2,8 @@ package de.neuefische.cgnjava222.zoomanagement.zoo.employee.controller;
 
 
 import de.neuefische.cgnjava222.zoomanagement.zoo.employee.model.Employee;
-import de.neuefische.cgnjava222.zoomanagement.zoo.service.EmployeeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import de.neuefische.cgnjava222.zoomanagement.zoo.employee.service.EmployeeService;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,6 +24,11 @@ public class EmployeeController {
 
     }
 
+    @PostMapping()
+    public Employee addEmployee(@RequestBody Employee employee) {
+        return employeeService.addEmployee(employee.name());
+
+    }
 
 
 }
