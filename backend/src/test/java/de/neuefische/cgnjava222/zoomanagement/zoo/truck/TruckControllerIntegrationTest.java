@@ -52,7 +52,7 @@ class TruckControllerIntegrationTest {
                                 }
                                 """)
                 )
-                .andExpect(status().is(200))
+                .andExpect(status().is(201))
                 .andReturn();
         String content = result.getResponse().getContentAsString();
         Assertions.assertTrue(content.contains("Dner1"));
