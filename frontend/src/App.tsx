@@ -5,7 +5,7 @@ import PlantList from "./plant/PlantList";
 import TruckGallery from "./components/TruckGallery";
 import useTrucks from "./hooks/useTrucks";
 import Employees from "./employees/components/Employees";
-import useEmployee from "./employees/service/useEmployee";
+import useEmployee from "./hooks/useEmployee";
 import useAnimals from "./hooks/useAnimals";
 import AnimalList from "./components/animal/AnimalList";
 

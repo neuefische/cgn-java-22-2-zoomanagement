@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {Employee} from "../model/Employee";
+import {Employee} from "../employees/model/Employee";
 import axios from "axios";
 
 export default function useEmployee() {
@@ -17,7 +17,18 @@ export default function useEmployee() {
             .then((response) => response.data)
             .then(setEmployees)
     }
+
+    const addEmployee = (newName: string) => {
+        const newEmployee = {name: newName}
+        axios.post("/api/employees/", newEmployee)
+            .then((response) => {
+                getAllEmployees()
+                return response.data
+            });
+
+    }
     return {
+
         employees,
 
     }
