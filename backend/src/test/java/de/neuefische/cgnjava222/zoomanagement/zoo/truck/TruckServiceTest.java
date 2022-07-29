@@ -1,10 +1,11 @@
-package de.neuefische.cgnjava222.zoomanagement.zoo.trucks;
+package de.neuefische.cgnjava222.zoomanagement.zoo.truck;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -25,5 +26,17 @@ class TruckServiceTest {
         List<Truck> actual = testTruckService.getAllTrucks();
         // then
         Assertions.assertArrayEquals(testList.toArray(), actual.toArray());
+    }
+
+    @Test
+    void addTruckTest() {
+        //given
+        NewTruck testNewTruck = new NewTruck("Sometruck");
+        Truck testTruck = new Truck("Sometruck", "1231231");
+        when(testTruckRepo.save(any(Truck.class))).thenReturn(testTruck);
+        //when
+        Truck actual = testTruckService.addTruck(testNewTruck);
+        //then
+        Assertions.assertEquals(testTruck, actual);
     }
 }
