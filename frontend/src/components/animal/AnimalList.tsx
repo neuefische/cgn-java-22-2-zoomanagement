@@ -8,5 +8,7 @@ export default function AnimalList(props: { animals: Animal[] }) {
             <ul>
                 {props.animals.map(animal => <li key={animal.id}>{animal.name}</li>)}
             </ul>
-        </>);
+        </>
+    );
+
 }
