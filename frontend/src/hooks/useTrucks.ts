@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import Truck from "../truck/Truck";
+import Truck, {NewTruck} from "../truck/Truck";
 import axios from "axios";
 
 
@@ -18,8 +18,8 @@ export default function useTrucks() {
     }
 
     const addTruck = (name: string) => {
-        const newTruck = {
-            name: name
+        const newTruck: NewTruck = {
+            name,
         }
         return axios.post("/api/trucks", newTruck)
             .then(() => getAllTrucks())
