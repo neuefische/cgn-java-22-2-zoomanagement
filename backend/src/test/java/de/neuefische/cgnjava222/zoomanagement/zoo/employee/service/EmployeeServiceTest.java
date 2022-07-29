@@ -2,12 +2,12 @@ package de.neuefische.cgnjava222.zoomanagement.zoo.employee.service;
 
 import de.neuefische.cgnjava222.zoomanagement.zoo.employee.model.Employee;
 import de.neuefische.cgnjava222.zoomanagement.zoo.employee.repository.EmployeeRepo;
-import de.neuefische.cgnjava222.zoomanagement.zoo.service.EmployeeService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -20,6 +20,7 @@ class EmployeeServiceTest {
     private final EmployeeRepo employeeRepo = mock(EmployeeRepo.class);
     // private final EmployeeRepo employeeRepo = new EmployeeRepo;
     private final EmployeeService employeeService = new EmployeeService(employeeRepo);
+    private final Employee employee = new Employee("Test", "1");
 
     @Test
     void testGetListEmployees() {
@@ -29,5 +30,17 @@ class EmployeeServiceTest {
 
         Assertions.assertArrayEquals(employeesList.toArray(), actual.toArray());
 
+    }
+
+    @Test
+    void addEmployeeTest() {
+        // given
+        when(employeeRepo.save(any())).thenReturn(employee);
+
+        //when
+        Employee actual = employeeService.addEmployee(employee.name());
+
+
+        Assertions.assertEquals(employee.name(), actual.name());
     }
 }
