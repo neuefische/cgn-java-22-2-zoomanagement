@@ -4,10 +4,10 @@ import usePlants from "./plant/usePlants";
 import PlantList from "./plant/PlantList";
 import TruckGallery from "./components/TruckGallery";
 import useTrucks from "./hooks/useTrucks";
-import useAnimals from "./components/animals/hooks/useAnimals";
-import AnimalList from "./components/animals/AnimalList/AnimalList";
 import Employees from "./employees/components/Employees";
 import useEmployee from "./employees/service/useEmployee";
+import useAnimals from "./hooks/useAnimals";
+import AnimalList from "./components/animal/AnimalList";
 
 export default function App() {
 
@@ -15,6 +15,7 @@ export default function App() {
     const {plants} = usePlants()
     const {trucks} = useTrucks()
     const {employees} = useEmployee();
+
 
     return <>
         <h1>Zoo-Management</h1>

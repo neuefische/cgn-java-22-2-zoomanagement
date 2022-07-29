@@ -25,7 +25,8 @@ class AnimalIntegrationTest {
         mockMvc.perform(get("/api/animals"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
-                        [{"id":"1","name":"Eisbär"},{"id":"2","name":"Tiger"},{"id":"3","name":"Giraffe"}]
+                        []
                         """));
     }
+    
 }
