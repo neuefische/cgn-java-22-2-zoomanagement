@@ -1,5 +1,7 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.animal;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,8 +22,15 @@ public class AnimalController {
     }
 
     @PostMapping
-    public Animal addAnimal(@RequestBody String animalName) {
-        return animalService.addAnimal(animalName);
+    public ResponseEntity<Animal> addAnimal(
+            @RequestBody String animalName
+    ) {
+
+        var savedItem = animalService.addAnimal(animalName);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(savedItem);
+
     }
 
 }

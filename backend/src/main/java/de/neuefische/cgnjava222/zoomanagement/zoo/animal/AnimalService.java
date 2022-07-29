@@ -21,10 +21,10 @@ public class AnimalService {
     public Animal addAnimal(String animalName) {
 
         return animalRepo.save(new Animal(
-                        UUID.randomUUID().toString(),
-                        animalName
-                )
-        );
+                UUID.randomUUID().toString(),
+                animalName
+        ));
+        
     }
-    
+
 }
