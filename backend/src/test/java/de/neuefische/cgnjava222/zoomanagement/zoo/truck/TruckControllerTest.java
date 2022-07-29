@@ -31,9 +31,9 @@ class TruckControllerTest {
     void addTruck() {
         //given
         Truck testTruck = new Truck("Döner", "kahdaihdölahdöalshdööah");
-        when(testTruckService.addTruck(testTruck.name())).thenReturn(testTruck);
+        when(testTruckService.addTruck(testTruck)).thenReturn(testTruck);
         //when
-        Truck actual = testTruckController.addTruck(testTruck.name());
+        Truck actual = testTruckController.addTruck(testTruck);
         //then
         Assertions.assertEquals(testTruck, actual);
     }

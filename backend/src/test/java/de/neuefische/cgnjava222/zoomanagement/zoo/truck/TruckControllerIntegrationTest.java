@@ -31,11 +31,25 @@ class TruckControllerIntegrationTest {
     }
 
     @Test
+    void addTrucks_wrongJson() throws Exception {
+        mockMvc.perform(post("/api/trucks")
+                        .contentType(APPLICATION_JSON)
+                        .content("""
+                                "Dner1"
+                                """)
+                )
+                .andExpect(status().is(400));
+    }
+
+    @Test
     void addTrucks() throws Exception {
         MvcResult result = mockMvc.perform(post("/api/trucks")
                         .contentType(APPLICATION_JSON)
                         .content("""
-                                "Dner1"
+                                {
+                                "name":"Dner1",
+                                "id":""
+                                }
                                 """)
                 )
                 .andExpect(status().is(200))

@@ -1,5 +1,6 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.truck;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +22,8 @@ public class TruckController {
     }
 
     @PostMapping
-    public Truck addTruck(@RequestBody String name) {
-        return truckService.addTruck(name);
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public Truck addTruck(@RequestBody Truck truck) {
+        return truckService.addTruck(truck);
     }
 }

@@ -16,7 +16,7 @@ public class TruckService {
         return truckRepo.findAll();
     }
 
-    public Truck addTruck(String name) {
-        return truckRepo.save(Truck.of(name));
+    public Truck addTruck(Truck truck) {
+        return truckRepo.save(Truck.of(truck.name()));
     }
 }

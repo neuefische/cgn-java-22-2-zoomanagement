@@ -34,7 +34,7 @@ class TruckServiceTest {
         Truck testTruck = Truck.of("Sometruck");
         when(testTruckRepo.save(any(Truck.class))).thenReturn(testTruck);
         //when
-        Truck actual = testTruckService.addTruck(testTruck.name());
+        Truck actual = testTruckService.addTruck(testTruck);
         //then
         Assertions.assertEquals(testTruck.name(), actual.name());
     }
