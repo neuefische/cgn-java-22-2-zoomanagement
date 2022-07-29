@@ -6,10 +6,11 @@ import TruckGallery from "./components/TruckGallery";
 import useTrucks from "./hooks/useTrucks";
 import useAnimals from "./hooks/useAnimals";
 import AnimalList from "./components/animal/AnimalList";
+import AddAnimal from "./components/animal/AddAnimal";
 
 export default function App() {
 
-    const {animals} = useAnimals();
+    const {animals, addAnimal} = useAnimals();
     const {plants} = usePlants();
     const {trucks} = useTrucks();
 
@@ -18,5 +19,7 @@ export default function App() {
         {plants ? <PlantList plants={plants}/> : "Loading..."}
         <TruckGallery trucks={trucks}/>
         <AnimalList animals={animals}/>
+        <AddAnimal onAddAnimal={addAnimal}/>
     </>;
+    
 }

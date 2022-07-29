@@ -23,10 +23,10 @@ public class AnimalController {
 
     @PostMapping
     public ResponseEntity<Animal> addAnimal(
-            @RequestBody String animalName
+            @RequestBody NewAnimal newAnimal
     ) {
 
-        var savedItem = animalService.addAnimal(animalName);
+        Animal savedItem = animalService.addAnimal(newAnimal);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(savedItem);

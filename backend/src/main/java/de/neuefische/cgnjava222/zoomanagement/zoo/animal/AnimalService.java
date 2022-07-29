@@ -18,13 +18,13 @@ public class AnimalService {
         return animalRepo.findAll();
     }
 
-    public Animal addAnimal(String animalName) {
+    public Animal addAnimal(NewAnimal newAnimal) {
 
         return animalRepo.save(new Animal(
                 UUID.randomUUID().toString(),
-                animalName
+                newAnimal.name()
         ));
-        
+
     }
 
 }

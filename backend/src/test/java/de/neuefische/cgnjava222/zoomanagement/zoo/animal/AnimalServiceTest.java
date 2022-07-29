@@ -43,7 +43,7 @@ class AnimalServiceTest {
 
         AnimalService animalService = new AnimalService(animalRepo);
 
-        Animal actualResult = animalService.addAnimal("Schmetterling");
+        Animal actualResult = animalService.addAnimal(new NewAnimal("Schmetterling"));
         Animal expectedResult = new Animal("1", "Schmetterling");
 
         assertThat(actualResult).isEqualTo(expectedResult);
