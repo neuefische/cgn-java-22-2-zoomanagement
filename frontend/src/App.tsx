@@ -10,20 +10,21 @@ import useAnimals from "./hooks/useAnimals";
 import AnimalList from "./components/animal/AnimalList";
 import {ToastContainer} from 'react-toastify';
 
+
 export default function App() {
 
-    const {animals} = useAnimals();
-    const {plants} = usePlants()
+    const {animals, addAnimal} = useAnimals();
+    const {plants} = usePlants();
     const {trucks, addTruck} = useTrucks()
     const {employees} = useEmployee();
-
 
     return <>
         <h1>Zoo-Management</h1>
         {plants ? <PlantList plants={plants}/> : "Loading..."}
         <TruckGallery trucks={trucks} addTruck={addTruck}/>
-        <AnimalList animals={animals}/>
+        <AnimalList animals={animals} onAddAnimal={addAnimal}/>
         <Employees employees={employees}/>
         <ToastContainer/>
     </>;
+
 }

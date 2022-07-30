@@ -13,8 +13,21 @@ export default function useAnimals() {
     const getAnimalList = () => {
         axios.get("/api/animals")
             .then(response => response.data)
-            .then(setAnimals)
+            .then(data => setAnimals(data))
     }
 
-    return {animals}
+    const addAnimal = (animalName: string) => {
+
+        const newAnimal = {name: animalName}
+
+        axios.post("/api/animals", newAnimal)
+            .then(response => response.data)
+            .then(data => {
+                return data;
+            })
+            .then(getAnimalList);
+
+    }
+
+    return {animals, addAnimal}
 }
