@@ -6,11 +6,13 @@ export default function AddAnimal({...props}) {
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        props.onAddAnimal(animalName);
+
+        props.onAddAnimal(animalName)
+        setAnimalName("");
     }
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setAnimalName(event.target.value)
+        setAnimalName(event.target.value);
     }
 
     return (

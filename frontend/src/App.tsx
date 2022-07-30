@@ -15,7 +15,7 @@ export default function App() {
 
     const {animals, addAnimal} = useAnimals();
     const {plants} = usePlants();
-    const {trucks, addTruck} = useTrucks()
+    const {trucks, addTruck} = useTrucks();
     const {employees} = useEmployee();
 
     return <>

@@ -1,6 +1,7 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
 import {Animal} from "../components/animal/Animal";
+import {toast, Zoom} from "react-toastify";
 
 export default function useAnimals() {
 
@@ -10,10 +11,25 @@ export default function useAnimals() {
         getAnimalList()
     }, [])
 
+    
+    const toastyNote = (errorMessage: string) => {
+
+        toast.error(errorMessage, {
+            position: "top-center",
+            autoClose: false,
+            closeOnClick: true,
+            draggable: true,
+            transition: Zoom,
+        });
+
+    }
+
     const getAnimalList = () => {
+
         axios.get("/api/animals")
             .then(response => response.data)
             .then(data => setAnimals(data))
+
     }
 
     const addAnimal = (animalName: string) => {
@@ -25,7 +41,13 @@ export default function useAnimals() {
             .then(data => {
                 return data;
             })
-            .then(getAnimalList);
+            .then(() => {
+                getAnimalList();
+            })
+            .catch((error: any) => {
+                toastyNote("Adding item failed - consult console for details and/or try again, please.");
+                console.error(error.message);
+            });
 
     }
 
