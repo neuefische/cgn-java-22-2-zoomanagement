@@ -11,7 +11,7 @@ export default function useAnimals() {
         getAnimalList()
     }, [])
 
-    
+
     const toastyNote = (errorMessage: string) => {
 
         toast.error(errorMessage, {
@@ -41,9 +41,7 @@ export default function useAnimals() {
             .then(data => {
                 return data;
             })
-            .then(() => {
-                getAnimalList();
-            })
+            .then(getAnimalList)
             .catch((error: any) => {
                 toastyNote("Adding item failed - consult console for details and/or try again, please.");
                 console.error(error.message);
