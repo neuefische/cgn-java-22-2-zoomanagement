@@ -16,7 +16,7 @@ export default function AddAnimal({...props}) {
     return (
         <form onSubmit={handleSubmit}>
             <input onChange={handleChange} value={animalName}/>
-            <button type={"submit"}>Add</button>
+            <button type={"submit"}>hinzufügen</button>
         </form>
     );
 

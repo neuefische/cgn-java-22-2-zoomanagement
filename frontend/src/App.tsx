@@ -8,7 +8,6 @@ import Employees from "./employees/components/Employees";
 import useEmployee from "./employees/service/useEmployee";
 import useAnimals from "./hooks/useAnimals";
 import AnimalList from "./components/animal/AnimalList";
-import AddAnimal from "./components/animal/AddAnimal";
 import {ToastContainer} from 'react-toastify';
 
 
@@ -16,14 +15,6 @@ export default function App() {
 
     const {animals, addAnimal} = useAnimals();
     const {plants} = usePlants();
-    const {trucks} = useTrucks();
-
-
-
-export default function App() {
-
-    const {animals} = useAnimals();
-    const {plants} = usePlants()
     const {trucks, addTruck} = useTrucks()
     const {employees} = useEmployee();
 
@@ -31,10 +22,9 @@ export default function App() {
         <h1>Zoo-Management</h1>
         {plants ? <PlantList plants={plants}/> : "Loading..."}
         <TruckGallery trucks={trucks} addTruck={addTruck}/>
-        <AnimalList animals={animals}/>
-        <AddAnimal onAddAnimal={addAnimal}/>
+        <AnimalList animals={animals} onAddAnimal={addAnimal}/>
         <Employees employees={employees}/>
         <ToastContainer/>
     </>;
-    
+
 }
