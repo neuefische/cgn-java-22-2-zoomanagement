@@ -1,8 +1,7 @@
-package de.neuefische.cgnjava222.zoomanagement.zoo.trucks;
+package de.neuefische.cgnjava222.zoomanagement.zoo.truck;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +19,11 @@ public class TruckController {
     @GetMapping
     public List<Truck> getAllTrucks() {
         return truckService.getAllTrucks();
+    }
+
+    @PostMapping
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public Truck addTruck(@RequestBody NewTruck truck) {
+        return truckService.addTruck(truck);
     }
 }
