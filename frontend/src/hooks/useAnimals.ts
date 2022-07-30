@@ -23,12 +23,11 @@ export default function useAnimals() {
         axios.post("/api/animals", newAnimal)
             .then(response => response.data)
             .then(data => {
-                console.log(data);
                 return data;
             })
             .then(getAnimalList);
 
     }
 
-    return {animals, setAnimals, addAnimal}
+    return {animals, addAnimal}
 }
