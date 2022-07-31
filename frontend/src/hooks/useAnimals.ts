@@ -2,6 +2,7 @@ import axios from "axios";
 import {useEffect, useState} from "react";
 import {Animal} from "../components/animal/Animal";
 import {toast, Zoom} from "react-toastify";
+import {NewAnimal} from "../components/animal/NewAnimal";
 
 export default function useAnimals() {
 
@@ -34,7 +35,7 @@ export default function useAnimals() {
 
     const addAnimal = (animalName: string) => {
 
-        const newAnimal = {name: animalName}
+        const newAnimal: NewAnimal = {name: animalName}
 
         axios.post("/api/animals", newAnimal)
             .then(response => response.data)
