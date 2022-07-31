@@ -7,7 +7,7 @@ export default function AddAnimal({...props}) {
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        props.onAddAnimal(animalName) && setAnimalName("");
+        typeof props.onAddAnimal(animalName) === "undefined" && setAnimalName("");
     }
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
