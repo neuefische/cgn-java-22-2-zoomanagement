@@ -21,7 +21,7 @@ public class PlantController {
         return plantService.getAllPlants();
     }
 
-    @PostMapping(path = "")
+    @PostMapping
     public ResponseEntity<Plant> addPlant(
             @RequestBody PlantWithOutId plantName) {
         return ResponseEntity
