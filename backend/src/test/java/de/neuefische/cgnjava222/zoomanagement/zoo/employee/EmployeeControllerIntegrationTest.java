@@ -1,4 +1,5 @@
-package de.neuefische.cgnjava222.zoomanagement.zoo.trucks;
+package de.neuefische.cgnjava222.zoomanagement.zoo.employee;
+
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,15 +12,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class TruckControllerIntegrationTest {
+class EmployeeControllerIntegrationTest {
 
     @Autowired
     MockMvc mockMvc;
 
 
     @Test
-    void getAllTrucks() throws Exception {
-        mockMvc.perform(get("/api/trucks"))
-                .andExpect(status().is(200));
+    void testGetAllEmployees() throws Exception {
+        mockMvc.perform(get("/api/employees")).andExpect(status().is(200));
     }
+
+
 }

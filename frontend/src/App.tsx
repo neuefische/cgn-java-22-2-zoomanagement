@@ -2,21 +2,29 @@ import React from 'react';
 import './App.css';
 import usePlants from "./plant/usePlants";
 import PlantList from "./plant/PlantList";
-import TruckGallery from "./components/TruckGallery";
-import useTrucks from "./hooks/useTrucks";
-import useAnimals from "./components/animals/hooks/useAnimals";
-import AnimalList from "./components/animals/AnimalList/AnimalList";
+import TruckGallery from "./truck/TruckGallery";
+import useTrucks from "./truck/useTrucks";
+import Employees from "./employees/Employees";
+import useEmployee from "./employees/useEmployee";
+import useAnimals from "./animal/useAnimals";
+import AnimalList from "./animal/AnimalList";
+import {ToastContainer} from 'react-toastify';
+
 
 export default function App() {
 
-    const {animals} = useAnimals();
+    const {animals, addAnimal} = useAnimals();
     const {plants, addPlant} = usePlants();
-    const {trucks} = useTrucks();
+    const {trucks, addTruck} = useTrucks()
+    const {employees} = useEmployee();
 
     return <>
         <h1>Zoo-Management</h1>
         {plants ? <PlantList plants={plants} addPlant={addPlant}/> : "Loading..."}
-        <TruckGallery trucks={trucks}/>
-        <AnimalList animals={animals}/>
+        <TruckGallery trucks={trucks} addTruck={addTruck}/>
+        <AnimalList animals={animals} onAddAnimal={addAnimal}/>
+        <Employees employees={employees}/>
+        <ToastContainer/>
     </>;
+
 }

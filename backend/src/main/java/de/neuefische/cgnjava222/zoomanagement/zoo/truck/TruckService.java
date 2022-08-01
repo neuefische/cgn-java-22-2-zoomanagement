@@ -1,4 +1,4 @@
-package de.neuefische.cgnjava222.zoomanagement.zoo.trucks;
+package de.neuefische.cgnjava222.zoomanagement.zoo.truck;
 
 import org.springframework.stereotype.Service;
 
@@ -13,6 +13,10 @@ public class TruckService {
     }
 
     public List<Truck> getAllTrucks() {
-        return truckRepo.getTrucks();
+        return truckRepo.findAll();
+    }
+
+    public Truck addTruck(NewTruck newTruck) {
+        return truckRepo.save(newTruck.withRandomId());
     }
 }
