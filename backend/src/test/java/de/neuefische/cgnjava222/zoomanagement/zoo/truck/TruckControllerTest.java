@@ -1,4 +1,4 @@
-package de.neuefische.cgnjava222.zoomanagement.zoo.trucks;
+package de.neuefische.cgnjava222.zoomanagement.zoo.truck;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -25,5 +25,17 @@ class TruckControllerTest {
         List<Truck> actual = testTruckController.getAllTrucks();
         // then
         Assertions.assertArrayEquals(testList.toArray(), actual.toArray());
+    }
+
+    @Test
+    void addTruck() {
+        //given
+        NewTruck testNewTruck = new NewTruck("Döner");
+        Truck testTruck = new Truck("Döner", "kahdaihdölahdöalshdööah");
+        when(testTruckService.addTruck(testNewTruck)).thenReturn(testTruck);
+        //when
+        Truck actual = testTruckController.addTruck(testNewTruck);
+        //then
+        Assertions.assertEquals(testTruck, actual);
     }
 }
