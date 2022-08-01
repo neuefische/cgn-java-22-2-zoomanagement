@@ -1,7 +1,7 @@
 import AddPlant from "./AddPlant";
 import {Plant} from "./Plant";
 
-export default function PlantList(props: { plants: Plant[], addPlant: (name: string) => void }) {
+export default function PlantList(props: { plants: Plant[], addPlant: (name: string) => Promise<void> }) {
 
     return (
         <>

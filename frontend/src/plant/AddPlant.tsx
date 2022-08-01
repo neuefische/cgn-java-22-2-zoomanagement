@@ -3,21 +3,28 @@ import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 type AddPlantProps = {
-    addPlant: (name: string) => void;
+    addPlant: (name: string) => Promise<void>;
+
 }
 export default function AddPlant(props: AddPlantProps) {
-    const [addPlantString, setAddPlantString] = useState<string>('')
+    const [plantNameToAdd, setPlantNameToAdd] = useState<string>('')
+    const notify = (message: string) => toast(message);
     const submitInput = (event: FormEvent<HTMLFormElement>) => {
-        if (addPlantString !== "") {
-            props.addPlant(addPlantString);
-            setAddPlantString('')
-        } else {
-            toast("Empty String");
-        }
         event.preventDefault();
+        if (plantNameToAdd !== "") {
+            props.addPlant(plantNameToAdd)
+                .then(() => {
+                    setPlantNameToAdd('')
+                })
+                .catch(error => notify(error.message)
+                )
+        } else {
+            notify("Bitte geben Sie einen Pflanzennamen ein!");
+        }
+
     }
     return <form onSubmit={submitInput}>
-        <input type={"input"} value={addPlantString} onChange={event => setAddPlantString(event.target.value)}/>
+        <input type={"input"} value={plantNameToAdd} onChange={event => setPlantNameToAdd(event.target.value)}/>
         <button type={"submit"}>hinzufügen</button>
         <ToastContainer/>
     </form>

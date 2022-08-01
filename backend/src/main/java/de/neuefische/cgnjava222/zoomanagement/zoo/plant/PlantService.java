@@ -17,7 +17,7 @@ public class PlantService {
         return plantRepo.findAll();
     }
 
-    public Plant addPlant(PlantWithOutId newPlant) {
+    public Plant addPlant(PlantWithoutId newPlant) {
         Plant plant = new Plant(newPlant.name(), UUID.randomUUID().toString());
         return plantRepo.save(plant);
     }

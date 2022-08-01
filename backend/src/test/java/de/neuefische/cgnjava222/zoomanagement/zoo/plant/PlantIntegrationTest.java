@@ -24,7 +24,7 @@ class PlantIntegrationTest {
 
     @Test
     @DirtiesContext
-    void isGetPlantsListSize0() throws Exception {
+    void getPlants() throws Exception {
 
         mockMvc
                 .perform(
@@ -37,7 +37,7 @@ class PlantIntegrationTest {
     @Test
     @DisplayName("addOnePlant")
     @DirtiesContext
-    void addOnePlantAndCheckTheReturnLengthIfIt1() throws Exception {
+    void addOnePlant() throws Exception {
         mockMvc
                 .perform(post("/api/plants")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -55,7 +55,7 @@ class PlantIntegrationTest {
     @Test
     @DisplayName("addTwoPlants")
     @DirtiesContext
-    void addTwoPlantsAndCheckTheReturnLengthIfIt2() throws Exception {
+    void addTwoPlants() throws Exception {
         mockMvc
                 .perform(post("/api/plants")
                         .contentType(MediaType.APPLICATION_JSON)
