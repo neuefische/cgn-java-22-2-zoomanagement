@@ -14,7 +14,7 @@ export default function TruckGallery(props: TruckGalleryProps) {
             <AddTruck addTruck={props.addTruck}/>
             <ul>
                 {props.trucks
-                    .map(truck => <li key={truck.id}>{truck.name}</li>
+                    .map(truck => <li key={truck.id}>{truck.name}<button>Löschen</button></li>
                     )}
             </ul>
         </>

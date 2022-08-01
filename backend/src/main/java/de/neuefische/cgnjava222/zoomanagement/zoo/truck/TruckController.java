@@ -33,10 +33,9 @@ public class TruckController {
 
 
         if (truckService.deleteTruck(truckToDelete)) {
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return
-            ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
 
     }
