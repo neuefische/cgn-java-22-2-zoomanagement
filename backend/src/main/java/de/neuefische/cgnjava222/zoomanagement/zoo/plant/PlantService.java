@@ -16,7 +16,7 @@ public class PlantService {
         return plantRepo.findAll();
     }
 
-    public void addPlant(Plant plant) {
-        plantRepo.save(plant);
+    public Plant addPlant(Plant plant) {
+        return plantRepo.save(plant);
     }
 }

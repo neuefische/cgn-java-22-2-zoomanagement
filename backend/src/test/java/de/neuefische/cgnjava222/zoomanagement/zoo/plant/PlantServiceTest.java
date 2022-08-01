@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.UUID;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -26,5 +28,13 @@ class PlantServiceTest {
         Assertions.assertArrayEquals(testList.toArray(), actual.toArray());
     }
 
-
+    @Test
+    void addPlantTest() {
+        Plant plant = new Plant("Birke", UUID.randomUUID().toString());
+        PlantRepo plantRepo = mock(PlantRepo.class);
+        when(testPlantRepo.save(any(Plant.class))).thenReturn(plant);
+        PlantService plantService = new PlantService(plantRepo);
+        Plant actual = testPlantService.addPlant(plant);
+        assertThat(actual).isEqualTo(plant);
+    }
 }
