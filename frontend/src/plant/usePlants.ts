@@ -23,9 +23,9 @@ export default function usePlants() {
     const notify = () => toast("cannot access database");
 
     const addPlant = (name: string) => {
-        const nameJSON: PlantType = {"name": name};
+        const plantName: PlantType = {"name": name};
         console.log(name);
-        axios.post("/api/plants", nameJSON)
+        axios.post("/api/plants", plantName)
             .then(response => console.log(response))
             .then(getAllPlants)
             .catch(error => {

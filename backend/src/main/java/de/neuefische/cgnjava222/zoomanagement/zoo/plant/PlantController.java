@@ -1,16 +1,14 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.plant;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping(path = "/api/plants")
 public class PlantController {
 
-    record Planttype(String name) {
-    }
 
     private final PlantService plantService;
 
@@ -24,8 +22,14 @@ public class PlantController {
     }
 
     @PostMapping(path = "")
-    void addPlant(@RequestBody Planttype nameJSON) {
-        Plant plant = new Plant(nameJSON.name, UUID.randomUUID().toString());
-        plantService.addPlant(plant);
+    public ResponseEntity<Plant> addPlant(
+            @RequestBody PlantWithOutId plantName) {
+        return ResponseEntity
+                .status(201)
+                .body(
+                        plantService.addPlant(plantName)
+                );
+
+
     }
 }

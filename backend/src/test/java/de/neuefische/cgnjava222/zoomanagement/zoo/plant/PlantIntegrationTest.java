@@ -44,11 +44,11 @@ class PlantIntegrationTest {
                         .content("""
                                  {"name": "Birke"}
                                 """))
-                .andExpect(status().isOk());
+                .andExpect(status().is(201));
         mockMvc.perform(
                         get("/api/plants")
                 )
-                .andExpect(status().isOk())
+                .andExpect(status().is(200))
                 .andExpect(jsonPath("$", hasSize(1)));
     }
 
@@ -63,7 +63,7 @@ class PlantIntegrationTest {
                                  {"name": "Birke"},
                                 """)
                 )
-                .andExpect(status().isOk());
+                .andExpect(status().is(201));
         mockMvc
                 .perform(post("/api/plants")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -71,7 +71,7 @@ class PlantIntegrationTest {
                                  {"name": "Buche"},
                                 """)
                 )
-                .andExpect(status().isOk());
+                .andExpect(status().is(201));
         mockMvc.perform(
                         get("/api/plants")
                 )
