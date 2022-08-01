@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {Employee} from "../model/Employee";
+import {Employee} from "./Employee";
 import axios from "axios";
 
 export default function useEmployee() {

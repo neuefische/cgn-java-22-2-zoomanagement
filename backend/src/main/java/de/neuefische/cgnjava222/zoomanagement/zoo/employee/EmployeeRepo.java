@@ -1,6 +1,5 @@
-package de.neuefische.cgnjava222.zoomanagement.zoo.employee.repository;
+package de.neuefische.cgnjava222.zoomanagement.zoo.employee;
 
-import de.neuefische.cgnjava222.zoomanagement.zoo.employee.model.Employee;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 

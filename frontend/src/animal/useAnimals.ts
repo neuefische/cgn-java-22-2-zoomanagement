@@ -1,6 +1,6 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
-import {Animal} from "../components/animal/Animal";
+import {Animal} from "./Animal";
 
 import {NewAnimal} from "../components/animal/NewAnimal";
 
