@@ -20,7 +20,7 @@ export default function App() {
 
     return <>
         <h1>Zoo-Management</h1>
-        {plants ? <PlantList plants={plants} addPlant={addPlant}/> : "Loading..."}
+        <PlantList plants={plants} addPlant={addPlant}/>
         <TruckGallery trucks={trucks} addTruck={addTruck}/>
         <AnimalList animals={animals} onAddAnimal={addAnimal}/>
         <Employees employees={employees}/>
