@@ -2,12 +2,12 @@ import React from 'react';
 import './App.css';
 import usePlants from "./plant/usePlants";
 import PlantList from "./plant/PlantList";
-import TruckGallery from "./components/TruckGallery";
-import useTrucks from "./hooks/useTrucks";
-import Employees from "./employees/components/Employees";
-import useEmployee from "./hooks/useEmployee";
-import useAnimals from "./hooks/useAnimals";
-import AnimalList from "./components/animal/AnimalList";
+import TruckGallery from "./trucks/TruckGallery";
+import useTrucks from "./trucks/useTrucks";
+import Employees from "./employees/Employees";
+import useEmployee from "./employees/useEmployee";
+import useAnimals from "./animal/useAnimals";
+import AnimalList from "./animal/AnimalList";
 import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 

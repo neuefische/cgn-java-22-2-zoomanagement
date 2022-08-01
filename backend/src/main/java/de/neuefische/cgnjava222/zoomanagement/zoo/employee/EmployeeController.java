@@ -1,8 +1,6 @@
-package de.neuefische.cgnjava222.zoomanagement.zoo.employee.controller;
+package de.neuefische.cgnjava222.zoomanagement.zoo.employee;
 
 
-import de.neuefische.cgnjava222.zoomanagement.zoo.employee.model.Employee;
-import de.neuefische.cgnjava222.zoomanagement.zoo.employee.service.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

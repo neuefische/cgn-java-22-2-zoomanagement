@@ -1,7 +1,5 @@
-package de.neuefische.cgnjava222.zoomanagement.zoo.employee.service;
+package de.neuefische.cgnjava222.zoomanagement.zoo.employee;
 
-import de.neuefische.cgnjava222.zoomanagement.zoo.employee.model.Employee;
-import de.neuefische.cgnjava222.zoomanagement.zoo.employee.repository.EmployeeRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

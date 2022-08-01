@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import Truck from "../components/Truck";
+import Truck from "./Truck";
 import axios from "axios";
 
 

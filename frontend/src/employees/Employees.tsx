@@ -1,4 +1,4 @@
-import {Employee} from "../model/Employee";
+import {Employee} from "./Employee";
 import AddEmployee from "./AddEmployee";
 
 type EmployeesProps = {

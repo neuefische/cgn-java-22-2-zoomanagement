@@ -1,12 +1,10 @@
 import {useEffect, useState} from "react";
-import {Employee} from "../employees/model/Employee";
+import {Employee} from "./Employee";
 import axios from "axios";
 
 export default function useEmployee() {
 
-
     const [employees, setEmployees] = useState<Employee[]>([]);
-
 
     useEffect(() => {
         getAllEmployees()
@@ -22,17 +20,12 @@ export default function useEmployee() {
         const newEmployee = {name: newName}
         return axios.post("/api/employees/", newEmployee)
             .then((response) => {
-
                 getAllEmployees()
                 return response.data
             });
-
     }
     return {
-
         addEmployee,
-
         employees,
-
     }
 }
