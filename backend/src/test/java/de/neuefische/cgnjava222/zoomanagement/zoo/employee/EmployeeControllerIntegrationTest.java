@@ -1,4 +1,4 @@
-package de.neuefische.cgnjava222.zoomanagement.zoo.employee.controller;
+package de.neuefische.cgnjava222.zoomanagement.zoo.employee;
 
 
 import org.junit.jupiter.api.Test;
