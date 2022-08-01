@@ -6,8 +6,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class AnimalServiceTest {
 
@@ -50,4 +49,18 @@ class AnimalServiceTest {
 
     }
 
+
+    @Test
+    void deleteAnimal() {
+
+        Animal animal = new Animal("123", "Hund");
+
+        AnimalRepo animalRepo = mock(AnimalRepo.class);
+        doNothing().when(animalRepo).deleteById(animal.id());
+
+        AnimalService animalService = new AnimalService(animalRepo);
+        animalService.deleteAnimal(animal.id());
+        verify(animalRepo).deleteById(animal.id());
+
+    }
 }

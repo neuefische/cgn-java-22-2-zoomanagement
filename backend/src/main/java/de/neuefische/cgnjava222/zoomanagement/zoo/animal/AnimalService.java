@@ -27,4 +27,7 @@ public class AnimalService {
 
     }
 
+    public void deleteAnimal(String id) {
+        animalRepo.deleteById(id);
+    }
 }
