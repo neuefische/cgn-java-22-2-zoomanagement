@@ -3,20 +3,13 @@ import './App.css';
 import usePlants from "./plant/usePlants";
 import PlantList from "./plant/PlantList";
 import TruckGallery from "./truck/TruckGallery";
-import useTrucks from "./truck/useTrucks";
 import Employees from "./employees/Employees";
-import useEmployee from "./employees/useEmployee";
-import useAnimals from "./animal/useAnimals";
 import AnimalList from "./animal/AnimalList";
 import {ToastContainer} from 'react-toastify';
 
-import TruckGallery from "./trucks/TruckGallery";
-import useTrucks from "./trucks/useTrucks";
-import Employees from "./employees/Employees";
+import useTrucks from "./truck/useTrucks";
 import useEmployee from "./employees/useEmployee";
 import useAnimals from "./animal/useAnimals";
-import AnimalList from "./animal/AnimalList";
-import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {

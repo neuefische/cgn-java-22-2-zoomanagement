@@ -4,8 +4,6 @@ import React from "react";
 
 export default function AnimalList(props: { animals: Animal[], onAddAnimal: (animalName: string) => void; }) {
 
-export default function AnimalList(props: { animals: Animal[] }) {
-
     return (
         <>
             <h2>Tiere</h2>

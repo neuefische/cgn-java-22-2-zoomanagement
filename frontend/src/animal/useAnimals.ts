@@ -28,5 +28,5 @@ export default function useAnimals() {
             .then(getAnimalList)
     }
 
-    return {animals}
+    return {animals, addAnimal}
 }
