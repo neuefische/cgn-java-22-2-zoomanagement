@@ -1,7 +1,5 @@
-package de.neuefische.cgnjava222.zoomanagement.zoo.service;
+package de.neuefische.cgnjava222.zoomanagement.zoo.employee;
 
-import de.neuefische.cgnjava222.zoomanagement.zoo.employee.model.Employee;
-import de.neuefische.cgnjava222.zoomanagement.zoo.employee.repository.EmployeeRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
