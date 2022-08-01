@@ -1,14 +1,32 @@
 import {ChangeEvent, FormEvent, useState} from "react";
+import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
-export default function AddAnimal({...props}) {
+type AddAnimalProps = {
+    addAnimal: (name: string) => Promise<void>
+}
 
-    const [animalName, setAnimalName] = useState("");
+export default function AddAnimal(props: AddAnimalProps) {
+
+    const [animalName, setAnimalName] = useState<string>("");
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        typeof props.onAddAnimal(animalName) === "undefined" && setAnimalName("");
+        props.addAnimal(animalName)
+            .catch((error) => {
+                notify("Hi sorrry!!! " + error.message)
+            })
+        setAnimalName("");
     }
+
+
+    const notify = (message: string) => {
+        toast.error(message, {
+            position: toast.POSITION.TOP_LEFT
+        });
+    };
+
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setAnimalName(event.target.value);
@@ -20,5 +38,4 @@ export default function AddAnimal({...props}) {
             <button type={"submit"}>hinzufügen</button>
         </form>
     );
-
 }

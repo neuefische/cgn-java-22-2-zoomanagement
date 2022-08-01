@@ -22,7 +22,7 @@ export default function App() {
         <h1>Zoo-Management</h1>
         {plants ? <PlantList plants={plants}/> : "Loading..."}
         <TruckGallery trucks={trucks} addTruck={addTruck}/>
-        <AnimalList animals={animals} onAddAnimal={addAnimal}/>
+        <AnimalList animals={animals} addAnimal={addAnimal}/>
         <Employees employees={employees}/>
         <ToastContainer/>
     </>;
