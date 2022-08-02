@@ -1,8 +1,8 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
 import {Animal} from "./Animal";
+import {NewAnimal} from "./NewAnimal";
 
-import {NewAnimal} from "../components/animal/NewAnimal";
 
 export default function useAnimals() {
 
@@ -21,14 +21,12 @@ export default function useAnimals() {
 
     }
 
-    const addAnimal = async (animalName: string) => {
+    const addAnimal = (animalName: string) => {
 
         const newAnimal: NewAnimal = {name: animalName}
 
-        await axios.post("/api/animals", newAnimal)
+        return axios.post("/api/animals", newAnimal)
             .then(getAnimalList)
-
-
     }
 
     return {animals, addAnimal}

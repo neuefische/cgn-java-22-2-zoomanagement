@@ -14,10 +14,10 @@ export default function AddAnimal(props: AddAnimalProps) {
         event.preventDefault();
 
         props.addAnimal(animalName)
+            .then(() => setAnimalName(""))
             .catch((error) => {
                 notify("Hi sorrry!!! " + error.message)
             })
-        setAnimalName("");
     }
 
 
