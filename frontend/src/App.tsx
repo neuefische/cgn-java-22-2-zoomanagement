@@ -18,14 +18,14 @@ export default function App() {
     const {plants} = usePlants();
     const {trucks, addTruck} = useTrucks()
 
-    const {employees, addEmployee} = useEmployee();
+    const {employees, addEmployee, deleteEmployee} = useEmployee();
 
     return <>
         <h1>Zoo-Management</h1>
         {plants ? <PlantList plants={plants}/> : "Loading..."}
         <TruckGallery trucks={trucks} addTruck={addTruck}/>
         <AnimalList animals={animals} onAddAnimal={addAnimal}/>
-        <Employees employees={employees} addEmployee={addEmployee}/>
+        <Employees employees={employees} addEmployee={addEmployee} onDeleteEmployee={deleteEmployee}/>
         <ToastContainer/>
     </>;
 

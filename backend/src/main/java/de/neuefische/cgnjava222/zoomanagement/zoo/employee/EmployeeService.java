@@ -25,4 +25,13 @@ public class EmployeeService {
     public String getRandomId() {
         return UUID.randomUUID().toString();
     }
+
+    public boolean deleteEmployee(String id) {
+        if (employeeRepo.existsById(id)) {
+            employeeRepo.deleteById(id);
+            return true;
+        }
+
+        return false;
+    }
 }

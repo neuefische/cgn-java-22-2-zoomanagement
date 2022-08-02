@@ -27,7 +27,14 @@ export default function useEmployee() {
             );
     }
 
+    const deleteEmployee = (id: string) => {
+        return axios.delete("/api/employees/" + id)
+            .then((response) => response.data)
+            .then(getAllEmployees);
+    }
+
     return {
+        deleteEmployee,
         addEmployee,
         employees,
     }
