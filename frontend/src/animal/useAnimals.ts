@@ -12,13 +12,10 @@ export default function useAnimals() {
         getAnimalList()
     }, [])
 
-
     const getAnimalList = () => {
-
         axios.get("/api/animals")
             .then(response => response.data)
             .then(data => setAnimals(data))
-
     }
 
     const addAnimal = (animalName: string) => {
