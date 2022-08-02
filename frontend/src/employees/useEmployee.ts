@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {Employee} from "./Employee";
 import axios from "axios";
 import {NewEmployee} from "./NewEmployee";
+import {showError} from "./ErrorEmployee";
 
 export default function useEmployee() {
 
@@ -29,8 +30,9 @@ export default function useEmployee() {
 
     const deleteEmployee = (id: string) => {
         return axios.delete("/api/employees/" + id)
-            .then((response) => response.data)
-            .then(getAllEmployees);
+            .then((response) => response.status)
+            .then(getAllEmployees)
+            .catch(error => showError(error));
     }
 
     return {
