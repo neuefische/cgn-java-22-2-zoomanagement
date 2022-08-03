@@ -7,3 +7,4 @@
 */*.iml
 /backend/src/main/resources/static
 /frontend/build
+*.DS_Store
