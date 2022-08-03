@@ -22,7 +22,12 @@ public class PlantService {
         return plantRepo.save(plant);
     }
 
-    public void deletePlant(String id) {
-        plantRepo.deleteById(id);
+    public boolean deletePlant(String id) {
+        if (plantRepo.existsById(id)) {
+            plantRepo.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }
+

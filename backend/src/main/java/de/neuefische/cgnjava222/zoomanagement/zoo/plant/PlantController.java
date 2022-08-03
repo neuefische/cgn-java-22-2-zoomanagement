@@ -9,8 +9,6 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/api/plants")
 public class PlantController {
-
-
     private final PlantService plantService;
 
     public PlantController(PlantService plantService) {
@@ -30,14 +28,11 @@ public class PlantController {
                 .body(
                         plantService.addPlant(newPlant)
                 );
-
-
     }
 
-
-    @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    @DeleteMapping(path = "/{id}")
-    public void deletePlant(@PathVariable String id){
-        plantService.deletePlant(id);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletePlant(@PathVariable String id) {
+        boolean deleteSuccess = plantService.deletePlant(id);
+        return new ResponseEntity<>(deleteSuccess ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);
     }
 }
