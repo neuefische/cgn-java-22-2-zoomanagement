@@ -24,5 +24,15 @@ export default function useTrucks() {
         return axios.post("/api/trucks", newTruck)
             .then(() => getAllTrucks())
     }
-    return {trucks, addTruck}
+
+
+    const deleteTrucks = (id: string) => {
+        return axios.delete("/api/trucks/" + id)
+            .then((response) => response.status)
+            .then(getAllTrucks())
+            .catch(error => showError(error));
+    }
+
+    return {trucks, addTruck, deleteTrucks}
+
 }
