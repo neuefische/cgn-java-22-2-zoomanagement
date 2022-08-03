@@ -3,8 +3,9 @@
 /backend/mvnw.cmd
 /backend/.mvn
 /backend/target
-/frontend/node_modules
+*/node_modules
 */*.iml
+*.DS_Store
 /frontend/build/
 /backend/src/main/resources/static/
 /node_modules
