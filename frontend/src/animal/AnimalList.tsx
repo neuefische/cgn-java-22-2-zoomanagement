@@ -2,7 +2,12 @@ import {Animal} from "./Animal";
 import AddAnimal from "./AddAnimal";
 import React from "react";
 
-export default function AnimalList(props: { animals: Animal[], onAddAnimal: (animalName: string) => void; }) {
+type AnimalListProps = {
+    animals: Animal[],
+    addAnimal: (animalName: string) => Promise<void>
+}
+
+export default function AnimalList(props: AnimalListProps) {
 
     return (
         <>
@@ -11,7 +16,7 @@ export default function AnimalList(props: { animals: Animal[], onAddAnimal: (ani
                 {props.animals.map(animal => <li key={animal.id}>{animal.name}</li>)}
             </ul>
 
-            <AddAnimal onAddAnimal={props.onAddAnimal}/>
+            <AddAnimal addAnimal={props.addAnimal}/>
         </>
     );
 
