@@ -1,5 +1,6 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.animal;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -8,8 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -19,6 +19,9 @@ class AnimalIntegrationTest {
 
     @Autowired
     MockMvc mockMvc;
+
+    @Autowired
+    ObjectMapper objectMapper;
 
     @DirtiesContext
     @Test
@@ -49,6 +52,32 @@ class AnimalIntegrationTest {
                         }
                         """));
 
+    }
+
+    @DirtiesContext
+    @Test
+    void deleteAnimal() throws Exception {
+        String saveResult = mockMvc.perform(post(
+                        "/api/animals")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"name": "Katze"}
+                                """)
+                ).andReturn()
+                .getResponse()
+                .getContentAsString();
+
+        Animal saveResultAnimal = objectMapper.readValue(saveResult, Animal.class);
+        String id = saveResultAnimal.id();
+
+        mockMvc.perform(delete("http://localhost:8080/api/animals/" + id))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(get("http://localhost:8080/api/animals"))
+                .andExpect(status().isOk())
+                .andExpect(content().json("""
+                        []
+                        """));
     }
 
 }
