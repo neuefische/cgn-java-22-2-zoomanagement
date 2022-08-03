@@ -74,4 +74,13 @@ class EmployeeControllerIntegrationTest {
                         []
                         """));
     }
+
+    @DirtiesContext
+    @Test
+    void deleteEmployeeNoExist() throws Exception {
+
+        String id="2003";
+        mockMvc.perform(delete("http://localhost:8080/api/employees/" + id))
+                .andExpect(status().is(404));
+    }
 }
