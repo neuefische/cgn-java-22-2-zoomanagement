@@ -5,7 +5,7 @@ import React from "react";
 export default function AnimalList(props:
                                        {
                                            animals: Animal[],
-                                           addAnimal: (animalName: string) => void,
+                                           addAnimal: (animalName: string) => Promise<void>,
                                            onDeleteAnimal: (id: string) => Promise<void>,
                                        }) {
 
