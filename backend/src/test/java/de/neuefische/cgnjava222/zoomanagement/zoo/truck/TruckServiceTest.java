@@ -2,12 +2,16 @@ package de.neuefische.cgnjava222.zoomanagement.zoo.truck;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class TruckServiceTest {
 
@@ -27,6 +31,21 @@ class TruckServiceTest {
         // then
         Assertions.assertArrayEquals(testList.toArray(), actual.toArray());
     }
+
+    @Test
+    void deleteTruckTest() {
+        // given
+        Truck truck=new Truck("Currywurst","0a628570-01ed-4599-92e8-127fefce9f2e");
+
+        TruckRepo truckRepo=mock(TruckRepo.class);
+        when(truckRepo.existsById(truck.id())).thenReturn(true);
+        doNothing().when(truckRepo).deleteById(truck.id());
+
+        TruckService truckService=new TruckService(truckRepo);
+
+        truckService.deleteTruck((truck.id()));
+        verify(truckRepo).deleteById((truck.id()));
+     }
 
     @Test
     void addTruckTest() {
