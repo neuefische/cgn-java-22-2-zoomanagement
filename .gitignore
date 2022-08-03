@@ -5,6 +5,6 @@
 /backend/target
 */node_modules
 */*.iml
-/backend/src/main/resources/static
-/frontend/build
 *.DS_Store
+/frontend/build/
+/backend/src/main/resources/static/

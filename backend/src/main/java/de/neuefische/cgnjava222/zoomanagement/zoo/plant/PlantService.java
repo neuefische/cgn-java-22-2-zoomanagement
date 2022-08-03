@@ -3,6 +3,7 @@ package de.neuefische.cgnjava222.zoomanagement.zoo.plant;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class PlantService {
@@ -14,5 +15,10 @@ public class PlantService {
 
     public List<Plant> getAllPlants() {
         return plantRepo.findAll();
+    }
+
+    public Plant addPlant(NewPlant newPlant) {
+        Plant plant = new Plant(newPlant.name(), UUID.randomUUID().toString());
+        return plantRepo.save(plant);
     }
 }
