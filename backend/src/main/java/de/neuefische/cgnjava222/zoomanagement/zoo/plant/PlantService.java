@@ -21,4 +21,8 @@ public class PlantService {
         Plant plant = new Plant(newPlant.name(), UUID.randomUUID().toString());
         return plantRepo.save(plant);
     }
+
+    public void deletePlant(String id) {
+        plantRepo.deleteById(id);
+    }
 }

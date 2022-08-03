@@ -1,5 +1,6 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.plant;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,5 +32,12 @@ public class PlantController {
                 );
 
 
+    }
+
+
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    @DeleteMapping(path = "/{id}")
+    public void deletePlant(@PathVariable String id){
+        plantService.deletePlant(id);
     }
 }
