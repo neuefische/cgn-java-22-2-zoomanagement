@@ -34,8 +34,9 @@ public class AnimalController {
     }
 
     @DeleteMapping("{id}")
-    public void deleteAnimal(@PathVariable String id) {
-        animalService.deleteAnimal(id);
+    public ResponseEntity<Void> deleteAnimal(@PathVariable String id) {
+        boolean deleteSuccess = animalService.deleteAnimal(id);
+        return new ResponseEntity<>(deleteSuccess ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);
     }
 
 }

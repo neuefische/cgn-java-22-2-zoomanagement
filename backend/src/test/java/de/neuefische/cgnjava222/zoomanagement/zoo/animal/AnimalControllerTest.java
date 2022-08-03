@@ -1,8 +1,12 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.animal;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class AnimalControllerTest {
 
@@ -12,9 +16,10 @@ class AnimalControllerTest {
     @Test
     void deleteAnimal() {
         Animal animal = new Animal("123", "Katze");
-        doNothing().when(animalService).deleteAnimal(animal.id());
+        when(animalService.deleteAnimal(animal.id())).thenReturn(true);
 
-        animalController.deleteAnimal(animal.id());
-        verify(animalService).deleteAnimal(animal.id());
+        ResponseEntity<Void> actual = animalController.deleteAnimal(animal.id());
+
+        Assertions.assertEquals(new ResponseEntity<>(HttpStatus.NO_CONTENT), actual);
     }
 }

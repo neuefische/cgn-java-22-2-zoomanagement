@@ -71,13 +71,22 @@ class AnimalIntegrationTest {
         String id = saveResultAnimal.id();
 
         mockMvc.perform(delete("http://localhost:8080/api/animals/" + id))
-                .andExpect(status().isOk());
+                .andExpect(status().is(204));
 
         mockMvc.perform(get("http://localhost:8080/api/animals"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
                         []
                         """));
+    }
+
+    @DirtiesContext
+    @Test
+    void deleteAnimalDoesNotExist() throws Exception {
+
+        String id = "111";
+        mockMvc.perform(delete("http://localhost:8080/api/animals/" + id))
+                .andExpect(status().is(404));
     }
 
 }

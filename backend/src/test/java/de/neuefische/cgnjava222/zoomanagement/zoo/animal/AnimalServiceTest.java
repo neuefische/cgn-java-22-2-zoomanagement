@@ -51,16 +51,31 @@ class AnimalServiceTest {
 
 
     @Test
-    void deleteAnimal() {
-
-        Animal animal = new Animal("123", "Hund");
+    void deleteAnimalTest() {
+        Animal animal = new Animal("1", "Katze");
 
         AnimalRepo animalRepo = mock(AnimalRepo.class);
+        when(animalRepo.existsById(animal.id())).thenReturn(true);
+
         doNothing().when(animalRepo).deleteById(animal.id());
 
         AnimalService animalService = new AnimalService(animalRepo);
+
         animalService.deleteAnimal(animal.id());
         verify(animalRepo).deleteById(animal.id());
+    }
 
+    @Test
+    void deleteAnimalDoesNotExistTest() {
+        Animal animal = new Animal("1", "Katze");
+
+        AnimalRepo animalRepo = mock(AnimalRepo.class);
+        when(animalRepo.existsById(animal.id())).thenReturn(false);
+        doNothing().when(animalRepo).deleteById(animal.id());
+
+        AnimalService animalService = new AnimalService(animalRepo);
+
+        animalService.deleteAnimal(animal.id());
+        verify(animalRepo, times(0)).deleteById(animal.id());
     }
 }
