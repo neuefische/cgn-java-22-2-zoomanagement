@@ -2,6 +2,7 @@ import {ChangeEvent, FormEvent, useState} from "react";
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 type AddTruckProps = {
     addTruck: (name: string) => Promise<void>
 }

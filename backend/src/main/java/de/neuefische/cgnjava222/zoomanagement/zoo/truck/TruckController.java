@@ -29,7 +29,7 @@ public class TruckController {
     }
 
     @DeleteMapping
-    public ResponseEntity<Void> deleteTruck(@RequestBody String truckToDelete) {
+    public ResponseEntity<Void> deleteTruck(@PathVariable String truckToDelete) {
 
 
         if (truckService.deleteTruck(truckToDelete)) {
