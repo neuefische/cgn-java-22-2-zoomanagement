@@ -3,7 +3,7 @@
 /backend/mvnw.cmd
 /backend/.mvn
 /backend/target
-/frontend/node_modules
+*/node_modules
 */*.iml
 /backend/src/main/resources/static
 /frontend/build

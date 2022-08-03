@@ -11,7 +11,9 @@ type EmployeesProps = {
 
 export default function Employees(props: EmployeesProps) {
 
-    return (
+    return(
+
+
         <div>
             <h2>Mitarbeiter</h2>
             <AddEmployee addEmployee={props.addEmployee}/>
@@ -21,5 +23,6 @@ export default function Employees(props: EmployeesProps) {
                 </li>)}
             </ul>
         </div>
+
     )
 }
