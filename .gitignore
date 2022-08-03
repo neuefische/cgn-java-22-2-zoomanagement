@@ -7,3 +7,4 @@
 */*.iml
 /frontend/build/
 /backend/src/main/resources/static/
+/node_modules
