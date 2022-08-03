@@ -22,7 +22,7 @@ public class TruckService {
 
     public boolean deleteTruck(String truckToDelete) {
         boolean doesTruckExist = truckRepo.existsById(truckToDelete);
-        if (doesTruckExist) {
+         if (doesTruckExist) {
             truckRepo.deleteById(truckToDelete);
 
         }

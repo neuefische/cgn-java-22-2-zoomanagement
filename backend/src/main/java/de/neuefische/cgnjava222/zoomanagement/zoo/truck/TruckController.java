@@ -28,11 +28,10 @@ public class TruckController {
         return truckService.addTruck(truck);
     }
 
-    @DeleteMapping
-    public ResponseEntity<Void> deleteTruck(@PathVariable String truckToDelete) {
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteTruck(@PathVariable String id) {
 
-
-        if (truckService.deleteTruck(truckToDelete)) {
+         if (truckService.deleteTruck(id)) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);

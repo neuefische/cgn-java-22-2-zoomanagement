@@ -13,6 +13,7 @@ export default function AddTruck(props: AddTruckProps) {
     }
     const onTruckSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
+
         props.addTruck(truckName)
             .catch((error) => {
                 notify("Hi sorrry!!! " + error.message)
