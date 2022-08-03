@@ -1,11 +1,10 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {Plant} from "./Plant";
-
+import {Plant, NewPlantType} from "./Plant";
 
 export default function usePlants() {
 
-    const [plants, setPlants] = useState<Plant[]>()
+    const [plants, setPlants] = useState<Plant[]>([])
 
     const getAllPlants = () => {
         axios.get("/api/plants")
@@ -19,6 +18,10 @@ export default function usePlants() {
     useEffect(
         () => getAllPlants(), []
     )
-
-    return {plants}
+    const addPlant = (name: string) => {
+        const newPlant: NewPlantType = {"name": name};
+        return axios.post("/api/plants", newPlant)
+            .then(getAllPlants)
+    }
+    return {plants, addPlant}
 }

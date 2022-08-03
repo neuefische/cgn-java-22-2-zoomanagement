@@ -7,6 +7,7 @@ type AddTruckProps = {
 }
 export default function AddTruck(props: AddTruckProps) {
     const [truckName, setTruckName] = useState<string>("")
+
     const onNameChange = (event: ChangeEvent<HTMLInputElement>) => {
         setTruckName(event.target.value)
     }
