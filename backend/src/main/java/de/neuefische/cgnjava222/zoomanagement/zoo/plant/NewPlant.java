@@ -1,4 +1,4 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.plant;
 
-public record PlantWithoutId(String name) {
+public record NewPlant(String name) {
 }

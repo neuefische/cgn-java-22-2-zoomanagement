@@ -3,4 +3,4 @@ export type Plant = {
     id: string,
 }
 
-export type PlantType = Omit<Plant, "id">;
+export type NewPlantType = Omit<Plant, "id">;

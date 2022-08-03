@@ -34,7 +34,7 @@ class PlantServiceTest {
         PlantRepo plantRepo = mock(PlantRepo.class);
         when(testPlantRepo.save(any(Plant.class))).thenReturn(plant);
         PlantService plantService = new PlantService(plantRepo);
-        Plant actual = testPlantService.addPlant(new PlantWithoutId(plant.name()));
+        Plant actual = testPlantService.addPlant(new NewPlant(plant.name()));
         assertThat(actual).isEqualTo(plant);
     }
 }

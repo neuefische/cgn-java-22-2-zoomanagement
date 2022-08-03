@@ -23,11 +23,11 @@ public class PlantController {
 
     @PostMapping
     public ResponseEntity<Plant> addPlant(
-            @RequestBody PlantWithoutId plantName) {
+            @RequestBody NewPlant newPlant) {
         return ResponseEntity
                 .status(201)
                 .body(
-                        plantService.addPlant(plantName)
+                        plantService.addPlant(newPlant)
                 );
 
 
