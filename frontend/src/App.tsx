@@ -9,21 +9,21 @@ import useEmployee from "./employees/useEmployee";
 import useAnimals from "./animal/useAnimals";
 import AnimalList from "./animal/AnimalList";
 import {ToastContainer} from 'react-toastify';
-
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
 
     const {animals, addAnimal, onDeleteAnimal} = useAnimals();
-    const {plants} = usePlants();
-    const {trucks, addTruck} = useTrucks()
-    const {employees} = useEmployee();
+    const {plants, addPlant} = usePlants();
+    const {trucks, addTruck} = useTrucks();
+    const {employees, addEmployee} = useEmployee();
 
     return <>
         <h1>Zoo-Management</h1>
-        {plants ? <PlantList plants={plants}/> : "Loading..."}
+        <PlantList plants={plants} addPlant={addPlant}/>
         <TruckGallery trucks={trucks} addTruck={addTruck}/>
-        <AnimalList animals={animals} onAddAnimal={addAnimal} onDeleteAnimal={onDeleteAnimal}/>
-        <Employees employees={employees}/>
+        <AnimalList animals={animals} addAnimal={addAnimal} onDeleteAnimal={onDeleteAnimal}/>
+        <Employees employees={employees} addEmployee={addEmployee}/>
         <ToastContainer/>
     </>;
 

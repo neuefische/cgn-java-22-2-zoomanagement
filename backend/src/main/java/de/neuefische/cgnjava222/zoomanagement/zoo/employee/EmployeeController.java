@@ -1,9 +1,7 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.employee;
 
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,14 +15,14 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-
     @GetMapping
     public List<Employee> getAllEmployees() {
         return employeeService.getAllEmployees();
-
     }
 
-
-
+    @PostMapping()
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public Employee addEmployee(@RequestBody NewEmployee newEmployee) {
+        return employeeService.addEmployee(newEmployee);
+    }
 }
-

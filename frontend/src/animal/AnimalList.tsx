@@ -5,7 +5,7 @@ import React from "react";
 export default function AnimalList(props:
                                        {
                                            animals: Animal[],
-                                           onAddAnimal: (animalName: string) => void,
+                                           addAnimal: (animalName: string) => void,
                                            onDeleteAnimal: (id: string) => Promise<void>,
                                        }) {
 
@@ -21,7 +21,7 @@ export default function AnimalList(props:
 
             </ul>
 
-            <AddAnimal onAddAnimal={props.onAddAnimal}/>
+            <AddAnimal addAnimal={props.addAnimal}/>
         </>
     );
 
