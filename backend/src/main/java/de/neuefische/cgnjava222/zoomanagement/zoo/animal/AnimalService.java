@@ -35,4 +35,12 @@ public class AnimalService {
         return false;
     }
 
+//    public AnimalWithPosition addAnimalPosition(AnimalWithPosition animalWithPosition){
+//
+//            Optional<Animal> foundedAnimal = animalRepo.findById(animalWithPosition.id());
+//
+//            animalRepo.deleteById(animalWithPosition.id());
+//            animalRepo.save(animalWithPosition);
+//
+//    }
 }

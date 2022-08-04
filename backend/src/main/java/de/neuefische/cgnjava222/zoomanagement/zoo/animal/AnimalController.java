@@ -39,4 +39,14 @@ public class AnimalController {
         return new ResponseEntity<>(deleteSuccess ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);
     }
 
+    @PutMapping("{id}")
+    public ResponseEntity<AnimalWithPosition> addAnimalPosition(
+            @PathVariable String id,
+            @RequestBody AnimalWithPosition animalWithPosition) {
+        AnimalWithPosition updatedAnimal = animalService.addAnimalPosition(animalWithPosition);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(updatedAnimal);
+    }
+
 }
