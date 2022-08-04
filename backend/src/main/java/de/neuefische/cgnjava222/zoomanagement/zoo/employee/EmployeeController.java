@@ -1,6 +1,7 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.employee;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 @RequestMapping("/api/employees")
 public class EmployeeController {
 
-   private final EmployeeService employeeService;
+    private final EmployeeService employeeService;
 
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
@@ -25,4 +26,11 @@ public class EmployeeController {
     public Employee addEmployee(@RequestBody NewEmployee newEmployee) {
         return employeeService.addEmployee(newEmployee);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteEmployee(@PathVariable String id) {
+        boolean deleteSuccess = employeeService.deleteEmployee(id);
+        return new ResponseEntity<>(deleteSuccess ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);
+    }
+
 }
