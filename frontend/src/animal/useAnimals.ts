@@ -1,6 +1,9 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
 import {Animal} from "./Animal";
+import {toast} from "react-toastify";
+import {NewAnimal} from "./NewAnimal";
+
 
 export default function useAnimals() {
 
@@ -18,16 +21,23 @@ export default function useAnimals() {
 
     const addAnimal = (animalName: string) => {
 
-        const newAnimal = {name: animalName}
+        const newAnimal: NewAnimal = {name: animalName}
 
-        axios.post("/api/animals", newAnimal)
-            .then(response => response.data)
-            .then(data => {
-                return data;
-            })
-            .then(getAnimalList);
-
+        return axios.post("/api/animals", newAnimal)
+            .then(getAnimalList)
     }
 
-    return {animals, addAnimal}
+    const onDeleteAnimal = (id: string) => {
+        return axios.delete(`/api/animals/${id}`)
+            .then(getAnimalList)
+            .catch(
+                error => {
+                    toast.error(error.message, {
+                            position: toast.POSITION.TOP_LEFT
+                        }
+                    )
+                })
+    }
+
+    return {animals, addAnimal, onDeleteAnimal}
 }
