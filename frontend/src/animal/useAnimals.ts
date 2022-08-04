@@ -1,6 +1,6 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
-import {Animal, AnimalWithXY} from "./Animal";
+import {Animal, AnimalWithXY, Position} from "./Animal";
 import {toast} from "react-toastify";
 import {NewAnimal} from "./NewAnimal";
 
@@ -39,12 +39,11 @@ export default function useAnimals() {
                 })
     }
 
-    const onPlaceAnimal = (animal: Animal, xCoordinate: string, yCoordinate: string) => {
+    const onPlaceAnimal = (animal: Animal, position: Position) => {
         const newAnimalWithXY: AnimalWithXY = {
             name: animal.name,
             id: animal.id,
-            xCoordinate: xCoordinate,
-            yCoordinate: yCoordinate
+            position: position
         }
         return axios.put(`/api/animals/${animal.id}`, newAnimalWithXY)
             .catch(error => {

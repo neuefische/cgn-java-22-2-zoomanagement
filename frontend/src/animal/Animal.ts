@@ -6,6 +6,10 @@ export type Animal = {
 export type AnimalWithXY = {
     id: string,
     name: string,
+    position: Position,
+}
+
+export type Position = {
     xCoordinate: string,
     yCoordinate: string,
 }

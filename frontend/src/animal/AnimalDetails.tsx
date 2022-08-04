@@ -1,9 +1,9 @@
-import {Animal} from "./Animal";
+import {Animal, Position} from "./Animal";
 import {useState} from "react";
 import {useParams} from "react-router-dom";
 
 
-export default function AnimalDetails(props: { animal: Animal[], onPlaceAnimal: (animal: Animal, xCoordinate: string, yCoordinate: string) => void }) {
+export default function AnimalDetails(props: { animal: Animal[], onPlaceAnimal: (animal: Animal, position: Position) => void }) {
     const [xCoordinate, setXCoordinate] = useState('');
     const [yCoordinate, setYCoordinate] = useState('');
     const {id} = useParams();
@@ -19,7 +19,7 @@ export default function AnimalDetails(props: { animal: Animal[], onPlaceAnimal: 
             <p> X - Coordinate: <input type={"input"} onChange={event => setXCoordinate(event.target.value)}/></p>
             <p> Y - Coordinate: <input type={"input"} onChange={event => setYCoordinate(event.target.value)}/></p>
             <button onClick={() =>
-                props.onPlaceAnimal(animalToUpdate, xCoordinate, yCoordinate)
+                props.onPlaceAnimal(animalToUpdate, {xCoordinate, yCoordinate})
             }>save
             </button>
         </>
