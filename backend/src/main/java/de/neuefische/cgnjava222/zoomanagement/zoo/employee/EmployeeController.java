@@ -33,4 +33,10 @@ public class EmployeeController {
         return new ResponseEntity<>(deleteSuccess ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);
     }
 
+    @PutMapping("{id}")
+    @ResponseStatus(code = HttpStatus.OK)
+    public Employee updateEmployee(@PathVariable String id, @RequestBody Employee employee) {
+        return employeeService.updateEmployee(employee);
+    }
+
 }
