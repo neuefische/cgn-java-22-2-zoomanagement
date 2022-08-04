@@ -27,4 +27,12 @@ public class AnimalService {
 
     }
 
+    public boolean deleteAnimal(String id) {
+        if (animalRepo.existsById(id)) {
+            animalRepo.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
 }
