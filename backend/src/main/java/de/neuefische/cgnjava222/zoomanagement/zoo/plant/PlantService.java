@@ -18,7 +18,7 @@ public class PlantService {
     }
 
     public Plant addPlant(NewPlant newPlant) {
-        Plant plant = new Plant(newPlant.name(), UUID.randomUUID().toString());
+        Plant plant = new Plant(newPlant.name(), UUID.randomUUID().toString(), new Position("0", 0));
         return plantRepo.save(plant);
     }
 

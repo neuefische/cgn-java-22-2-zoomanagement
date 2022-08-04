@@ -15,9 +15,9 @@ class PlantServiceTest {
     private final PlantRepo testPlantRepo = mock(PlantRepo.class);
     private final PlantService testPlantService = new PlantService(testPlantRepo);
     private final List<Plant> testList = List.of(
-            new Plant("Birke", UUID.randomUUID().toString()),
-            new Plant("Buche", UUID.randomUUID().toString()),
-            new Plant("Lärche", UUID.randomUUID().toString())
+            new Plant("Birke", UUID.randomUUID().toString(), new Position("0", 0)),
+            new Plant("Buche", UUID.randomUUID().toString(), new Position("0", 0)),
+            new Plant("Lärche", UUID.randomUUID().toString(), new Position("0", 0))
     );
 
     @Test
@@ -29,7 +29,7 @@ class PlantServiceTest {
 
     @Test
     void addPlantTest() {
-        Plant plant = new Plant("Birke", UUID.randomUUID().toString());
+        Plant plant = new Plant("Birke", UUID.randomUUID().toString(), new Position("0", 0));
         PlantRepo plantRepo = mock(PlantRepo.class);
         when(testPlantRepo.save(any(Plant.class))).thenReturn(plant);
         PlantService plantService = new PlantService(plantRepo);
