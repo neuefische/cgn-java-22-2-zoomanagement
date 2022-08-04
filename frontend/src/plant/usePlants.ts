@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {PlantType, NewPlantType} from "./PlantType";
+import {toast} from "react-toastify";
 
 export default function usePlants() {
 
@@ -27,6 +28,7 @@ export default function usePlants() {
     const deletePlant = (id : string) => {
         return axios.delete("/api/plants/" + id)
             .then(getAllPlants)
+            .catch(error => toast("Leider ist ein Fehler aufgetreten "+error.message))
     }
     return {plants, addPlant, deletePlant}
 }
