@@ -1,6 +1,9 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.plant;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver;
 
 import java.util.List;
 import java.util.UUID;
@@ -28,6 +31,11 @@ public class PlantService {
             return true;
         }
         return false;
+    }
+
+    public Plant getPlantById(String id) {
+        if(!plantRepo.existsById(id)) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        return plantRepo.findById(id).get();
     }
 }
 

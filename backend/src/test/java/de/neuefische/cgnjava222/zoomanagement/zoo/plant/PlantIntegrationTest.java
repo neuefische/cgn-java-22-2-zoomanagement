@@ -91,8 +91,8 @@ class PlantIntegrationTest {
                         """)
         ).andReturn().getResponse().getContentAsString();
 
-        Plant saveResultEmployee = objectMapper.readValue(saveResult, Plant.class);
-        String id = saveResultEmployee.id();
+        Plant saveResultPlant = objectMapper.readValue(saveResult, Plant.class);
+        String id = saveResultPlant.id();
 
         mockMvc.perform(delete("http://localhost:8080/api/plants/" + id))
                 .andExpect(status().is(204));
@@ -111,5 +111,30 @@ class PlantIntegrationTest {
         String id="2";
         mockMvc.perform(delete("http://localhost:8080/api/plants/" + id))
                 .andExpect(status().is(404));
+    }
+
+    @Test
+    @DirtiesContext
+    void getPlantById() throws Exception {
+
+        String saveResult = mockMvc.perform(post(
+                "/api/plants")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("""
+                        {"name": "Pflanzen"}
+                        """)
+        ).andReturn().getResponse().getContentAsString();
+
+        Plant saveResultPlant = objectMapper.readValue(saveResult, Plant.class);
+        String id = saveResultPlant.id();
+
+        String teststring = objectMapper.writer().writeValueAsString(saveResultPlant);
+        System.out.println(teststring);
+        mockMvc
+                .perform(
+                        get("/api/plants/" + id)
+                )
+                .andExpect(status().isOk())
+                .andExpect(content().json(teststring));
     }
 }

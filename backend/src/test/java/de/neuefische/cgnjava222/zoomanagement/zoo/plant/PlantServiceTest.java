@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -44,4 +45,14 @@ class PlantServiceTest {
         testPlantService.deletePlant("2");
         verify(testPlantRepo).deleteById("2");
     }
+
+    @Test
+    void getPlantByIdTest() {
+        Plant plant = new Plant("Rose", "5", new Position("7", 6));
+        when(testPlantRepo.existsById("5")).thenReturn(true);
+        when(testPlantRepo.findById("5")).thenReturn(Optional.of(plant));
+        Plant actual = testPlantService.getPlantById("5");
+        Assertions.assertEquals(plant, actual);
+    }
+
 }
