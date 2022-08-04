@@ -29,21 +29,15 @@ export default function useAnimals() {
 
     const onDeleteAnimal = (id: string) => {
         return axios.delete(`/api/animals/${id}`)
-            .then(response => response.status)
             .then(getAnimalList)
-            .catch((error) => {
-                notify("Hi sorrry!!! " + error.message)
-            })
+            .catch(
+                error => {
+                    toast.error(error.message, {
+                            position: toast.POSITION.TOP_LEFT
+                        }
+                    )
+                })
     }
-
-
-
-    const notify = (message: string) => {
-        toast.error(message, {
-            position: toast.POSITION.TOP_LEFT
-        });
-    };
-
 
     return {animals, addAnimal, onDeleteAnimal}
 }

@@ -1,6 +1,7 @@
 import {Animal} from "./Animal";
 import AddAnimal from "./AddAnimal";
 import React from "react";
+import AnimalListItem from "./AnimalListItem";
 
 export default function AnimalList(props:
                                        {
@@ -14,9 +15,7 @@ export default function AnimalList(props:
             <h2>Tiere</h2>
             <ul>
                 {props.animals.map(animal =>
-                    <li key={animal.id}>{animal.name}
-                        <button onClick={() => props.onDeleteAnimal(animal.id)}>Delete</button>
-                    </li>
+                    <AnimalListItem animal={animal} onDeleteAnimal={props.onDeleteAnimal}/>
                 )}
 
             </ul>
