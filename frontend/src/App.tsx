@@ -10,6 +10,9 @@ import useAnimals from "./animal/useAnimals";
 import AnimalList from "./animal/AnimalList";
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {HashRouter} from "react-router-dom";
+import AllRoutes from "./shared/AllRoutes";
+
 
 export default function App() {
 
@@ -20,12 +23,14 @@ export default function App() {
 
     return <>
         <h1>Zoo-Management</h1>
-        <PlantList plants={plants} addPlant={addPlant}/>
-        <TruckGallery trucks={trucks} addTruck={addTruck}/>
-        <AnimalList animals={animals} addAnimal={addAnimal} onDeleteAnimal={onDeleteAnimal}/>
-        <Employees employees={employees} addEmployee={addEmployee} onDeleteEmployee={deleteEmployee}/>
-
-        <ToastContainer/>
+        <HashRouter>
+            <AllRoutes/>
+            <PlantList plants={plants} addPlant={addPlant}/>
+            <TruckGallery trucks={trucks} addTruck={addTruck}/>
+            <AnimalList animals={animals} addAnimal={addAnimal} onDeleteAnimal={onDeleteAnimal}/>
+            <Employees employees={employees} addEmployee={addEmployee} onDeleteEmployee={deleteEmployee}/>
+            <ToastContainer/>
+        </HashRouter>
     </>;
 
 }

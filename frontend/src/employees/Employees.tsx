@@ -11,16 +11,18 @@ type EmployeesProps = {
 
 export default function Employees(props: EmployeesProps) {
 
-    return(
+    return (
 
 
         <div>
             <h2>Mitarbeiter</h2>
             <AddEmployee addEmployee={props.addEmployee}/>
             <ul>
-                {props.employees.map((employee) => <li key={employee.id}><SingleEmployee employee={employee}
-                                                                                         onDeleteEmployee={props.onDeleteEmployee}/>
-                </li>)}
+                {props.employees.map((employee) =>
+                    <li key={employee.id}>
+                        <SingleEmployee employee={employee}
+                                        onDeleteEmployee={props.onDeleteEmployee}/>
+                    </li>)}
             </ul>
         </div>
 

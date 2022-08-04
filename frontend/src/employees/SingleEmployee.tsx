@@ -1,4 +1,5 @@
 import {Employee} from "./Employee";
+import {useNavigate} from "react-router-dom"
 
 
 type SingleEmployeesProps = {
@@ -7,14 +8,18 @@ type SingleEmployeesProps = {
 }
 
 export default function SingleEmployee(props: SingleEmployeesProps) {
-    const handleClick = () => {
+
+    const navigate = useNavigate();
+
+    const handleClickDelete = () => {
         props.onDeleteEmployee(props.employee.id);
     }
 
     return (
         <>
             {props.employee.name}
-            <button type={"button"} onClick={handleClick}>löschen</button>
+            <button type={"button"} onClick={handleClickDelete}>löschen</button>
+            <button type={"button"} onClick={() => navigate('/employees/' + props.employee.id)}>Details</button>
         </>
     );
 }
