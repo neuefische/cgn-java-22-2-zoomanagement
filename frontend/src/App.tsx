@@ -1,31 +1,43 @@
 import React from 'react';
 import './App.css';
-import usePlants from "./plant/usePlants";
+import 'react-toastify/dist/ReactToastify.css';
+import {HashRouter, Route, Routes} from "react-router-dom";
+import {ToastContainer} from "react-toastify";
 import PlantList from "./plant/PlantList";
 import TruckGallery from "./truck/TruckGallery";
-import useTrucks from "./truck/useTrucks";
-import Employees from "./employees/Employees";
-import useEmployee from "./employees/useEmployee";
-import useAnimals from "./animal/useAnimals";
 import AnimalList from "./animal/AnimalList";
-import {ToastContainer} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import Employees from "./employees/Employees";
+import useAnimals from "./animal/useAnimals";
+import usePlants from "./plant/usePlants";
+import useTrucks from "./truck/useTrucks";
+import useEmployee from "./employees/useEmployee";
+import AnimalDetails from "./animal/AnimalDetails";
+
 
 export default function App() {
 
-    const {animals, addAnimal} = useAnimals();
+    const {animals, addAnimal, onDeleteAnimal, onPlaceAnimal} = useAnimals();
     const {plants, addPlant} = usePlants();
     const {trucks, addTruck} = useTrucks();
     const {employees, addEmployee, deleteEmployee} = useEmployee();
 
-    return <>
+    return <HashRouter>
+
         <h1>Zoo-Management</h1>
-        <PlantList plants={plants} addPlant={addPlant}/>
-        <TruckGallery trucks={trucks} addTruck={addTruck}/>
-        <AnimalList animals={animals} addAnimal={addAnimal}/>
-        <Employees employees={employees} addEmployee={addEmployee} onDeleteEmployee={deleteEmployee}/>
-        
+
+
         <ToastContainer/>
-    </>;
+        <Routes>
+            <Route path={"/"} element={
+                <>
+                    <PlantList plants={plants} addPlant={addPlant}/>
+                    <TruckGallery trucks={trucks} addTruck={addTruck}/>
+                    <AnimalList animals={animals} addAnimal={addAnimal} onDeleteAnimal={onDeleteAnimal}/>
+                    <Employees employees={employees} addEmployee={addEmployee} onDeleteEmployee={deleteEmployee}/>
+                </>
+            }/>
+            <Route path={"/:id"} element={<AnimalDetails animal={animals} onPlaceAnimal={onPlaceAnimal}/>}/>
+        </Routes>
+    </HashRouter>;
 
 }
