@@ -13,9 +13,9 @@ class TruckServiceTest {
     private final TruckRepo testTruckRepo = mock(TruckRepo.class);
     private final TruckService testTruckService = new TruckService(testTruckRepo);
     private final List<Truck> testList = List.of(
-            new Truck("Currywurst Hannes", "d67bc95f-cdc4-4930-b3e3-34a684806f20"),
-            new Truck("Margrets Gesunde Küche", "ec8bd7d2-bb00-4db7-ae4c-7879bb9b5512"),
-            new Truck("Annes knusprige Pommes", "e32ce324-279d-4e56-aed0-5dee6c919b89"));
+            new Truck("Currywurst Hannes", new Coordinates("0", "0"), "d67bc95f-cdc4-4930-b3e3-34a684806f20"),
+            new Truck("Margrets Gesunde Küche", new Coordinates("1", "3"), "ec8bd7d2-bb00-4db7-ae4c-7879bb9b5512"),
+            new Truck("Annes knusprige Pommes", new Coordinates("2", "2"), "e32ce324-279d-4e56-aed0-5dee6c919b89"));
 
     @Test
     void getAllTrucksTest() {
@@ -30,7 +30,7 @@ class TruckServiceTest {
     @Test
     void deleteTruckTest() {
         // given
-        Truck truck=new Truck("Currywurst","0a628570-01ed-4599-92e8-127fefce9f2e");
+        Truck truck = new Truck("Currywurst", new Coordinates("0", "0"), "0a628570-01ed-4599-92e8-127fefce9f2e");
 
         TruckRepo truckRepo=mock(TruckRepo.class);
         when(truckRepo.existsById(truck.id())).thenReturn(true);
@@ -45,8 +45,8 @@ class TruckServiceTest {
     @Test
     void addTruckTest() {
         //given
-        NewTruck testNewTruck = new NewTruck("Sometruck");
-        Truck testTruck = new Truck("Sometruck", "1231231");
+        NewTruck testNewTruck = new NewTruck("Sometruck", new Coordinates("0", "0"));
+        Truck testTruck = new Truck("Sometruck", new Coordinates("0", "0"), "1231231");
         when(testTruckRepo.save(any(Truck.class))).thenReturn(testTruck);
         //when
         Truck actual = testTruckService.addTruck(testNewTruck);

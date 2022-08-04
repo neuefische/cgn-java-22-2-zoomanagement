@@ -3,6 +3,6 @@ package de.neuefische.cgnjava222.zoomanagement.zoo.truck;
 import org.springframework.data.annotation.Id;
 
 
-public record Truck(String name, @Id String id) {
+public record Truck(String name, Coordinates position, @Id String id) {
 
 }
