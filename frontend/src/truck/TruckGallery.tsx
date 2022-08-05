@@ -6,7 +6,8 @@ import {useNavigate} from "react-router-dom";
 type TruckGalleryProps = {
     trucks: Truck[],
     addTruck: (name: string) => Promise<void>,
-    deleteTruck: (id: string) => Promise<void>
+    deleteTruck: (id: string) => Promise<void>,
+    getTruckById: (id: string) => Truck,
 }
 
 export default function TruckGallery(props: TruckGalleryProps) {

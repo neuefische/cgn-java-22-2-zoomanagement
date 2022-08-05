@@ -29,7 +29,7 @@ export default function useTrucks() {
         toast.error(message, {
             position: toast.POSITION.TOP_LEFT
         });
-    };
+    }
 
     const deleteTrucks = (id: string) => {
         return axios.delete("/api/trucks/" + id)
@@ -40,18 +40,13 @@ export default function useTrucks() {
 
 
     const getTruckById = (id: string) => {
-        return
-        trucks.map(filteredTruck => {
-            if (filteredTruck.id === id) return filteredTruck
+        trucks.forEach(thisTruck => {
+            if (thisTruck.id === id) return thisTruck
         })
-
-
-        // const avengers = characters.filter(character => character.team === 'Avengers');
-
 
     }
 
 
-    return {trucks, addTruck, deleteTrucks}
+    return {trucks, addTruck, deleteTrucks, getTruckById}
 
 }

@@ -1,12 +1,16 @@
 import {useParams} from "react-router-dom";
+import Truck from "./Truck";
 
-export default function FoodTruckDetail() {
+
+type FoodTruckDetailsProps = { getTruckById: (id: String) => Truck }
+
+export default function FoodTruckDetail(props: FoodTruckDetailsProps) {
 
     const {id} = useParams();
 
     return (
         <>
-            <h2></h2>
+            <h2>{props.getTruckById}</h2>
 
 
         </>
