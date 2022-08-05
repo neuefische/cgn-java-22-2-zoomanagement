@@ -78,4 +78,20 @@ class AnimalServiceTest {
         animalService.deleteAnimal(animal.id());
         verify(animalRepo, times(0)).deleteById(animal.id());
     }
+
+    @Test
+    void addAnimalPositionTest() {
+        Animal animal = new Animal("1", "Katze", new Position("5", "6"));
+
+        AnimalRepo animalRepo = mock(AnimalRepo.class);
+        when(animalRepo.existsById(animal.id())).thenReturn(true);
+
+        when(animalRepo.save(any(Animal.class)))
+                .thenReturn(animal);
+
+        AnimalService animalService = new AnimalService(animalRepo);
+        Animal actualResult = animalService.addAnimalPosition(animal);
+
+        assertThat(actualResult).isEqualTo(animal);
+    }
 }

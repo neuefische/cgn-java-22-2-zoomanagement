@@ -45,7 +45,7 @@ public class AnimalController {
             @RequestBody Animal animalWithPosition) {
         Animal updatedAnimal = animalService.addAnimalPosition(animalWithPosition);
         return ResponseEntity
-                .status(HttpStatus.CREATED)
+                .status(HttpStatus.OK)
                 .body(updatedAnimal);
     }
 

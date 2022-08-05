@@ -89,4 +89,44 @@ class AnimalIntegrationTest {
                 .andExpect(status().is(404));
     }
 
+    @DirtiesContext
+    @Test
+    void addPosition() throws Exception {
+        String saveResult = mockMvc.perform(post(
+                        "/api/animals")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"name": "Katze"}
+                                """)
+                )
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+
+        Animal saveResultAnimal = objectMapper.readValue(saveResult, Animal.class);
+        String id = saveResultAnimal.id();
+
+        mockMvc.perform(put("/api/animals/" + id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {
+                                "id": "<ID>",
+                                "name": "Katze",
+                                "position":
+                                    {"xCoordinate": "5",
+                                    "yCoordinate": "6"
+                                    }
+                                }
+                                """.replaceFirst("<ID>", id))
+                ).andExpect(status().isOk())
+                .andExpect(content().json("""
+                        {
+                        "name": "Katze",
+                        "position": {
+                        "xCoordinate": "5",
+                        "yCoordinate": "6"},
+                        "id": "<ID>"
+                        }
+                        """.replaceFirst("<ID>", id)));
+    }
 }
