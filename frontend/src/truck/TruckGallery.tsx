@@ -22,7 +22,7 @@ export default function TruckGallery(props: TruckGalleryProps) {
                 {props.trucks
                     .map(truck => <li key={truck.id}>{truck.name}
                         <button onClick={() => props.deleteTruck(truck.id)}>Löschen</button>
-                        <button onClick={() => navigate("/foodtrucks/" + truck.id)}>Details</button>
+                        <button onClick={() => navigate("/trucks/" + truck.id)}>Details</button>
                         </li>
                     )}
             </ul>
