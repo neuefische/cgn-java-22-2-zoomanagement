@@ -41,7 +41,7 @@ export default function useEmployee() {
                     getAllEmployees()
                     return response.data
                 }
-            );
+            ).catch(error => showError(error));
     }
 
     return {
