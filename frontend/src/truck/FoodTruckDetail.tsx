@@ -10,7 +10,7 @@ export default function FoodTruckDetail(props: FoodTruckDetailsProps) {
 
     return (
         <>
-            <h2>{props.getTruckById}</h2>
+            <h2>{props.getTruckById.name}</h2>
 
 
         </>
