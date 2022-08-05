@@ -40,10 +40,10 @@ public class AnimalController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<AnimalWithPosition> addAnimalPosition(
+    public ResponseEntity<Animal> addAnimalPosition(
             @PathVariable String id,
-            @RequestBody AnimalWithPosition animalWithPosition) {
-        AnimalWithPosition updatedAnimal = animalService.addAnimalPosition(animalWithPosition);
+            @RequestBody Animal animalWithPosition) {
+        Animal updatedAnimal = animalService.addAnimalPosition(animalWithPosition);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(updatedAnimal);

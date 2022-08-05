@@ -1,6 +1,6 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
-import {Animal, AnimalWithXY, Position} from "./Animal";
+import {Animal, Position} from "./Animal";
 import {toast} from "react-toastify";
 import {NewAnimal} from "./NewAnimal";
 
@@ -40,7 +40,7 @@ export default function useAnimals() {
     }
 
     const onPlaceAnimal = (animal: Animal, position: Position) => {
-        const newAnimalWithXY: AnimalWithXY = {
+        const newAnimalWithXY: Animal = {
             name: animal.name,
             id: animal.id,
             position: position

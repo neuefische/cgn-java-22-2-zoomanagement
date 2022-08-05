@@ -13,9 +13,9 @@ class AnimalServiceTest {
     @Test
     void getAnimals() {
         List<Animal> animals = List.of(
-                new Animal("1", "Eisbär"),
-                new Animal("2", "Tiger"),
-                new Animal("3", "Giraffe")
+                new Animal("1", "Eisbär", null),
+                new Animal("2", "Tiger", null),
+                new Animal("3", "Giraffe", null)
         );
 
         AnimalRepo animalRepo = mock(AnimalRepo.class);
@@ -25,9 +25,9 @@ class AnimalServiceTest {
 
         List<Animal> actualResult = animalService.getAnimals();
         List<Animal> expectedResult = List.of(
-                new Animal("1", "Eisbär"),
-                new Animal("2", "Tiger"),
-                new Animal("3", "Giraffe")
+                new Animal("1", "Eisbär", null),
+                new Animal("2", "Tiger", null),
+                new Animal("3", "Giraffe", null)
         );
 
         assertThat(actualResult).hasSameElementsAs(expectedResult);
@@ -36,14 +36,14 @@ class AnimalServiceTest {
     @Test
     void addAnimals() {
 
-        Animal animal = new Animal("1", "Schmetterling");
+        Animal animal = new Animal("1", "Schmetterling", null);
 
         AnimalRepo animalRepo = mock(AnimalRepo.class);
         when(animalRepo.save(any(Animal.class)))
                 .thenReturn(animal);
 
         AnimalService animalService = new AnimalService(animalRepo);
-        Animal actualResult = animalService.addAnimal(new NewAnimal("Schmetterling"));
+        Animal actualResult = animalService.addAnimal(new NewAnimal("Schmetterling", null));
 
         assertThat(actualResult).isEqualTo(animal);
 
@@ -52,7 +52,7 @@ class AnimalServiceTest {
 
     @Test
     void deleteAnimalTest() {
-        Animal animal = new Animal("1", "Katze");
+        Animal animal = new Animal("1", "Katze", null);
 
         AnimalRepo animalRepo = mock(AnimalRepo.class);
         when(animalRepo.existsById(animal.id())).thenReturn(true);
@@ -67,7 +67,7 @@ class AnimalServiceTest {
 
     @Test
     void deleteAnimalDoesNotExistTest() {
-        Animal animal = new Animal("1", "Katze");
+        Animal animal = new Animal("1", "Katze", null);
 
         AnimalRepo animalRepo = mock(AnimalRepo.class);
         when(animalRepo.existsById(animal.id())).thenReturn(false);

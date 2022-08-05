@@ -22,7 +22,8 @@ public class AnimalService {
 
         return animalRepo.save(new Animal(
                 UUID.randomUUID().toString(),
-                newAnimal.name()
+                newAnimal.name(),
+                newAnimal.position()
         ));
 
     }
@@ -35,12 +36,11 @@ public class AnimalService {
         return false;
     }
 
-//    public AnimalWithPosition addAnimalPosition(AnimalWithPosition animalWithPosition){
-//
-//            Optional<Animal> foundedAnimal = animalRepo.findById(animalWithPosition.id());
-//
-//            animalRepo.deleteById(animalWithPosition.id());
-//            animalRepo.save(animalWithPosition);
-//
-//    }
+    public Animal addAnimalPosition(Animal animalWithPosition) {
+
+        animalRepo.deleteById(animalWithPosition.id());
+        animalRepo.save(animalWithPosition);
+
+        return animalWithPosition;
+    }
 }
