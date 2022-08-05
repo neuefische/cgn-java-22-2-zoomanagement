@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class TruckControllerIntegrationTest {
+class TruckIntegrationTest {
 
     @Autowired
     MockMvc mockMvc;

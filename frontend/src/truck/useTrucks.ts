@@ -38,6 +38,20 @@ export default function useTrucks() {
             .catch(error => notify("existiert nicht"));
     }
 
+
+    const getTruckById = (id: string) => {
+        return
+        trucks.map(filteredTruck => {
+            if (filteredTruck.id === id) return filteredTruck
+        })
+
+
+        // const avengers = characters.filter(character => character.team === 'Avengers');
+
+
+    }
+
+
     return {trucks, addTruck, deleteTrucks}
 
 }

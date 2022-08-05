@@ -31,11 +31,17 @@ public class TruckController {
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteTruck(@PathVariable String id) {
 
-         if (truckService.deleteTruck(id)) {
+        if (truckService.deleteTruck(id)) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
-
     }
+
+
+    @PutMapping("{id}")
+    @ResponseStatus(code = HttpStatus.OK)
+    public Employee updateEmployee(@PathVariable String id, @RequestBody Employee employee) {
+        return employeeService.updateEmployee(employee);
+    }
+
 }

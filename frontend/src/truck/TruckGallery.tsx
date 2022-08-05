@@ -1,5 +1,6 @@
 import Truck from "./Truck";
 import AddTruck from "./AddTruck";
+import {useNavigate} from "react-router-dom";
 
 
 type TruckGalleryProps = {
@@ -10,6 +11,8 @@ type TruckGalleryProps = {
 
 export default function TruckGallery(props: TruckGalleryProps) {
 
+    const navigate = useNavigate();
+
     return (
         <>
             <h2>Food-Trucks</h2>
@@ -17,7 +20,8 @@ export default function TruckGallery(props: TruckGalleryProps) {
             <ul>
                 {props.trucks
                     .map(truck => <li key={truck.id}>{truck.name}
-                            <button onClick={() => props.deleteTruck(truck.id)}>Löschen</button>
+                        <button onClick={() => props.deleteTruck(truck.id)}>Löschen</button>
+                        <button onClick={() => navigate("/foodtrucks/" + truck.id)}>Details</button>
                         </li>
                     )}
             </ul>
