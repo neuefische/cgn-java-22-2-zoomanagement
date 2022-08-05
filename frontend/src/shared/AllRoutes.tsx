@@ -7,10 +7,12 @@ export default function AllRoutes({...props}){
         <Routes>
         <Route path={"/"} element={<Home animals={props.animals} addAnimal={props.addAnimal}
                                          onDeleteAnimal={props.onDeleteAnimal}
-                                         plants={props.plants} addPlant={props.addPlant} deletePlant={props.deletePlant}
+                                         plants={props.plants} addPlant={props.addPlant} deletePlant={props.deletePlant} updatePlant={props.updatePlant}
                                          trucks={props.trucks} addTruck={props.addTruck}
                                          employees={props.employees} addEmployee={props.addEmployee}
                                          deleteEmployee={props.deleteEmployee}/>}/>
-        <Route path={"plants/:id"} element={<DetailPlant plants={props.plants}/>}/>
+        <Route path={"plants/:id"} element={
+            <DetailPlant plants={props.plants} updatePlant={props.updatePlant}/>
+        }/>
     </Routes>)
 }

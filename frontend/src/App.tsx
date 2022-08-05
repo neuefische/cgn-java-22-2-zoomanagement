@@ -12,7 +12,7 @@ import Header from "./shared/Header";
 export default function App() {
 
     const {animals, addAnimal, onDeleteAnimal} = useAnimals();
-    const {plants, addPlant, deletePlant} = usePlants();
+    const {plants, addPlant, deletePlant, updatePlant} = usePlants();
     const {trucks, addTruck} = useTrucks();
     const {employees, addEmployee, deleteEmployee} = useEmployee();
 
@@ -20,7 +20,7 @@ export default function App() {
         <Header/>
         <HashRouter>
             <AllRoutes animals={animals} addAnimal={addAnimal} onDeleteAnimal={onDeleteAnimal}
-                       plants={plants} addPlant={addPlant} deletePlant={deletePlant}
+                       plants={plants} addPlant={addPlant} deletePlant={deletePlant} updatePlant={updatePlant}
                        trucks={trucks} addTruck={addTruck}
                        employees={employees} addEmployee={addEmployee} deleteEmployee={deleteEmployee}/>
         </HashRouter>
