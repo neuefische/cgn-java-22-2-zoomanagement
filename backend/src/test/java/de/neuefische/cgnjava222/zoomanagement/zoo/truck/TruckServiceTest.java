@@ -8,11 +8,11 @@ import java.util.List;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-class TruckUnitTest {
+class TruckServiceTest {
     private final TruckRepo testTruckRepo = mock(TruckRepo.class);
     private final TruckService testTruckServiceMock = mock(TruckService.class);
     private final TruckService testTruckService = new TruckService(testTruckRepo);
-    private final TruckController testTruckController = new TruckController(testTruckService);
+    private final TruckController testTruckController = new TruckController(testTruckServiceMock);
     private final List<Truck> testList = List.of(
             new Truck("Currywurst Hannes", new Coordinates("0", "0"), "d67bc95f-cdc4-4930-b3e3-34a684806f20"),
             new Truck("Margrets Gesunde Küche", new Coordinates("1", "3"), "ec8bd7d2-bb00-4db7-ae4c-7879bb9b5512"),
@@ -55,27 +55,5 @@ class TruckUnitTest {
         Assertions.assertEquals(testTruck, actual);
     }
 
-    @Test
-    void getAllTrucksTestController() {
-        // given
-        when(testTruckService.getAllTrucks()).thenReturn(testList);
-        // when
-        List<Truck> actual = testTruckController.getAllTrucks();
-        // then
-        Assertions.assertArrayEquals(testList.toArray(), actual.toArray());
-    }
-
-    @Test
-    void addTruck() {
-        //given
-        NewTruck testNewTruck = new NewTruck("Döner", new Coordinates("1", "2"));
-        Truck testTruck = new Truck("Döner", new Coordinates("1", "2"), "kahdaihdölahdöalshdööah");
-        System.out.println(testTruck);
-        when(testTruckServiceMock.addTruck(any())).thenReturn(testTruck);
-        //when
-        Truck actual = testTruckController.addTruck(testNewTruck);
-        //then
-        Assertions.assertEquals(testTruck, actual);
-    }
 }
 
