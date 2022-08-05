@@ -7,4 +7,7 @@ public record Employee(
         @Id String id,
         EmployeePosition position
 ) {
+    public Employee(String name, String id) {
+        this(name, id, null);
+    }
 }
