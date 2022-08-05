@@ -19,7 +19,7 @@ export default function useEmployee() {
     }
 
     const addEmployee = (newName: string) => {
-        const newEmployee: NewEmployee = {name: newName}
+        const newEmployee: NewEmployee = {name: newName, position: undefined}
         return axios.post("/api/employees", newEmployee)
             .then((response) => {
                     getAllEmployees()
@@ -35,9 +35,19 @@ export default function useEmployee() {
             .catch(error => showError(error));
     }
 
+    const updateEmployee = (updatedEmployee: Employee) => {
+        return axios.put("/api/employees/" + updatedEmployee.id, updatedEmployee)
+            .then((response) => {
+                    getAllEmployees()
+                    return response.data
+                }
+            );
+    }
+
     return {
         deleteEmployee,
         addEmployee,
         employees,
+        updateEmployee
     }
 }
