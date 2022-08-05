@@ -22,7 +22,9 @@ export default function AllRoutes() {
                                              truckHook={truckHook}
                                              employeeHook={employeeHook}
             />}/>
-            <Route path={"/employees/:id"} element={<DetailEmployee employees={employeeHook.employees}/>}/>
+            <Route path={"/employees/:id"} element={<DetailEmployee
+                employees={employeeHook.employees}
+                employeeUpdate={employeeHook.updateEmployee}/>}/>
         </Routes>
 
     )
