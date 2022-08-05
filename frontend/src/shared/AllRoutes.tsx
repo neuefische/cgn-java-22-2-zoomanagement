@@ -1,4 +1,3 @@
-// @ts-ignore
 import DetailEmployee from "../employees/DetailEmployee";
 import React from "react";
 import {Route, Routes} from "react-router-dom";
@@ -18,6 +17,8 @@ export default function AllRoutes({...props}) {
                                              employees={props.employees} addEmployee={props.addEmployee}
                                              deleteEmployee={props.deleteEmployee}/>}/>
             <Route path={"trucks/:id"} element={<FoodTruckDetail getTruckById={props.getTruckById}/>}/>
+                                             employees={props.employees} addEmployee={props.addEmployee}
+                                             deleteEmployee={props.deleteEmployee}/>}/>
             <Route path={"employees/:id"} element={<DetailEmployee employees={props.employees}/>}/>
         </Routes>
 
