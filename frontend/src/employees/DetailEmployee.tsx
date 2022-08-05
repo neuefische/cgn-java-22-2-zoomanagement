@@ -10,10 +10,11 @@ export default function DetailEmployee(props: DetailEmployeesProps) {
     const {id} = useParams();
     const [valueX, setValueX] = useState<string>("")
     const [valueY, setValueY] = useState<string>("")
-
     const employee: Employee | undefined = props.employees.find((e: Employee) => e.id === id);
 
+
     const handleUpdate = () => {
+
         if (employee) {
             const updatedEmployee: Employee = {name: employee.name, id: employee.id, position: {x: valueX, y: valueY}};
             props.employeeUpdate(updatedEmployee);
@@ -24,11 +25,11 @@ export default function DetailEmployee(props: DetailEmployeesProps) {
     return (<>
             <h2>{employee?.name}</h2>
             <form>
-                <label htmlFor="xInput">X - Koordinate : <input id="xInput" type="text"
+                <label htmlFor="xInput">X - Koordinate : <input id="xInput" type="text" value={valueX}
                                                                 onChange={(event) => {
                                                                     setValueX(event.target.value);
                                                                 }}/></label>
-                <label htmlFor="yInput">Y - Koordinate : <input id="yInput" type="text"
+                <label htmlFor="yInput">Y - Koordinate : <input id="yInput" type="text" value={valueY}
                                                                 onChange={(event) => {
                                                                     setValueY(event.target.value);
                                                                 }}/></label>

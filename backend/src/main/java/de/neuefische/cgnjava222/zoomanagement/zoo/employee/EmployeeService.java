@@ -19,7 +19,7 @@ public class EmployeeService {
     }
 
     public Employee addEmployee(NewEmployee newEmployee) {
-        return employeeRepo.save(new Employee(newEmployee.name(), getRandomId()));
+        return employeeRepo.save(new Employee(newEmployee.name(), getRandomId(),new EmployeePosition(null,null)));
     }
 
     public String getRandomId() {

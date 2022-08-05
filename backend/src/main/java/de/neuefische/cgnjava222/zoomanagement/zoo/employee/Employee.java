@@ -6,8 +6,4 @@ public record Employee(
         String name,
         @Id String id,
         EmployeePosition position
-) {
-    public Employee(String name, String id) {
-        this(name, id, null);
-    }
-}
+){}
