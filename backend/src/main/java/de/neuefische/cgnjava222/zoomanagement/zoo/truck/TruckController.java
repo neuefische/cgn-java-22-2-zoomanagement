@@ -38,10 +38,10 @@ public class TruckController {
     }
 
 
-    @PutMapping("{id}")
-    @ResponseStatus(code = HttpStatus.OK)
-    public Employee updateEmployee(@PathVariable String id, @RequestBody Employee employee) {
-        return employeeService.updateEmployee(employee);
-    }
+    //   @PutMapping("{id}")
+    //   @ResponseStatus(code = HttpStatus.OK)
+    //   public Employee updateEmployee(@PathVariable String id, @RequestBody Employee employee) {
+    //       return employeeService.updateEmployee(employee);
+    //   }
 
 }

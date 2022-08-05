@@ -16,9 +16,8 @@ export default function AllRoutes({...props}) {
                                              getTruckById={props.getTruckById} deleteTruck={props.deleteTruck}
                                              employees={props.employees} addEmployee={props.addEmployee}
                                              deleteEmployee={props.deleteEmployee}/>}/>
-            <Route path={"trucks/:id"} element={<FoodTruckDetail getTruckById={props.getTruckById}/>}/>
-                                             employees={props.employees} addEmployee={props.addEmployee}
-                                             deleteEmployee={props.deleteEmployee}/>}/>
+            <Route path={"trucks/:id"} element={<FoodTruckDetail getTruckById={props.getTruckById}
+            />}/>
             <Route path={"employees/:id"} element={<DetailEmployee employees={props.employees}/>}/>
         </Routes>
 
