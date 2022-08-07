@@ -4,19 +4,21 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 type AddTruckProps = {
-    addTruck: (name: string) => Promise<void>
+    addTruck: (name: string, position: string) => Promise<void>
 }
 export default function AddTruck(props: AddTruckProps) {
     const [truckName, setTruckName] = useState<string>("")
+    const [valueX, setValueX] = useState("");
+    const [valueY, setValueY] = useState("");
 
     const onNameChange = (event: ChangeEvent<HTMLInputElement>) => {
         setTruckName(event.target.value)
     }
     const onTruckSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if(truckName==="")return;
+        if (truckName === "") return;
 
-        props.addTruck(truckName)
+        props.addTruck(truckName, position)
             .catch((error) => {
                 notify("Truck kann nicht hinzugefügt werden! Datenbankfehler " + error.message)
             })

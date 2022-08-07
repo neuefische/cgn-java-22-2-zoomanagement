@@ -18,9 +18,9 @@ export default function useTrucks() {
             .then((data) => setTrucks(data))
     }
 
-    const addTruck = (name: string) => {
+    const addTruck = (name: string, position: { x: string, y: string }) => {
         const newTruck: NewTruck = {
-            name,
+            name, position,
         }
         return axios.post("/api/trucks", newTruck)
             .then(() => getAllTrucks())
