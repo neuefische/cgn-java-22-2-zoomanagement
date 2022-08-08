@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+
 import java.util.UUID;
 
 @Service
@@ -33,9 +34,8 @@ public class PlantService {
     }
 
     public Plant getPlantById(String id) {
-        if(!plantRepo.existsById(id)) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 
-        return plantRepo.findById(id).get();
+        return plantRepo.findById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
 
