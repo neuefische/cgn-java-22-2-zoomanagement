@@ -6,6 +6,7 @@ import useAnimals from "../animal/useAnimals";
 import usePlants from "../plant/usePlants";
 import useTrucks from "../truck/useTrucks";
 import useEmployee from "../employees/useEmployee";
+import FoodTruckDetail from "../truck/FoodTruckDetail";
 
 export default function AllRoutes() {
 
@@ -25,6 +26,11 @@ export default function AllRoutes() {
             <Route path={"/employees/:id"} element={<DetailEmployee
                 employees={employeeHook.employees}
             />}/>
+
+            <Route path={"/trucks/:id"} element={<FoodTruckDetail
+                trucks={truckHook.trucks} getTruckById={truckHook.getTruckById}
+            />}/>
+
         </Routes>
 
     )

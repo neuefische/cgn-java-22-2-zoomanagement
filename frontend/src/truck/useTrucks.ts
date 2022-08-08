@@ -39,7 +39,7 @@ export default function useTrucks() {
     }
 
 
-    const getTruckById = (id: string) => {
+    const getTruckById = (id: string | undefined) => {
         return trucks.find(thisTruck => {
             if (thisTruck.id === id) return true
         })

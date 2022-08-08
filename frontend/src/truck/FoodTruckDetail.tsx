@@ -3,16 +3,13 @@ import Truck from "./Truck";
 import {useState} from "react";
 
 
-type FoodTruckDetailsProps = { trucks: Truck[], getTruckById: (id: string | undefined) => Truck }
+type FoodTruckDetailsProps = { trucks: Truck[], getTruckById: (id: string | undefined) => Truck | undefined }
 
 export default function FoodTruckDetail(props: FoodTruckDetailsProps) {
 
     const {id} = useParams();
     const [valueX, setValueX] = useState("");
     const [valueY, setValueY] = useState("");
-
-
-    // const truck: Truck | undefined = props.trucks.find((e: Truck) => e.id === id);
     const truck: Truck | undefined = props.getTruckById(id);
 
 
