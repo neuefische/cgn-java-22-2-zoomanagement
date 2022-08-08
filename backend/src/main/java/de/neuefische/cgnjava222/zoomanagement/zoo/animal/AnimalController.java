@@ -43,7 +43,7 @@ public class AnimalController {
     public ResponseEntity<Animal> addAnimalPosition(
             @PathVariable String id,
             @RequestBody Animal animalWithPosition) {
-        Animal updatedAnimal = animalService.addAnimalPosition(animalWithPosition);
+        Animal updatedAnimal = animalService.updateAnimalPosition(animalWithPosition);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(updatedAnimal);

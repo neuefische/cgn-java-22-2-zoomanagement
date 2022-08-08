@@ -90,7 +90,7 @@ class AnimalServiceTest {
                 .thenReturn(animal);
 
         AnimalService animalService = new AnimalService(animalRepo);
-        Animal actualResult = animalService.addAnimalPosition(animal);
+        Animal actualResult = animalService.updateAnimalPosition(animal);
 
         assertThat(actualResult).isEqualTo(animal);
     }

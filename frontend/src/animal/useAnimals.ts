@@ -13,6 +13,12 @@ export default function useAnimals() {
         getAnimalList()
     }, [])
 
+    const onErrorFunction = (error: Error) => {
+        toast.error(error.message, {
+                position: toast.POSITION.TOP_LEFT
+            }
+        )
+    }
     const getAnimalList = () => {
         axios.get("/api/animals")
             .then(response => response.data)
@@ -32,25 +38,19 @@ export default function useAnimals() {
             .then(getAnimalList)
             .catch(
                 error => {
-                    toast.error(error.message, {
-                            position: toast.POSITION.TOP_LEFT
-                        }
-                    )
+                    onErrorFunction(error)
                 })
     }
 
     const onPlaceAnimal = (animal: Animal, position: Position) => {
-        const newAnimalWithXY: Animal = {
+        const newAnimalWithPosition: Animal = {
             name: animal.name,
             id: animal.id,
             position: position
         }
-        return axios.put(`/api/animals/${animal.id}`, newAnimalWithXY)
+        return axios.put(`/api/animals/${animal.id}`, newAnimalWithPosition)
             .catch(error => {
-                toast.error(error.message, {
-                        position: toast.POSITION.TOP_LEFT
-                    }
-                )
+                onErrorFunction(error)
             })
     }
 

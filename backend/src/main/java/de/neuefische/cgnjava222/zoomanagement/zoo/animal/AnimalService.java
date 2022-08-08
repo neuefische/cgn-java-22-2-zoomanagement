@@ -36,7 +36,7 @@ public class AnimalService {
         return false;
     }
 
-    public Animal addAnimalPosition(Animal animalWithPosition) {
+    public Animal updateAnimalPosition(Animal animalWithPosition) {
 
         animalRepo.deleteById(animalWithPosition.id());
         animalRepo.save(animalWithPosition);

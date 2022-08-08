@@ -14,7 +14,7 @@ export default function AnimalListItem(props:
         <li key={props.animal.id}>{props.animal.name}
             <button onClick={() => props.onDeleteAnimal(props.animal.id)}>Delete</button>
             <button onClick={() => {
-                navigate(`/${props.animal.id}`)
+                navigate(`/animals/${props.animal.id}`)
             }}>Details
             </button>
         </li>
