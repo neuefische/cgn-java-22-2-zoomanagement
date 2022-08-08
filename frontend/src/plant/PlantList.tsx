@@ -1,13 +1,19 @@
 import AddPlant from "./AddPlant";
-import {Plant} from "./Plant";
+import {PlantType} from "./PlantType";
+import Plant from "./Plant";
 
-export default function PlantList(props: { plants: Plant[], addPlant: (name: string) => Promise<void> }) {
+type PlantListProps = {
+    plants: PlantType[],
+    addPlant: (name: string) => Promise<void>,
+    deletePlant : (id : string) => void,
+}
+export default function PlantList(props: PlantListProps) {
 
     return (
         <>
             <h2>Pflanzen</h2>
             <ul>
-                {props.plants.map(plant => <li key={plant.id}>{plant.name}</li>)}
+                {props.plants.map(plant => <Plant  key={plant.id} plant={plant} deletePlant={props.deletePlant}/>)}
             </ul>
             <AddPlant addPlant={props.addPlant}/>
         </>
