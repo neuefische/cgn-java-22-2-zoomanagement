@@ -3,7 +3,6 @@ package de.neuefische.cgnjava222.zoomanagement.zoo.plant;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver;
 
 import java.util.List;
 import java.util.UUID;
@@ -21,7 +20,7 @@ public class PlantService {
     }
 
     public Plant addPlant(NewPlant newPlant) {
-        Plant plant = new Plant(newPlant.name(), UUID.randomUUID().toString(), new Position("0", 0));
+        Plant plant = new Plant(newPlant.name(), UUID.randomUUID().toString(), new Position("0", "0"));
         return plantRepo.save(plant);
     }
 

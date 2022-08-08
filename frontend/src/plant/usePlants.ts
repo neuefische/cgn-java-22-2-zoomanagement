@@ -38,11 +38,8 @@ export default function usePlants() {
         const updatedPlantWithNewPosition={
             id: plant.id,
             name: plant.name,
-            position: position,
-
+            position:position,
         }
-        console.log(updatedPlantWithNewPosition)
-
         return axios.put(`/api/plants/${plant.id}` , updatedPlantWithNewPosition)
         .then(getAllPlants)
         .catch(error => {toast("Leider ist ein Fehler aufgetreten "+error.message)})

@@ -10,26 +10,37 @@ type DetailPlantProps = {
 
 export default function DetailPlant(props: DetailPlantProps) {
 
-
-    const [xPosition, setXPosition] = useState("");
-    const [yPosition, setYPosition] = useState("");
     const {id} = useParams();
 
-    const plantToUpdate = props.plants.find(plant => plant.id === id);
+
+    const [plantToUpdate, setPlantToUpdate]=useState<PlantType>();
+    const [xPosition, setXPosition] = useState<string>("");
+    const [yPosition, setYPosition] = useState<string>("");
 
 
+    useEffect(()=>{
+        setXPosition(plantToUpdate?.position?.x||"")
+        setYPosition(plantToUpdate?.position?.y||"")
+        setPlantToUpdate(props.plants.find(p => p.id === id));
+
+          },[props.plants, plantToUpdate])
+
+
+    if(!plantToUpdate){
+        return <>Nicht Gefunden</>
+    }
+
+    const plant=plantToUpdate;
 
     return (
-
         <>
-            {plantToUpdate ? (
-                <div>
-
+               <div>
                     <h2>{plantToUpdate.name}</h2>
                     <form onSubmit={(event)=>{
                         event.preventDefault();
-                        props.updatePlant(plantToUpdate, {x:xPosition, y:yPosition}
-                        )}}>
+                        props.updatePlant(plant, {x:xPosition, y:yPosition}
+                        )
+                    }}>
                         <label htmlFor="xInput">X - Koordinate :
                             <input name="x" value={xPosition} type="text"
                                    onChange={(e:ChangeEvent<HTMLInputElement>)=>setXPosition(e.target.value)}/>
@@ -43,7 +54,7 @@ export default function DetailPlant(props: DetailPlantProps) {
                         <button type={"submit"}>speichern</button>
                     </form>
                 </div>
-            ) : false}
+
 
 
         </>

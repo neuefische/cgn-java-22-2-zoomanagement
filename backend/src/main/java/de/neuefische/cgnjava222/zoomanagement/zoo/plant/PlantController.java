@@ -49,6 +49,7 @@ public class PlantController {
         Plant updatedPlant = plantService.updatePlantWithNewPosition(id, plantWithPosition);
 
 
+
         return new ResponseEntity<>(updatedPlant, HttpStatus.OK);
 
 
