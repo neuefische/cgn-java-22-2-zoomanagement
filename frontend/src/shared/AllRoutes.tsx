@@ -2,23 +2,29 @@ import DetailEmployee from "../employees/DetailEmployee";
 import React from "react";
 import {Route, Routes} from "react-router-dom";
 import Home from "./Home";
-import FoodTruckDetail from "../truck/FoodTruckDetail";
+import useAnimals from "../animal/useAnimals";
+import usePlants from "../plant/usePlants";
+import useTrucks from "../truck/useTrucks";
+import useEmployee from "../employees/useEmployee";
 
-export default function AllRoutes({...props}) {
+export default function AllRoutes() {
+
+    const animalHook = useAnimals();
+    const plantHook = usePlants();
+    const truckHook = useTrucks();
+    const employeeHook = useEmployee();
 
     return (
 
         <Routes>
-            <Route path={"/"} element={<Home animals={props.animals} addAnimal={props.addAnimal}
-                                             onDeleteAnimal={props.onDeleteAnimal}
-                                             plants={props.plants} addPlant={props.addPlant}
-                                             trucks={props.trucks} addTruck={props.addTruck}
-                                             deleteTruck={props.deleteTruck}
-                                             employees={props.employees} addEmployee={props.addEmployee}
-                                             deleteEmployee={props.deleteEmployee}/>}/>
-            <Route path={"trucks/:id"} element={<FoodTruckDetail trucks={props.trucks}
+            <Route path={"/"} element={<Home animalHook={animalHook}
+                                             plantHook={plantHook}
+                                             truckHook={truckHook}
+                                             employeeHook={employeeHook}
             />}/>
-            <Route path={"employees/:id"} element={<DetailEmployee employees={props.employees}/>}/>
+            <Route path={"/employees/:id"} element={<DetailEmployee
+                employees={employeeHook.employees}
+            />}/>
         </Routes>
 
     )

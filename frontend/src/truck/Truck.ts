@@ -5,7 +5,7 @@ export type Truck = {
 
 }
 
-export type NewTruck = Omit<Truck, "id">
+export type NewTruck = Omit<Truck, "id" | "position">
 
 
 export default Truck

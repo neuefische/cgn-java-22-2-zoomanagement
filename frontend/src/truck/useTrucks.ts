@@ -9,21 +9,21 @@ export default function useTrucks() {
     const [trucks, setTrucks] = useState<Truck[]>([]);
 
     useEffect(() => {
-        getAllTrucks()
+        fetchAllTrucks()
     }, [])
 
-    const getAllTrucks = () => {
+    const fetchAllTrucks = () => {
         axios.get("/api/trucks")
             .then((response) => response.data)
             .then((data) => setTrucks(data))
     }
 
-    const addTruck = (name: string, position: { x: string, y: string }) => {
+    const addTruck = (name: string) => {
         const newTruck: NewTruck = {
-            name, position,
+            name,
         }
         return axios.post("/api/trucks", newTruck)
-            .then(() => getAllTrucks())
+            .then(() => fetchAllTrucks())
     }
     const notify = (message: string) => {
         toast.error(message, {
@@ -31,22 +31,22 @@ export default function useTrucks() {
         });
     }
 
-    const deleteTrucks = (id: string) => {
+    const deleteTruck = (id: string) => {
         return axios.delete("/api/trucks/" + id)
             .then((response) => response.status)
-            .then(getAllTrucks)
+            .then(fetchAllTrucks)
             .catch(error => notify("existiert nicht"));
     }
 
 
     const getTruckById = (id: string) => {
-        trucks.forEach(thisTruck => {
-            if (thisTruck.id === id) return thisTruck
+        return trucks.find(thisTruck => {
+            if (thisTruck.id === id) return true
         })
 
     }
 
 
-    return {trucks, addTruck, deleteTrucks, getTruckById}
+    return {trucks, addTruck, deleteTruck, getTruckById}
 
 }
