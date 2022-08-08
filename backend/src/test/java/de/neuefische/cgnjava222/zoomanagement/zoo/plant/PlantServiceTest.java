@@ -2,8 +2,6 @@ package de.neuefische.cgnjava222.zoomanagement.zoo.plant;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.data.crossstore.ChangeSetPersister;
-import org.springframework.http.HttpStatus;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,9 +16,9 @@ class PlantServiceTest {
     private final PlantRepo testPlantRepo = mock(PlantRepo.class);
     private final PlantService testPlantService = new PlantService(testPlantRepo);
     private final List<Plant> testList = List.of(
-            new Plant("Birke", UUID.randomUUID().toString(), new Position("0", 0)),
-            new Plant("Buche", UUID.randomUUID().toString(), new Position("0", 0)),
-            new Plant("Lärche", UUID.randomUUID().toString(), new Position("0", 0))
+            new Plant("Birke", UUID.randomUUID().toString(), new Position("0", "0")),
+            new Plant("Buche", UUID.randomUUID().toString(), new Position("0", "0")),
+            new Plant("Lärche", UUID.randomUUID().toString(), new Position("0", "0"))
     );
 
     @Test
@@ -32,7 +30,7 @@ class PlantServiceTest {
 
     @Test
     void addPlantTest() {
-        Plant plant = new Plant("Birke", UUID.randomUUID().toString(), new Position("0", 0));
+        Plant plant = new Plant("Birke", UUID.randomUUID().toString(), new Position("0", "0"));
         PlantRepo plantRepo = mock(PlantRepo.class);
         when(testPlantRepo.save(any(Plant.class))).thenReturn(plant);
         PlantService plantService = new PlantService(plantRepo);
@@ -51,7 +49,7 @@ class PlantServiceTest {
     @Test
     void getPlantByIdWhenExistsTest() {
         //Given
-        Plant plant = new Plant("Rose", "5", new Position("7", 6));
+        Plant plant = new Plant("Rose", "5", new Position("7", "7"));
 
         when(testPlantRepo.existsById("5")).thenReturn(true);
         when(testPlantRepo.findById("5")).thenReturn(Optional.of(plant));
@@ -71,7 +69,7 @@ class PlantServiceTest {
 
     void updatePlantWithPositionTest(){
         //Given
-        Plant plantWithPosition = new Plant("Rose", "5", new Position("1", 5));
+        Plant plantWithPosition = new Plant("Rose", "5", new Position("1", "3"));
 
         //when
 
