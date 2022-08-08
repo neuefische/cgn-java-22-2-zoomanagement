@@ -9,10 +9,10 @@ export default function useTrucks() {
     const [trucks, setTrucks] = useState<Truck[]>([]);
 
     useEffect(() => {
-        getAllTrucks()
+        fetchAllTrucks()
     }, [])
 
-    const getAllTrucks = () => {
+    const fetchAllTrucks = () => {
         axios.get("/api/trucks")
             .then((response) => response.data)
             .then((data) => setTrucks(data))
@@ -23,7 +23,7 @@ export default function useTrucks() {
             name,
         }
         return axios.post("/api/trucks", newTruck)
-            .then(() => getAllTrucks())
+            .then(() => fetchAllTrucks())
     }
     const notify = (message: string) => {
         toast.error(message, {
@@ -34,7 +34,7 @@ export default function useTrucks() {
     const deleteTrucks = (id: string) => {
         return axios.delete("/api/trucks/" + id)
             .then((response) => response.status)
-            .then(getAllTrucks)
+            .then(fetchAllTrucks)
             .catch(error => notify("existiert nicht"));
     }
 
