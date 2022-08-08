@@ -1,0 +1,13 @@
+.nav{
+    border-style: solid;
+    border-color: black;
+    background-color: lightslategrey;
+
+    padding: 0.5em 1em 0.5em 1em; /* Oben,rechts,unten,links*/
+}
+.menu{
+
+    display: flex;
+    justify-content: space-around;
+
+}

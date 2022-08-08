@@ -1,0 +1,21 @@
+footer{
+
+    background-color: lightseagreen;
+    position: fixed;
+    width:100%;
+    left: 0pt;
+    bottom: 0em;
+    padding: 1em;
+    border-top-style: solid;
+    text-align: center;
+
+    
+}
+
+footer .nav{
+    border-style: solid;
+    border-color: black;
+    background-color: palegreen;
+
+    padding: 0.5em 1em 0.5em 1em; /* Oben,rechts,unten,links*/
+}
