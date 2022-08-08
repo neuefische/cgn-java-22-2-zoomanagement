@@ -1,9 +1,13 @@
 .nav{
+
     border-style: solid;
     border-color: black;
     background-color: lightslategrey;
-
+    border-radius: 1em;
     padding: 0.5em 1em 0.5em 1em; /* Oben,rechts,unten,links*/
+    width: 10%;
+
+
 }
 .menu{
 

@@ -6,8 +6,8 @@ import "./footer.css";
 export default function Footer(){
 
     return(
-        <footer>
-            <NavLink className={"nav"} to={'/'}>Los Gehts</NavLink>
+         <footer>
+             <NavLink className={"nav"} to={'/'}> Los Gehts </NavLink>
         </footer>
     )
 
