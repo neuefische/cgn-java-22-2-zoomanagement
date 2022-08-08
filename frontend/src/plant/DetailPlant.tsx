@@ -1,49 +1,51 @@
-import {useParams} from "react-router-dom";
+import {ChangeEvent, useEffect, useState} from "react";
 import {PlantType, PositionType} from "./PlantType";
-import {ChangeEvent, useState} from "react";
+import {useParams} from "react-router-dom";
 
-export default function DetailPlant({...props}){
+type DetailPlantProps = {
 
-    console.log({...props})
+    plants: PlantType[],
+    updatePlant: (plant: PlantType, position: PositionType) => Promise<void>,
+}
+
+export default function DetailPlant(props: DetailPlantProps) {
+
+
+    const [xPosition, setXPosition] = useState("");
+    const [yPosition, setYPosition] = useState("");
     const {id} = useParams();
-    let plant: PlantType;
-    plant = props.plants.find((e: PlantType) => e.id === id)
 
-    const [updatedPlant, setUpdatedPlant] = useState<PlantType>(plant);
-    const updatedPlantDetails = (xPosition:string)=> {
-        console.log(plant.name);
-        setUpdatedPlant({
-            id: updatedPlant.id,
-            name: updatedPlant.name,
-            position:{x: xPosition,
-                      y: updatedPlant.position.y
-            }
-            })
-    }
+    const plantToUpdate = props.plants.find(plant => plant.id === id);
 
-    return (<>
-            <h2>{plant.name}</h2>
-            <form >
-                <label htmlFor="xInput">X - Koordinate :
-                    <input id="xInput" type="text" value={updatedPlant.position.x}
-                           onChange={(event:ChangeEvent<HTMLInputElement>)  => {
-                               updatedPlantDetails(event.target.value)
-                           }}/>
 
-                </label><br/>
 
-                <label htmlFor="yInput">Y - Koordinate :
-                    <input id="yInput" type="text" value={updatedPlant.position.y}
-                           onChange={(event:ChangeEvent<HTMLInputElement>)  => {
-                               setUpdatedPlant({
-                                   id: updatedPlant.id,
-                                   name: updatedPlant.name,
-                                   x: updatedPlant.position.x,
-                                   y: Number(event.target.value)})
-                           }}/>
-                </label><br/>
-                <button type={"submit"}>speichern</button>
-            </form>
+    return (
+
+        <>
+            {plantToUpdate ? (
+                <div>
+
+                    <h2>{plantToUpdate.name}</h2>
+                    <form onSubmit={(event)=>{
+                        event.preventDefault();
+                        props.updatePlant(plantToUpdate, {x:xPosition, y:yPosition}
+                        )}}>
+                        <label htmlFor="xInput">X - Koordinate :
+                            <input name="x" value={xPosition} type="text"
+                                   onChange={(e:ChangeEvent<HTMLInputElement>)=>setXPosition(e.target.value)}/>
+
+                        </label><br/>
+
+                        <label htmlFor="yInput">Y - Koordinate :
+                            <input name="y"  type="text" value={yPosition}
+                                   onChange={(e:ChangeEvent<HTMLInputElement>)=>setYPosition(e.target.value)}/>
+                        </label><br/>
+                        <button type={"submit"}>speichern</button>
+                    </form>
+                </div>
+            ) : false}
+
+
         </>
     )
-}//onSubmit={props.updatePlant(updatedPlant)}
+}

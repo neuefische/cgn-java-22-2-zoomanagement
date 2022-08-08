@@ -2,6 +2,8 @@ package de.neuefische.cgnjava222.zoomanagement.zoo.plant;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.data.crossstore.ChangeSetPersister;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
 import java.util.Optional;
@@ -47,12 +49,48 @@ class PlantServiceTest {
     }
 
     @Test
-    void getPlantByIdTest() {
+    void getPlantByIdWhenExistsTest() {
+        //Given
         Plant plant = new Plant("Rose", "5", new Position("7", 6));
+
         when(testPlantRepo.existsById("5")).thenReturn(true);
         when(testPlantRepo.findById("5")).thenReturn(Optional.of(plant));
         Plant actual = testPlantService.getPlantById("5");
         Assertions.assertEquals(plant, actual);
     }
+
+    @Test
+    void getPlantByIdWhenNotExistsTest() {
+        //Given
+        Plant plant = new Plant("Rose", "5", null);
+
+       when(testPlantRepo.existsById(plant.id())).thenReturn(false);
+
+        verify(testPlantRepo, times(0)).findById(plant.id());
+    }
+
+    void updatePlantWithPositionTest(){
+        //Given
+        Plant plantWithPosition = new Plant("Rose", "5", new Position("1", 5));
+
+        //when
+
+      when(testPlantRepo.existsById(plantWithPosition.id())).thenReturn(true);
+      when(testPlantRepo.save(any(Plant.class))).thenReturn(plantWithPosition);
+      Plant actualPlant=testPlantService.updatePlantWithNewPosition(plantWithPosition.id(), plantWithPosition);
+
+      //then
+        assertThat(actualPlant).isEqualTo(plantWithPosition);
+
+
+
+
+
+
+
+
+    }
+
+
 
 }

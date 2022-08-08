@@ -35,7 +35,16 @@ public class PlantService {
 
     public Plant getPlantById(String id) {
         if(!plantRepo.existsById(id)) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+
         return plantRepo.findById(id).get();
+    }
+
+
+    public Plant updatePlantWithNewPosition(String id, Plant plantWithPosition) {
+
+        plantRepo.deleteById(id);
+
+        return plantRepo.save(plantWithPosition);
     }
 }
 

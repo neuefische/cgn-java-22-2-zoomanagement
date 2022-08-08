@@ -12,7 +12,7 @@ export default function Plant  (props: PlantProps)  {
     return (
         <li key={props.plant.id}>{props.plant.name}
         <button  onClick={(event) => props.deletePlant(props.plant.id)}>löschen</button>
-        <button  onClick={(event) => navigate(`plants/${props.plant.id}`)}>details</button>
+        <button  onClick={(event) => navigate(`/plant/${props.plant.id}`)}>details</button>
         </li>
     )
 

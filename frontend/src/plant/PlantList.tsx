@@ -5,7 +5,7 @@ import Plant from "./Plant";
 type PlantListProps = {
     plants: PlantType[],
     addPlant: (name: string) => Promise<void>,
-    deletePlant : (id : string) => void,
+    deletePlant: (id: string) => Promise<void>
 }
 export default function PlantList(props: PlantListProps) {
 
