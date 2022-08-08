@@ -1,7 +1,7 @@
 import {Employee} from "./Employee";
 import AddEmployee from "./AddEmployee";
 import {useState} from "react";
-import FilterEmployees from "./FilterEmployees";
+import GeneralSearch from "../shared/GeneralSearch";
 import SingleEmployee from "./SingleEmployee";
 
 type EmployeesProps = {
@@ -16,11 +16,11 @@ export default function Employees(props: EmployeesProps) {
     const [filterValue, setFilterValue] = useState<string>("");
     const [radioValue, setRadioValue] = useState<string>("all");
 
-    return(
+    return (
 
         <div>
             <h2>Mitarbeiter</h2>
-            <FilterEmployees setFilterValue={setFilterValue} setRadioValue={setRadioValue}/>
+            <GeneralSearch setFilterValue={setFilterValue} setRadioValue={setRadioValue}/>
             <ul>
                 {props.employees
                     .filter((employee) => {
@@ -41,8 +41,8 @@ export default function Employees(props: EmployeesProps) {
                         return checkParam.toLowerCase().includes(filterValue.toLowerCase())
                     })
                     .map((employee) => <li key={employee.id}><SingleEmployee employee={employee}
-                                                                                         onDeleteEmployee={props.onDeleteEmployee}/>
-                </li>)}
+                                                                             onDeleteEmployee={props.onDeleteEmployee}/>
+                    </li>)}
             </ul>
             <AddEmployee addEmployee={props.addEmployee}/>
         </div>
