@@ -39,7 +39,7 @@ public class TruckController {
 
 
     @PutMapping("{id}")
-    @ResponseStatus(code = HttpStatus.OK)
+    @ResponseStatus(code = HttpStatus.CREATED)
     public Truck updateTruck(@PathVariable String id, @RequestBody Truck truck) {
         return truckService.updateTruck(truck);
     }
