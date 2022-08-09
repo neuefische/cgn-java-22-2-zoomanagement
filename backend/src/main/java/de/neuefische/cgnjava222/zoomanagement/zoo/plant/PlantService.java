@@ -21,4 +21,13 @@ public class PlantService {
         Plant plant = new Plant(newPlant.name(), UUID.randomUUID().toString());
         return plantRepo.save(plant);
     }
+
+    public boolean deletePlant(String id) {
+        if (plantRepo.existsById(id)) {
+            plantRepo.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 }
+
