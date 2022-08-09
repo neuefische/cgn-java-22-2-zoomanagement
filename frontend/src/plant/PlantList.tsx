@@ -13,7 +13,7 @@ export default function PlantList(props: PlantListProps) {
         <>
             <h2>Pflanzen</h2>
             <ul>
-                {props.plants.map(plant => <li><Plant key={plant.id} plant={plant} deletePlant={props.deletePlant}/>
+                {props.plants.map(plant => <li key={plant.id}><Plant plant={plant} deletePlant={props.deletePlant}/>
                 </li>)}
             </ul>
             <AddPlant addPlant={props.addPlant}/>
