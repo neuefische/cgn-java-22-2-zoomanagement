@@ -8,6 +8,7 @@ import java.util.List;
 public class TruckService {
     private final TruckRepo truckRepo;
 
+
     public TruckService(TruckRepo truckRepo) {
         this.truckRepo = truckRepo;
     }
@@ -27,5 +28,10 @@ public class TruckService {
 
         }
         return doesTruckExist;
+    }
+
+    public Truck updateTruck(Truck truck) {
+        return truckRepo.save(truck);
+
     }
 }
