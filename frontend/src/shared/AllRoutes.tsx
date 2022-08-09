@@ -1,6 +1,6 @@
 import DetailEmployee from "../employees/DetailEmployee";
 import React from "react";
-import {NavLink, Route, Routes} from "react-router-dom";
+import { Route, Routes} from "react-router-dom";
 import Home from "./Home";
 import useAnimals from "../animal/useAnimals";
 import usePlants from "../plant/usePlants";

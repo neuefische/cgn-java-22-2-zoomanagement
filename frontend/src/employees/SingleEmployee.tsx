@@ -19,8 +19,8 @@ export default function SingleEmployee(props: SingleEmployeesProps) {
     return (
         <>
             <div className={"nameStyle"}>{props.employee.name}</div>
-            <button type={"button"} onClick={handleClickDelete}><img src={"../pictures/trash.png"}/></button>
-            <button type={"button"} onClick={() => navigate('/employees/' + props.employee.id)}><img src={"../pictures/details.png"}/></button>
+            <button type={"button"} onClick={handleClickDelete}><img src={"../pictures/trash.png"} alt={"Delete"}/></button>
+            <button type={"button"} onClick={() => navigate('/employees/' + props.employee.id)}><img src={"../pictures/details.png"} alt={"Details"}/></button>
         </>
     );
 }
