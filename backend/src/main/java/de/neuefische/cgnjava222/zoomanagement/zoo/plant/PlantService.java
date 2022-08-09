@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-
 import java.util.UUID;
 
 @Service
@@ -21,7 +20,7 @@ public class PlantService {
     }
 
     public Plant addPlant(NewPlant newPlant) {
-        Plant plant = new Plant(newPlant.name(), UUID.randomUUID().toString(), new Position("0", "0"));
+        Plant plant = new Plant(newPlant.name(), UUID.randomUUID().toString(), new Position(null, null));
         return plantRepo.save(plant);
     }
 
@@ -40,9 +39,7 @@ public class PlantService {
 
 
     public Plant updatePlantWithNewPosition(String id, Plant plantWithPosition) {
-
-        plantRepo.deleteById(id);
-
+        if (!id.equals(plantWithPosition.id())) throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         return plantRepo.save(plantWithPosition);
     }
 }

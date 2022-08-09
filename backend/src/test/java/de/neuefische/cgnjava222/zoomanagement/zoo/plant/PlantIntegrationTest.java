@@ -130,7 +130,7 @@ class PlantIntegrationTest {
         String id = saveResultPlant.id();
 
         String teststring = objectMapper.writer().writeValueAsString(saveResultPlant);
-        System.out.println(teststring);
+
         mockMvc
                 .perform(
                         get("/api/plants/" + id)

@@ -20,11 +20,12 @@ export default function AllRoutes() {
 
         <Routes>
             <Route path={"/"} element={<Home animalHook={animalHook}
-                                             
+
                                              truckHook={truckHook}
                                              employeeHook={employeeHook}
-             plantHook={plantHook}/>}/>
-            <Route path={"/plant/:id"} element={<DetailPlant plants={plantHook.plants} updatePlant={plantHook.updatePlant}/>}/>
+                                             plantHook={plantHook}/>}/>
+            <Route path={"/plant/:id"}
+                   element={<DetailPlant plants={plantHook.plants} updatePlant={plantHook.updatePlant}/>}/>
         </Routes>
 
     )

@@ -8,7 +8,7 @@ import {Animal} from "../animal/Animal";
 
 import Truck from "../truck/Truck";
 import {Employee} from "../employees/Employee";
-import {PlantType, PositionType} from "../plant/PlantType";
+import {PlantType} from "../plant/PlantType";
 
 type HomeProps = {
     animalHook: {
@@ -20,7 +20,6 @@ type HomeProps = {
         plants: PlantType[],
         addPlant: (name: string) => Promise<void>,
         deletePlant: (id: string) => Promise<void>,
-
     },
     truckHook: {
         trucks: Truck[], addTruck: (name: string) => Promise<void>

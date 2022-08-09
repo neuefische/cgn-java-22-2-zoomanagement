@@ -30,7 +30,7 @@ class PlantServiceTest {
 
     @Test
     void addPlantTest() {
-        Plant plant = new Plant("Birke", UUID.randomUUID().toString(), new Position("0", "0"));
+        Plant plant = new Plant("Birke", UUID.randomUUID().toString(), new Position(null, null));
         PlantRepo plantRepo = mock(PlantRepo.class);
         when(testPlantRepo.save(any(Plant.class))).thenReturn(plant);
         PlantService plantService = new PlantService(plantRepo);
