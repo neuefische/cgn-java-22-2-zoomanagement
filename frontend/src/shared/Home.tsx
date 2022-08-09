@@ -22,6 +22,7 @@ type HomeProps = {
         addTruck: (name: string) => Promise<any>,
         deleteTruck: (id: string) => Promise<void>,
         getTruckById: (id: string) => Truck | undefined,
+        updatedTruck: (truck: Truck) => Promise<void>,
     },
     employeeHook: {
         deleteEmployee: (id: string) => Promise<void>,
@@ -34,7 +35,8 @@ export default function Home(props: HomeProps) {
     return (<>
         <PlantList plants={props.plantHook.plants} addPlant={props.plantHook.addPlant}/>
         <TruckGallery trucks={props.truckHook.trucks} addTruck={props.truckHook.addTruck}
-                      deleteTruck={props.truckHook.deleteTruck} getTruckById={props.truckHook.getTruckById}/>
+                      deleteTruck={props.truckHook.deleteTruck} getTruckById={props.truckHook.getTruckById}
+                      updatedTruck={props.truckHook.updatedTruck}/>
         <AnimalList animals={props.animalHook.animals} addAnimal={props.animalHook.addAnimal}
                     onDeleteAnimal={props.animalHook.onDeleteAnimal}/>
         <Employees employees={props.employeeHook.employees} addEmployee={props.employeeHook.addEmployee}
