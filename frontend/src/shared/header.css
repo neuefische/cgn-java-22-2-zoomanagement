@@ -1,17 +1,35 @@
 .nav{
-
+    border-width: 1.5px;
     border-style: solid;
     border-color: black;
-    background-color: lightslategrey;
-    border-radius: 1em;
+    background-color: #E29578;
+    border-radius: 0.8em;
     padding: 0.5em 1em 0.5em 1em; /* Oben,rechts,unten,links*/
     width: 10%;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+
 
 
 }
 .menu{
-
+    margin: 0pt;
     display: flex;
     justify-content: space-around;
-
+    border-bottom-style: solid;
+    padding-bottom: 5px;
+    border-bottom-style: solid;
+    border-width: 1.5px;
+    background-color: #FFDDD2;
 }
+h1{
+    margin: 0pt;
+    background-color: #FFDDD2;
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+
+
