@@ -1,9 +1,12 @@
 import {useParams} from "react-router-dom";
 import Truck from "./Truck";
-import {useState} from "react";
+import {FormEvent, useState} from "react";
 
 
-type FoodTruckDetailsProps = { trucks: Truck[], getTruckById: (id: string | undefined) => Truck | undefined }
+type FoodTruckDetailsProps = {
+    trucks: Truck[], getTruckById: (id: string | undefined) => Truck | undefined,
+    updatedTruck: (truck: Truck) => void
+};
 
 export default function FoodTruckDetail(props: FoodTruckDetailsProps) {
 
@@ -13,17 +16,27 @@ export default function FoodTruckDetail(props: FoodTruckDetailsProps) {
     const truck: Truck | undefined = props.getTruckById(id);
 
 
+    const updatedTruck = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const newTruck: Truck | undefined = truck;
+        if (newTruck !== undefined) {
+            newTruck.position = {x: valueX, y: valueY};
+            props.updatedTruck(newTruck);
+        }
+    }
+
     return (
         <>
             <h2>{truck?.name}</h2>
-            <form>
+            <form onSubmit={updatedTruck}>
+
                 <label> X - Koordinate : <input type="text" value={valueX}
                                                 onChange={(e) => setValueX(e.target.value)}></input></label> <br/>
                 <br/>
                 <label>Y - Koordinate : <input type="text" value={valueY}
                                                onChange={(e) => setValueY(e.target.value)}></input></label> <br/>
                 <br/>
-                <button>speichern</button>
+                <button type={"submit"}>speichern</button>
 
             </form>
 
