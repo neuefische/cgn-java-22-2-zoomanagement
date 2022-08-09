@@ -18,12 +18,14 @@ h2{
 }
 input{
 
+    border-radius: 0.7em;
     margin-left: 30pt;
+    padding: 2pt;
 
 }
 button{
 
-background-color: transparent;
+    background-color: transparent;
     margin-left: 5pt;
 }
 button img{
@@ -42,4 +44,17 @@ li{
     width:100pt;
     margin-top: 5pt;
     margin-bottom: 5pt;
+}
+label{
+
+    padding-left: 10pt;
+    padding-bottom: 8pt;
+    display: block;
+
+}
+form button {
+
+
+
+
 }

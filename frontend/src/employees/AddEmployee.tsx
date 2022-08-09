@@ -25,7 +25,7 @@ export default function AddEmployee(props: AddEmployeeProps) {
         <div>
             <form className="form" onSubmit={onEmployeeSubmit}>
                 <input value={name} onChange={onNameChange}/>
-                <button>Hinzufügen</button>
+                <button><img src={"../pictures/save.png"} alt={"hinzufügen"}/></button>
             </form>
         </div>
     )

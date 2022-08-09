@@ -23,17 +23,19 @@ export default function DetailEmployee(props: DetailEmployeesProps) {
     }
 
     return (<>
-            <h2>{employee?.name}</h2>
+            <h2>{employee?.name} <img src={""} alt={"EmployeePicture"}/></h2>
             <form>
-                <label htmlFor="xInput">X - Koordinate : <input id="xInput" type="text" value={valueX}
+                <label htmlFor="xInput"> X - Koordinate : <input id="xInput" type="text" value={valueX}
                                                                 onChange={(event) => {
                                                                     setValueX(event.target.value);
                                                                 }}/></label>
-                <label htmlFor="yInput">Y - Koordinate : <input id="yInput" type="text" value={valueY}
+                <label htmlFor="yInput"> Y - Koordinate : <input id="yInput" type="text" value={valueY}
                                                                 onChange={(event) => {
                                                                     setValueY(event.target.value);
                                                                 }}/></label>
-                <button type={"submit"} onClick={handleUpdate}>speichern</button>
+                <button type={"submit"} onClick={handleUpdate}>
+                    <img src={"../pictures/save.png"} alt={"save"}/>
+                </button>
             </form>
         </>
     )
