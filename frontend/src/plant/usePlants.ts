@@ -1,11 +1,12 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {PlantType, NewPlantType} from "./PlantType";
+import {NewPlantType, PlantType} from "./PlantType";
 import {toast} from "react-toastify";
 
 export default function usePlants() {
 
     const [plants, setPlants] = useState<PlantType[]>([])
+    const [apiPlants, setApiPlants] = useState<string[]>([])
 
     const getAllPlants = () => {
         axios.get("/api/plants")
@@ -25,10 +26,25 @@ export default function usePlants() {
             .then(getAllPlants)
     }
 
-    const deletePlant = (id : string) => {
+    const deletePlant = (id: string) => {
         return axios.delete("/api/plants/" + id)
             .then(getAllPlants)
-            .catch(error => toast("Leider ist ein Fehler aufgetreten "+error.message))
+            .catch(error => toast("Leider ist ein Fehler aufgetreten " + error.message))
     }
-    return {plants, addPlant, deletePlant}
+
+    const getPlantsFromApi = () => {
+        axios.get("/api/plants/apiplants")
+            .then(response => {
+                return response.data
+            })
+            .then(data => setApiPlants(data))
+            .catch(error => console.error(error))
+    }
+
+    useEffect(
+        () => getPlantsFromApi(), []
+    )
+
+
+    return {plants, addPlant, deletePlant, apiPlants}
 }

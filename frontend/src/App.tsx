@@ -14,13 +14,13 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function App() {
 
     const {animals, addAnimal, onDeleteAnimal} = useAnimals();
-    const {plants, addPlant, deletePlant} = usePlants();
+    const {plants, addPlant, deletePlant, apiPlants} = usePlants();
     const {trucks, addTruck} = useTrucks();
     const {employees, addEmployee, deleteEmployee} = useEmployee();
 
     return <>
         <h1>Zoo-Management</h1>
-        <PlantList plants={plants} addPlant={addPlant} deletePlant={deletePlant}/>
+        <PlantList plants={plants} addPlant={addPlant} deletePlant={deletePlant} apiPlants={apiPlants}/>
         <TruckGallery trucks={trucks} addTruck={addTruck}/>
         <AnimalList animals={animals} addAnimal={addAnimal} onDeleteAnimal={onDeleteAnimal}/>
         <Employees employees={employees} addEmployee={addEmployee} onDeleteEmployee={deleteEmployee}/>

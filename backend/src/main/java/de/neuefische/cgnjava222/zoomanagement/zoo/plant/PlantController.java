@@ -35,4 +35,10 @@ public class PlantController {
         boolean deleteSuccess = plantService.deletePlant(id);
         return new ResponseEntity<>(deleteSuccess ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);
     }
+
+    @GetMapping("/apiplants")
+    List<String> getPlantsFromApi() {
+        return plantService.getPlantsFromApi();
+    }
+
 }
