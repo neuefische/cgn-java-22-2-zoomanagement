@@ -15,7 +15,7 @@ export default function AnimalList(props:
             <h2>Tiere</h2>
             <ul>
                 {props.animals.map(animal =>
-                    <AnimalListItem animal={animal} onDeleteAnimal={props.onDeleteAnimal}/>
+                    <AnimalListItem key={animal.id} animal={animal} onDeleteAnimal={props.onDeleteAnimal}/>
                 )}
 
             </ul>
