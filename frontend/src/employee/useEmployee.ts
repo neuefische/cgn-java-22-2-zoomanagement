@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {Employee} from "./Employee";
+import Employee from "./Employee";
 import axios from "axios";
 import {NewEmployee} from "./NewEmployee";
 import {showError} from "./ErrorEmployee";
