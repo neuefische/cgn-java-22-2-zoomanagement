@@ -1,15 +1,11 @@
-import {Animal} from "../animal/Animal";
-import {PlantType} from "../plant/PlantType";
-import Employee from "../employee/Employee";
-import Truck from "../truck/Truck";
-
 export function filterGeneral(filterValue: string,
                               radioValue: string,
-                              objectList: Animal[] | PlantType[] | Employee[] | Truck[]) {
+                              objectList: { name: string, id: string }[],
+) {
 
-    const returnArray: Animal[] | PlantType[] | Employee[] | Truck[] = [];
+    const returnArray: { name: string, id: string }[] = [];
 
-    objectList.forEach((item: Animal | PlantType | Employee | Truck) => {
+    objectList.forEach((item: { name: string, id: string }) => {
         const searchParam: string[] = [];
 
         switch (radioValue) {

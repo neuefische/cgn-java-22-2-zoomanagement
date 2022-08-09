@@ -1,4 +1,4 @@
-import {Employee} from "./Employee";
+import Employee from "./Employee";
 import AddEmployee from "./AddEmployee";
 import {useState} from "react";
 import GeneralSearch from "../shared/GeneralSearch";
