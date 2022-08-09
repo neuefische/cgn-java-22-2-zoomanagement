@@ -38,4 +38,5 @@ class TruckControllerTest {
         //then
         Assertions.assertEquals(testTruck, actual);
     }
+
 }

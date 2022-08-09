@@ -8,6 +8,7 @@ type TruckGalleryProps = {
     addTruck: (name: string) => Promise<void>,
     deleteTruck: (id: string) => Promise<void>,
     getTruckById: (id: string) => Truck | undefined
+    updatedTruck: (truck: Truck) => Promise<void>,
 }
 
 export default function TruckGallery(props: TruckGalleryProps) {

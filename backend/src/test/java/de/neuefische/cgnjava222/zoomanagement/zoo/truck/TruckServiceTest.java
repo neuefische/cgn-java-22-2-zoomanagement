@@ -55,5 +55,14 @@ class TruckServiceTest {
         Assertions.assertEquals(testTruck, actual);
     }
 
+    @Test
+    void updatePositioningTest() {
+        Truck truck = new Truck("Döner-Truck", new Coordinates("2", "5"), "5");
+
+        when(testTruckRepo.save(any(Truck.class))).thenReturn(truck);
+        Truck actual = testTruckService.updateTruck(truck);
+        Assertions.assertEquals(truck, actual);
+
+    }
 }
 

@@ -46,7 +46,15 @@ export default function useTrucks() {
 
     }
 
+    const updatedTruck = (truck: Truck) => {
+        return axios.put("/api/trucks/" + truck.id, truck)
+            .then((response) => response.status)
+            .then(fetchAllTrucks)
+            .catch(error => notify("Netzwerkrequest fehlgeschlagen."));
 
-    return {trucks, addTruck, deleteTruck, getTruckById}
+    }
+
+
+    return {trucks, addTruck, deleteTruck, getTruckById, updatedTruck}
 
 }
