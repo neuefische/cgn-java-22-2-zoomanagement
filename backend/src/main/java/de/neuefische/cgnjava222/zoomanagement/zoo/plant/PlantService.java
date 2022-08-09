@@ -34,7 +34,7 @@ public class PlantService {
 
     public Plant getPlantById(String id) {
 
-        return plantRepo.findById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
+        return plantRepo.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
 

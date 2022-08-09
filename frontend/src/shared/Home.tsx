@@ -28,16 +28,17 @@ type HomeProps = {
         deleteEmployee: (id: string) => Promise<void>, addEmployee: (newName: string) => Promise<any>, employees: Employee[]
     },
 }
-export default function Home(props:HomeProps) {
+export default function Home(props: HomeProps) {
 
     return (
         <>
-        <PlantList plants={props.plantHook.plants} addPlant={props.plantHook.addPlant}  deletePlant={props.plantHook.deletePlant}/>
-        <TruckGallery trucks={props.truckHook.trucks} addTruck={props.truckHook.addTruck}/>
-        <AnimalList animals={props.animalHook.animals} addAnimal={props.animalHook.addAnimal}
-                    onDeleteAnimal={props.animalHook.onDeleteAnimal}/>
-        <Employees employees={props.employeeHook.employees} addEmployee={props.employeeHook.addEmployee}
-                   onDeleteEmployee={props.employeeHook.deleteEmployee}/>
-        <ToastContainer/>
-    </>);
+            <PlantList plants={props.plantHook.plants} addPlant={props.plantHook.addPlant}
+                       deletePlant={props.plantHook.deletePlant}/>
+            <TruckGallery trucks={props.truckHook.trucks} addTruck={props.truckHook.addTruck}/>
+            <AnimalList animals={props.animalHook.animals} addAnimal={props.animalHook.addAnimal}
+                        onDeleteAnimal={props.animalHook.onDeleteAnimal}/>
+            <Employees employees={props.employeeHook.employees} addEmployee={props.employeeHook.addEmployee}
+                       onDeleteEmployee={props.employeeHook.deleteEmployee}/>
+            <ToastContainer/>
+        </>);
 }

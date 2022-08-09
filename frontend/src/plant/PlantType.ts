@@ -4,7 +4,7 @@ export type PlantType = {
     position?: PositionType,
 
 }
- export type PositionType = {
+export type PositionType = {
     x: string,
     y: string,
 }

@@ -44,7 +44,7 @@ public class PlantController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Plant> updatePlantWithNewPosition(@PathVariable String id, @RequestBody Plant plantWithPosition){
+    public ResponseEntity<Plant> updatePlantWithNewPosition(@PathVariable String id, @RequestBody Plant plantWithPosition) {
         Plant updatedPlant = plantService.updatePlantWithNewPosition(id, plantWithPosition);
         return new ResponseEntity<>(updatedPlant, HttpStatus.OK);
     }

@@ -31,15 +31,13 @@ class PlantServiceTest {
     @Test
     void addPlantTest() {
         Plant plant = new Plant("Birke", UUID.randomUUID().toString(), new Position(null, null));
-        PlantRepo plantRepo = mock(PlantRepo.class);
         when(testPlantRepo.save(any(Plant.class))).thenReturn(plant);
-        PlantService plantService = new PlantService(plantRepo);
         Plant actual = testPlantService.addPlant(new NewPlant(plant.name()));
         assertThat(actual).isEqualTo(plant);
     }
 
     @Test
-    void deletePlantTest(){
+    void deletePlantTest() {
         doNothing().when(testPlantRepo).deleteById(any(String.class));
         when(testPlantRepo.existsById("2")).thenReturn(true);
         testPlantService.deletePlant("2");
@@ -62,33 +60,27 @@ class PlantServiceTest {
         //Given
         Plant plant = new Plant("Rose", "5", null);
 
-       when(testPlantRepo.existsById(plant.id())).thenReturn(false);
+        when(testPlantRepo.existsById(plant.id())).thenReturn(false);
 
         verify(testPlantRepo, times(0)).findById(plant.id());
     }
 
-    void updatePlantWithPositionTest(){
+    @Test
+    void updatePlantWithPositionTest() {
         //Given
         Plant plantWithPosition = new Plant("Rose", "5", new Position("1", "3"));
 
         //when
 
-      when(testPlantRepo.existsById(plantWithPosition.id())).thenReturn(true);
-      when(testPlantRepo.save(any(Plant.class))).thenReturn(plantWithPosition);
-      Plant actualPlant=testPlantService.updatePlantWithNewPosition(plantWithPosition.id(), plantWithPosition);
+        when(testPlantRepo.existsById(plantWithPosition.id())).thenReturn(true);
+        when(testPlantRepo.save(any(Plant.class))).thenReturn(plantWithPosition);
+        Plant actualPlant = testPlantService.updatePlantWithNewPosition(plantWithPosition.id(), plantWithPosition);
 
-      //then
+        //then
         assertThat(actualPlant).isEqualTo(plantWithPosition);
 
 
-
-
-
-
-
-
     }
-
 
 
 }

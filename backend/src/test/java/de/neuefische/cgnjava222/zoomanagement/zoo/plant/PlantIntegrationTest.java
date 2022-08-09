@@ -23,6 +23,7 @@ class PlantIntegrationTest {
     MockMvc mockMvc;
     @Autowired
     ObjectMapper objectMapper;
+
     @Test
     @DirtiesContext
     void getPlants() throws Exception {
@@ -61,7 +62,7 @@ class PlantIntegrationTest {
                 .perform(post("/api/plants")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
-                                 {"name": "Birke"},
+                                 {"name": "Birke"}
                                 """)
                 )
                 .andExpect(status().is(201));
@@ -69,7 +70,7 @@ class PlantIntegrationTest {
                 .perform(post("/api/plants")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
-                                 {"name": "Buche"},
+                                 {"name": "Buche"}
                                 """)
                 )
                 .andExpect(status().is(201));
@@ -109,7 +110,7 @@ class PlantIntegrationTest {
     @Test
     void deleteNoPlantExists() throws Exception {
 
-        String id="2";
+        String id = "2";
         mockMvc.perform(delete("http://localhost:8080/api/plants/" + id))
                 .andExpect(status().is(404));
     }
