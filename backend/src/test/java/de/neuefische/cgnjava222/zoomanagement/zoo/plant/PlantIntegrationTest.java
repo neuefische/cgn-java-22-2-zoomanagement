@@ -1,6 +1,7 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.plant;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -137,4 +138,34 @@ class PlantIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json(teststring));
     }
+
+    @Test
+    @DisplayName("updateOnePlant")
+    @DirtiesContext
+    void updateOnePlant() throws Exception {
+        String saveResult = mockMvc
+                .perform(post("/api/plants")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                 {"name": "Birke"}
+                                """))
+                .andReturn().getResponse().getContentAsString();
+
+        Plant saveResultPlant = objectMapper.readValue(saveResult, Plant.class);
+        Position newPosition = new Position("42", "22");
+        Plant updatedPlant = new Plant(saveResultPlant.name(), saveResultPlant.id(),
+                newPosition);
+        String updatedResult = mockMvc.perform(
+                        put("/api/plants/" + saveResultPlant.id())
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(objectMapper.writeValueAsString(updatedPlant))
+                )
+                .andExpect(status().is(200))
+                .andReturn().getResponse().getContentAsString();
+        Plant actualPlant = objectMapper.readValue(updatedResult, Plant.class);
+        Assertions.assertEquals(saveResultPlant.id(), actualPlant.id());
+        Assertions.assertEquals(newPosition, actualPlant.position());
+
+    }
+
 }
