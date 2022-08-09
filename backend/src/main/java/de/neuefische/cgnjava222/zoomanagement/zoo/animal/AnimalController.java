@@ -39,4 +39,9 @@ public class AnimalController {
         return new ResponseEntity<>(deleteSuccess ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);
     }
 
+    @GetMapping("/apianimals")
+    public List<String> getAnimalsFromAPI() {
+        return animalService.getAnimalsFromAPI();
+    }
+
 }

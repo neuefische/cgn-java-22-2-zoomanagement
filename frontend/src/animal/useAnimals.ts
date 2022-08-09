@@ -38,6 +38,15 @@ export default function useAnimals() {
                     )
                 })
     }
+    const [apiAnimals, setApiAnimals] = useState<string[]>([])
+    useEffect(() => {
+        getAnimalAPIList()
+    }, [])
 
-    return {animals, addAnimal, onDeleteAnimal}
+    const getAnimalAPIList = () => {
+        axios.get("/api/animals/apianimals")
+            .then(response => response.data)
+            .then(data => setApiAnimals(data))
+    }
+    return {animals, addAnimal, onDeleteAnimal, apiAnimals}
 }

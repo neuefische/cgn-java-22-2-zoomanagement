@@ -78,4 +78,5 @@ class AnimalServiceTest {
         animalService.deleteAnimal(animal.id());
         verify(animalRepo, times(0)).deleteById(animal.id());
     }
+
 }

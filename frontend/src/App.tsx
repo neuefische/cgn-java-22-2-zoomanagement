@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
 
-    const {animals, addAnimal, onDeleteAnimal} = useAnimals();
+    const {animals, addAnimal, onDeleteAnimal, apiAnimals} = useAnimals();
     const {plants, addPlant} = usePlants();
     const {trucks, addTruck} = useTrucks();
     const {employees, addEmployee, deleteEmployee} = useEmployee();
@@ -22,7 +22,7 @@ export default function App() {
         <h1>Zoo-Management</h1>
         <PlantList plants={plants} addPlant={addPlant}/>
         <TruckGallery trucks={trucks} addTruck={addTruck}/>
-        <AnimalList animals={animals} addAnimal={addAnimal} onDeleteAnimal={onDeleteAnimal}/>
+        <AnimalList animals={animals} addAnimal={addAnimal} onDeleteAnimal={onDeleteAnimal} apiAnimals={apiAnimals}/>
         <Employees employees={employees} addEmployee={addEmployee} onDeleteEmployee={deleteEmployee}/>
 
         <ToastContainer/>

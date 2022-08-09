@@ -89,4 +89,13 @@ class AnimalIntegrationTest {
                 .andExpect(status().is(404));
     }
 
+    @DirtiesContext
+    @Test
+    void animalsFromApi() throws Exception {
+        mockMvc.perform(get("/api/animals/apianimals"))
+                .andExpect(status().isOk());
+
+    }
+
+
 }
