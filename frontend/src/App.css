@@ -2,5 +2,44 @@ body{
 
 
     margin:0pt;
+    background-color: #EDF6F9;
+}
 
+main{
+
+    height:100vh;
+    background-color: #EDF6F9;
+}
+h2{
+
+    padding-left: 10pt;
+
+
+}
+input{
+
+    margin-left: 30pt;
+
+}
+button{
+
+background-color: transparent;
+    margin-left: 5pt;
+}
+button img{
+
+    width: 40px;
+    height: 40px;
+
+}
+li{
+
+
+    margin-left: 5pt;
+}
+.nameStyle{
+    display: inline-flex;
+    width:100pt;
+    margin-top: 5pt;
+    margin-bottom: 5pt;
 }

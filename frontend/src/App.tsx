@@ -13,7 +13,9 @@ export default function App() {
 
         <HashRouter>
             <Header/>
+            <main>
             <AllRoutes/>
+            </main>
             <Footer/>
         </HashRouter>
 

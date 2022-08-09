@@ -7,11 +7,11 @@ export default function Header() {
         <>
             <h1> Zoo-Management</h1>
             <div className="menu">
-            <NavLink className={"nav"} to={'/'}>Home</NavLink>
-            <NavLink className={"nav"} to={'/Animals'}>Animal</NavLink>
-            <NavLink className={"nav"} to={'/Trucks'}>Trucks</NavLink>
-            <NavLink className={"nav"} to={'/Employees'}>Employees</NavLink>
-            <NavLink className={"nav"} to={'/Plants'}>Plants</NavLink>
+            <NavLink className={"nav"} to={'/'}><img src={"../pictures/home.png"}/></NavLink>
+            <NavLink className={"nav"} to={'/Animals'}><img src={"../pictures/lion.png"}/></NavLink>
+            <NavLink className={"nav"} to={'/Trucks'}><img src={"../pictures/truck.png"}/></NavLink>
+            <NavLink className={"nav"} to={'/Employees'}><img src={"../pictures/employees.png"}/></NavLink>
+            <NavLink className={"nav"} to={'/Plants'}><img src={"../pictures/plant.png"}/></NavLink>
             </div>
         </>
     );

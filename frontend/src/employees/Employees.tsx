@@ -16,7 +16,7 @@ export default function Employees(props: EmployeesProps) {
 
         <div>
             <h2>Mitarbeiter</h2>
-            <AddEmployee addEmployee={props.addEmployee}/>
+
             <ul>
                 {props.employees.map((employee) =>
                     <li key={employee.id}>
@@ -24,6 +24,7 @@ export default function Employees(props: EmployeesProps) {
                                         onDeleteEmployee={props.onDeleteEmployee}/>
                     </li>)}
             </ul>
+            <AddEmployee addEmployee={props.addEmployee}/>
         </div>
 
     )
