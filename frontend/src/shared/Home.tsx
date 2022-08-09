@@ -1,13 +1,13 @@
 import PlantList from "../plant/PlantList";
 import TruckGallery from "../truck/TruckGallery";
 import AnimalList from "../animal/AnimalList";
-import Employees from "../employees/Employees";
+import Employees from "../employee/Employees";
 import {ToastContainer} from "react-toastify";
 import React from "react";
 import {Animal} from "../animal/Animal";
 
 import Truck from "../truck/Truck";
-import {Employee} from "../employees/Employee";
+import Employee from "../employee/Employee";
 import {PlantType} from "../plant/PlantType";
 
 type HomeProps = {

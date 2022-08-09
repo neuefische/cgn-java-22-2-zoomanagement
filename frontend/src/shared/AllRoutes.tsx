@@ -7,7 +7,7 @@ import Home from "./Home";
 import useAnimals from "../animal/useAnimals";
 import usePlants from "../plant/usePlants";
 import useTrucks from "../truck/useTrucks";
-import useEmployee from "../employees/useEmployee";
+import useEmployee from "../employee/useEmployee";
 
 export default function AllRoutes() {
 
