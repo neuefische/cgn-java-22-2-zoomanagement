@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class ZooRunner implements ApplicationRunner {
 
-  private final   PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
-   private final ZooUserRepo zooUserRepo;
+    private final ZooUserRepo zooUserRepo;
 
     public ZooRunner(PasswordEncoder passwordEncoder, ZooUserRepo zooUserRepo) {
         this.passwordEncoder = passwordEncoder;
@@ -20,10 +20,16 @@ public class ZooRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        ZooUser zooUser=new ZooUser("frank", passwordEncoder.encode("frank123"));
 
-        zooUserRepo.save(zooUser);
-        System.out.println(zooUserRepo.findById("frank"));
+        ZooUser zooUser = zooUserRepo.findById("frank").orElse(
+
+            zooUserRepo.save( new ZooUser("frank2.0", passwordEncoder.encode("frank123")))
+
+        );
+
+        System.out.println(zooUser);
+
+
 
 
     }
