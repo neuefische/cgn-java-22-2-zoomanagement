@@ -1,5 +1,5 @@
 import DetailPlant from "../plant/DetailPlant";
-import DetailEmployee from "../employees/DetailEmployee";
+import DetailEmployee from "../employee/DetailEmployee";
 import React from "react";
 import {Route, Routes} from "react-router-dom";
 import Home from "./Home";
