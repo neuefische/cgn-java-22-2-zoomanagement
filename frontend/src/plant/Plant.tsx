@@ -12,8 +12,8 @@ export default function Plant(props: PlantProps) {
 
     return (
         <div key={props.plant.id}>{props.plant.name}
-            <button onClick={() => props.deletePlant(props.plant.id)}>löschen</button>
-            <button onClick={() => navigate(`/plant/${props.plant.id}`)}>details</button>
+            <button onClick={() => props.deletePlant(props.plant.id)}><img src={"../pictures/trash.png"} alt={"löschen"}/></button>
+            <button onClick={() => navigate(`/plant/${props.plant.id}`)}><img src={"../pictures/details.png"} alt={"details"}/></button>
         </div>
     )
 
