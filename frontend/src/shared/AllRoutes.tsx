@@ -23,30 +23,29 @@ export default function AllRoutes() {
     return (
         <>
 
-        <Routes>
-            <Route path={"/"} element={<Home animalHook={animalHook}
-                                             truckHook={truckHook}
-                                             employeeHook={employeeHook}
-                                             plantHook={plantHook}/>}/>
-            <Route path={"/employees/:id"} element={<DetailEmployee
-                employees={employeeHook.employees}
-                employeeUpdate={employeeHook.updateEmployee}/>}/>
+            <Routes>
+                <Route path={"/"} element={<Home animalHook={animalHook}
+                                                 truckHook={truckHook}
+                                                 employeeHook={employeeHook}
+                                                 plantHook={plantHook}/>}/>
 
-            <Route path={"/animals"} element={<AnimalList animals={animalHook.animals}
-                                                          addAnimal={animalHook.addAnimal}
-                                                          onDeleteAnimal={animalHook.onDeleteAnimal}/>}/>
-            <Route path={"/employees"}
-                   element={<Employees employees={employeeHook.employees}
-                                       addEmployee={employeeHook.addEmployee}
-                                       onDeleteEmployee={employeeHook.deleteEmployee}/>}/>
-            <Route path={"/trucks"} element={<TruckGallery trucks={truckHook.trucks}
-                                                           addTruck={truckHook.addTruck}/>}/>
-            <Route path={"/plants"} element={<PlantList plants={plantHook.plants}
-                                                        addPlant={plantHook.addPlant}/>}/>
 
-            <Route path={"/plant/:id"}
-                   element={<DetailPlant plants={plantHook.plants} updatePlant={plantHook.updatePlant}/>}/>
-        </Routes>
+                <Route path={"/animals"} element={<AnimalList animals={animalHook.animals}
+                                                              addAnimal={animalHook.addAnimal}
+                                                              onDeleteAnimal={animalHook.onDeleteAnimal}/>}/>
+                <Route path={"/employees"}
+                       element={<Employees employees={employeeHook.employees}
+                                           addEmployee={employeeHook.addEmployee}
+                                           onDeleteEmployee={employeeHook.deleteEmployee}/>}/>
+                <Route path={"/trucks"} element={<TruckGallery trucks={truckHook.trucks}
+                                                               addTruck={truckHook.addTruck}/>}/>
+                <Route path={"/plants"} element={<PlantList plants={plantHook.plants}
+                                                            addPlant={plantHook.addPlant}
+                                                            deletePlant={plantHook.deletePlant}/>}/>
 
+                <Route path={"/plant/:id"}
+                       element={<DetailPlant plants={plantHook.plants} updatePlant={plantHook.updatePlant}/>}/>
+            </Routes>
+        </>
     )
 }
