@@ -35,7 +35,7 @@ export default function useTrucks() {
         return axios.delete("/api/trucks/" + id)
             .then((response) => response.status)
             .then(fetchAllTrucks)
-            .catch(error => notify("existiert nicht"));
+            .catch(() => notify("existiert nicht"));
     }
 
     return {trucks, addTruck, deleteTrucks}
