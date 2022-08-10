@@ -1,13 +1,15 @@
-import DetailEmployee from "../employees/DetailEmployee";
+import DetailPlant from "../plant/DetailPlant";
+
+
 import React from "react";
-import { Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Home from "./Home";
 import useAnimals from "../animal/useAnimals";
 import usePlants from "../plant/usePlants";
 import useTrucks from "../truck/useTrucks";
-import useEmployee from "../employees/useEmployee";
+import useEmployee from "../employee/useEmployee";
 import AnimalList from "../animal/AnimalList";
-import Employees from "../employees/Employees";
+import Employees from "../employee/Employees";
 import TruckGallery from "../truck/TruckGallery";
 import PlantList from "../plant/PlantList";
 
@@ -23,10 +25,9 @@ export default function AllRoutes() {
 
         <Routes>
             <Route path={"/"} element={<Home animalHook={animalHook}
-                                             plantHook={plantHook}
                                              truckHook={truckHook}
                                              employeeHook={employeeHook}
-            />}/>
+                                             plantHook={plantHook}/>}/>
             <Route path={"/employees/:id"} element={<DetailEmployee
                 employees={employeeHook.employees}
                 employeeUpdate={employeeHook.updateEmployee}/>}/>
@@ -43,9 +44,9 @@ export default function AllRoutes() {
             <Route path={"/plants"} element={<PlantList plants={plantHook.plants}
                                                         addPlant={plantHook.addPlant}/>}/>
 
+            <Route path={"/plant/:id"}
+                   element={<DetailPlant plants={plantHook.plants} updatePlant={plantHook.updatePlant}/>}/>
         </Routes>
 
-
-</>
     )
 }

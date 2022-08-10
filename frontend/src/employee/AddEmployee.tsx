@@ -1,5 +1,5 @@
 import {ChangeEvent, FormEvent, useState} from "react";
-import {Employee} from "./Employee";
+import Employee from "./Employee";
 import {showError} from "./ErrorEmployee";
 
 type AddEmployeeProps = {
