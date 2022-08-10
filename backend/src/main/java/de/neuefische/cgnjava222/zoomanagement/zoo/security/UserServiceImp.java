@@ -14,18 +14,15 @@ public class UserServiceImp implements UserDetailsService {
 
     private final ZooUserRepo zooUserRepo;
 
-
-
     public UserServiceImp(ZooUserRepo zooUserRepo) {
         this.zooUserRepo = zooUserRepo;
 
     }
 
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        ZooUser zooUser=zooUserRepo.findById(username).orElse(null);
+        ZooUser zooUser = zooUserRepo.findById(username).orElse(null);
 
 
         if (zooUser == null) {
