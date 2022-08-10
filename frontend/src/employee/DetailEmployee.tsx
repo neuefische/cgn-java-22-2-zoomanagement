@@ -6,12 +6,12 @@ type DetailEmployeesProps = {
     employees: Employee[],
     employeeUpdate: (employee: Employee) => void,
 }
+
 export default function DetailEmployee(props: DetailEmployeesProps) {
     const {id} = useParams();
     const [valueX, setValueX] = useState<string>("")
     const [valueY, setValueY] = useState<string>("")
     const employee: Employee | undefined = props.employees.find((e: Employee) => e.id === id);
-
 
     const handleUpdate = () => {
 

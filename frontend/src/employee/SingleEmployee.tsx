@@ -1,6 +1,5 @@
-import {Employee} from "./Employee";
+import Employee from "./Employee";
 import {useNavigate} from "react-router-dom"
-
 
 type SingleEmployeesProps = {
     employee: Employee,
