@@ -6,6 +6,11 @@
     padding: 0.5em;
 }
 
+.selectDropdown:hover {
+    cursor: pointer;
+    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .addPlantBtn {
     background-color: transparent;
     color: var(--darkGreen);
@@ -18,5 +23,7 @@
     cursor: pointer;
     background-color: var(--darkGreen);
     color: var(--white);
+    border-color: transparent;
     transition: ease 0.5s;
+    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
