@@ -49,9 +49,6 @@ export default function usePlants() {
             })
     }
 
-    return {plants, addPlant, deletePlant, updatePlant}
-
-
     const getPlantsFromApi = () => {
         axios.get("/api/plants/apiplants")
             .then(response => {
@@ -66,5 +63,6 @@ export default function usePlants() {
     )
 
 
-    return {plants, addPlant, deletePlant, apiPlants}
+    return {plants, addPlant, deletePlant, updatePlant, apiPlants}
+
 }
