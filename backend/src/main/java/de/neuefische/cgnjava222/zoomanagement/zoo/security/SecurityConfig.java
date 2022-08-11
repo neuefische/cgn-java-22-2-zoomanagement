@@ -8,22 +8,17 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
     private final UserDetailsService userDetailsService;
-
     public SecurityConfig(UserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
         auth.userDetailsService(userDetailsService);
     }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -31,9 +26,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**")
                 .permitAll()
                 .and()
-                .httpBasic().and().csrf().disable();;
+                .httpBasic().and().csrf().disable();
     }
-
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();

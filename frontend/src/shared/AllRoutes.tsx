@@ -8,6 +8,9 @@ import useAnimals from "../animal/useAnimals";
 import usePlants from "../plant/usePlants";
 import useTrucks from "../truck/useTrucks";
 import useEmployee from "../employee/useEmployee";
+import Login from "./LogIn";
+
+
 
 export default function AllRoutes() {
 
@@ -26,6 +29,7 @@ export default function AllRoutes() {
                                              plantHook={plantHook}/>}/>
             <Route path={"/plant/:id"}
                    element={<DetailPlant plants={plantHook.plants} updatePlant={plantHook.updatePlant}/>}/>
+            <Route path={"/login"} element={<Login/>}/>
         </Routes>
 
     )
