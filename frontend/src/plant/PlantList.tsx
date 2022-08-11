@@ -1,6 +1,7 @@
 import AddPlant from "./AddPlant";
 import {PlantType} from "./PlantType";
 import Plant from "./Plant";
+import "../App.css"
 
 type PlantListProps = {
     plants: PlantType[],
@@ -14,9 +15,7 @@ export default function PlantList(props: PlantListProps) {
             <h2>Pflanzen</h2>
             <ul>
                 {props.plants.map(plant => <li key={plant.id}>
-                    <div className={"nameStyle"}>
-                        <Plant plant={plant} deletePlant={props.deletePlant}/>
-                    </div>
+                    <Plant plant={plant} deletePlant={props.deletePlant}/>
                 </li>)}
             </ul>
             <AddPlant addPlant={props.addPlant}/>
