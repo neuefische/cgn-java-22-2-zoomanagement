@@ -13,8 +13,8 @@ export default function App() {
         <Header/>
         <HashRouter>
             <AllRoutes/>
+            <Footer/>
         </HashRouter>
-        <Footer/>
         <ToastContainer/>
     </>;
 }
