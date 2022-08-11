@@ -2,7 +2,6 @@ import PlantList from "../plant/PlantList";
 import TruckGallery from "../truck/TruckGallery";
 import AnimalList from "../animal/AnimalList";
 import Employees from "../employee/Employees";
-import {ToastContainer} from "react-toastify";
 import React from "react";
 import {Animal} from "../animal/Animal";
 import Truck from "../truck/Truck";
@@ -49,6 +48,5 @@ export default function Home(props: HomeProps) {
                         onDeleteAnimal={props.animalHook.onDeleteAnimal}/>
             <Employees employees={props.employeeHook.employees} addEmployee={props.employeeHook.addEmployee}
                        onDeleteEmployee={props.employeeHook.deleteEmployee}/>
-            <ToastContainer/>
         </>);
 }
