@@ -18,29 +18,29 @@ const addMissingPlant=(newPlant:PlantType)=>{
     setMissingPositionPlant(state=>[...state,newPlant])
 }
 const checkPositionPlant=(element :PlantType)=> {
+    console.log(element);
+
      if(!element.position){
          console.log("keine Position")
-         console.log(element);
-         addMissingPlant(element)}
+          addMissingPlant(element)}
      else{
          if(element.position.x===null||element.position.y===null){
              console.log("keine Position")
-             console.log(element);
-             addMissingPlant(element)}
+              addMissingPlant(element)}
          else{
 
          console.log("mit Position");
-         console.log(element);}
-    }}
+     }}}
 
 
-
+useEffect(()=>{
+    console.log("props.plants");
+    console.log(props.plants);
     setMissingPositionPlant([]);
     props.plants.forEach(checkPositionPlant);
-    console.log(props.plants[1]);
+     },[props.plants]);
 
-console.log(missingPositionPlant);
-    return(
+     return(
         <>
         <p>folgende Elemente haben keine Position:</p>
             {missingPositionPlant.map(( element)=>element.name )
