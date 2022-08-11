@@ -8,7 +8,6 @@ import java.util.List;
 public class TruckService {
     private final TruckRepo truckRepo;
 
-
     public TruckService(TruckRepo truckRepo) {
         this.truckRepo = truckRepo;
     }
@@ -25,13 +24,11 @@ public class TruckService {
         boolean doesTruckExist = truckRepo.existsById(truckToDelete);
         if (doesTruckExist) {
             truckRepo.deleteById(truckToDelete);
-
         }
         return doesTruckExist;
     }
 
     public Truck updateTruck(Truck truck) {
         return truckRepo.save(truck);
-
     }
 }
