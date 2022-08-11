@@ -39,9 +39,11 @@ export default function AddAnimal(props: AddAnimalProps) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <select id="select" value={animalName} onChange={handleChange}>
-                {props.apiAnimals.map(apiAnimal => (<option value={apiAnimal}>{apiAnimal}</option>))}
+
+            <select value={animalName} onChange={handleChange}>
+                {props.apiAnimals.map(apiAnimal => (<option className="option" value={apiAnimal}>{apiAnimal}</option>))}
             </select>
+
             <button type={"submit"}>hinzufügen</button>
         </form>
     );
