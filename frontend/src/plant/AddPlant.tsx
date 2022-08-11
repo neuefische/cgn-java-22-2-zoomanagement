@@ -1,6 +1,7 @@
 import {FormEvent, useEffect, useState} from "react";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import "./AddPlant.css"
 
 type AddPlantProps = {
     addPlant: (name: string) => Promise<void>,
@@ -35,11 +36,12 @@ export default function AddPlant(props: AddPlantProps) {
 
     }
     return <form onSubmit={submitInput}>
-        <select value={plantNameToAdd} onChange={event => setPlantNameToAdd(event.target.value)}>
+        <select className={"selectDropdown"} value={plantNameToAdd}
+                onChange={event => setPlantNameToAdd(event.target.value)}>
             {props.apiPlants.map(plant =>
-                <option value={plant}>{plant}</option>)}
+                <option className={"option"} value={plant}>{plant}</option>)}
         </select>
-        <button type={"submit"}>hinzufügen</button>
+        <button className={"addPlantBtn"} type={"submit"}>hinzufügen</button>
         <ToastContainer/>
     </form>
 }

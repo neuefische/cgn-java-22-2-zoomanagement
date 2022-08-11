@@ -1,0 +1,22 @@
+.selectDropdown {
+    color: var(--darkGreen);
+    background-color: var(--white);
+    border-radius: 10px;
+    margin-right: 1em;
+    padding: 0.5em;
+}
+
+.addPlantBtn {
+    background-color: transparent;
+    color: var(--darkGreen);
+    border: var(--brightGreen) 2px solid;
+    border-radius: 5px;
+    padding: 0.5em;
+}
+
+.addPlantBtn:hover {
+    cursor: pointer;
+    background-color: var(--darkGreen);
+    color: var(--white);
+    transition: ease 0.5s;
+}
