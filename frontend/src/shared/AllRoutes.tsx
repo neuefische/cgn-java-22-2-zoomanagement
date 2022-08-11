@@ -19,7 +19,6 @@ export default function AllRoutes() {
 
         <Routes>
             <Route path={"/"} element={<Home animalHook={animalHook}
-
                                              truckHook={truckHook}
                                              employeeHook={employeeHook}
                                              plantHook={plantHook}/>}/>
