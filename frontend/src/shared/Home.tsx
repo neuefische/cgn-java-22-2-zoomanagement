@@ -1,13 +1,14 @@
 import PlantList from "../plant/PlantList";
 import TruckGallery from "../truck/TruckGallery";
 import AnimalList from "../animal/AnimalList";
-import Employees from "../employees/Employees";
+import Employees from "../employee/Employees";
 import {ToastContainer} from "react-toastify";
 import React from "react";
 import {Animal} from "../animal/Animal";
-import {PlantType} from "../plant/PlantType";
 import Truck from "../truck/Truck";
-import {Employee} from "../employees/Employee";
+import Employee from "../employee/Employee";
+import {PlantType} from "../plant/PlantType";
+
 
 type HomeProps = {
     animalHook: {
@@ -16,7 +17,9 @@ type HomeProps = {
         onDeleteAnimal: (id: string) => Promise<void>,
     },
     plantHook: {
-        plants: PlantType[], addPlant: (name: string) => Promise<void>, deletePlant: (id: string) => void
+        plants: PlantType[],
+        addPlant: (name: string) => Promise<void>,
+        deletePlant: (id: string) => Promise<void>,
     },
     truckHook: {
         trucks: Truck[], addTruck: (name: string) => Promise<void>
