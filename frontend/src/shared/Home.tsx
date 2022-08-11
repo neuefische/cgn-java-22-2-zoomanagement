@@ -9,6 +9,7 @@ import {Animal} from "../animal/Animal";
 import Truck from "../truck/Truck";
 import Employee from "../employee/Employee";
 import {PlantType} from "../plant/PlantType";
+import CheckPositionRules from "./CheckPositionRules";
 
 type HomeProps = {
     animalHook: {
@@ -39,6 +40,10 @@ export default function Home(props: HomeProps) {
                         onDeleteAnimal={props.animalHook.onDeleteAnimal}/>
             <Employees employees={props.employeeHook.employees} addEmployee={props.employeeHook.addEmployee}
                        onDeleteEmployee={props.employeeHook.deleteEmployee}/>
+            <CheckPositionRules trucks={props.truckHook.trucks}
+                                plants={props.plantHook.plants}
+                                employees={props.employeeHook.employees}
+                                animals={props.animalHook.animals}/>
             <ToastContainer/>
         </>);
 }
