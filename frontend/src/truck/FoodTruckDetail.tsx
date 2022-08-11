@@ -25,8 +25,14 @@ export default function FoodTruckDetail(props: FoodTruckDetailsProps) {
         }
     }
 
+    if (!truck) {
+        return <>Truck nicht vorhanden</>
+    }
+
+
     return (
         <>
+            
             <h2>{truck?.name}</h2>
             <form onSubmit={updatedTruck}>
 
