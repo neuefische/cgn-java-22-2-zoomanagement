@@ -87,4 +87,16 @@ class TruckControllerIntegrationTest {
                         """));
     }
 
+
+    @DirtiesContext
+    @Test
+    void deleteTruckDoesNotExist() throws Exception {
+        String id = "4";
+
+        mockMvc.perform(delete("http://localhost:8080/api/trucks" + id))
+                .andExpect(status().is(404));
+
+
+    }
+
 }
