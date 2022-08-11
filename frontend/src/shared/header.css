@@ -13,17 +13,17 @@
 
 }
 .menu{
-    margin: 0pt;
+    margin: 0;
     display: flex;
     justify-content: space-around;
     border-bottom-style: solid;
     padding-bottom: 5px;
-    border-bottom-style: solid;
+
     border-width: 1.5px;
     background-color: #FFDDD2;
 }
 h1{
-    margin: 0pt;
+    margin: 0;
     background-color: #FFDDD2;
     text-align: center;
     padding-bottom: 10px;
