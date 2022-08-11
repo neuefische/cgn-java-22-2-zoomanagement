@@ -61,7 +61,6 @@ class TruckIntegrationTest {
         Assertions.assertTrue(content.contains("Dner1"));
     }
 
-
     @DirtiesContext
     @Test
     void deleteTrucks() throws Exception {
@@ -87,12 +86,9 @@ class TruckIntegrationTest {
                         """));
     }
 
-
     @DirtiesContext
     @Test
     void updatePositioningTest() throws Exception {
-
-
         String saveResult = mockMvc.perform(post(
                 "/api/trucks")
                 .contentType(MediaType.APPLICATION_JSON)
