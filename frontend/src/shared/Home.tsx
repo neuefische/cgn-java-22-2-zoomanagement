@@ -1,12 +1,13 @@
 import PlantList from "../plant/PlantList";
 import TruckGallery from "../truck/TruckGallery";
 import AnimalList from "../animal/AnimalList";
-import Employees from "../employees/Employees";
+import Employees from "../employee/Employees";
+import {ToastContainer} from "react-toastify";
 import React from "react";
 import {Animal} from "../animal/Animal";
-import {Plant} from "../plant/Plant";
 import Truck from "../truck/Truck";
-import {Employee} from "../employees/Employee";
+import Employee from "../employee/Employee";
+import {PlantType} from "../plant/PlantType";
 
 type HomeProps = {
     animalHook: {
@@ -15,8 +16,11 @@ type HomeProps = {
         onDeleteAnimal: (id: string) => Promise<void>,
     },
     plantHook: {
-        plants: Plant[], addPlant: (name: string) => Promise<void>
+        plants: PlantType[],
+        addPlant: (name: string) => Promise<void>,
+        deletePlant: (id: string) => Promise<void>,
     },
+
     truckHook: {
         trucks: Truck[],
         addTruck: (name: string) => Promise<any>,
@@ -30,16 +34,21 @@ type HomeProps = {
         employees: Employee[]
     },
 }
+
 export default function Home(props: HomeProps) {
 
-    return (<>
-        <PlantList plants={props.plantHook.plants} addPlant={props.plantHook.addPlant}/>
-        <TruckGallery trucks={props.truckHook.trucks} addTruck={props.truckHook.addTruck}
-                      deleteTruck={props.truckHook.deleteTruck} getTruckById={props.truckHook.getTruckById}
-                      updatedTruck={props.truckHook.updatedTruck}/>
-        <AnimalList animals={props.animalHook.animals} addAnimal={props.animalHook.addAnimal}
-                    onDeleteAnimal={props.animalHook.onDeleteAnimal}/>
-        <Employees employees={props.employeeHook.employees} addEmployee={props.employeeHook.addEmployee}
-                   onDeleteEmployee={props.employeeHook.deleteEmployee}/>
-    </>);
+
+    return (
+        <>
+            <PlantList plants={props.plantHook.plants} addPlant={props.plantHook.addPlant}
+                       deletePlant={props.plantHook.deletePlant}/>
+            <TruckGallery trucks={props.truckHook.trucks} addTruck={props.truckHook.addTruck}
+                          deleteTruck={props.truckHook.deleteTruck} getTruckById={props.truckHook.getTruckById}
+                          updatedTruck={props.truckHook.updatedTruck}/>
+            <AnimalList animals={props.animalHook.animals} addAnimal={props.animalHook.addAnimal}
+                        onDeleteAnimal={props.animalHook.onDeleteAnimal}/>
+            <Employees employees={props.employeeHook.employees} addEmployee={props.employeeHook.addEmployee}
+                       onDeleteEmployee={props.employeeHook.deleteEmployee}/>
+            <ToastContainer/>
+        </>);
 }

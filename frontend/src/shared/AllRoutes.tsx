@@ -1,11 +1,12 @@
-import DetailEmployee from "../employees/DetailEmployee";
+import DetailPlant from "../plant/DetailPlant";
+import DetailEmployee from "../employee/DetailEmployee";
 import React from "react";
 import {Route, Routes} from "react-router-dom";
 import Home from "./Home";
 import useAnimals from "../animal/useAnimals";
 import usePlants from "../plant/usePlants";
 import useTrucks from "../truck/useTrucks";
-import useEmployee from "../employees/useEmployee";
+import useEmployee from "../employee/useEmployee";
 import FoodTruckDetail from "../truck/FoodTruckDetail";
 
 export default function AllRoutes() {
@@ -30,7 +31,8 @@ export default function AllRoutes() {
             <Route path={"/trucks/:id"} element={<FoodTruckDetail
                 trucks={truckHook.trucks} getTruckById={truckHook.getTruckById} updatedTruck={truckHook.updatedTruck}
             />}/>
-
+            <Route path={"/plant/:id"}
+                   element={<DetailPlant plants={plantHook.plants} updatePlant={plantHook.updatePlant}/>}/>
         </Routes>
 
     )

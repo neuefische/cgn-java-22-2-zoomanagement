@@ -14,9 +14,9 @@ class PlantControllerTest {
     private final PlantService testPlantService = mock(PlantService.class);
     private final PlantController testPlantController = new PlantController(testPlantService);
     private final List<Plant> testList = List.of(
-            new Plant("Birke", UUID.randomUUID().toString()),
-            new Plant("Buche", UUID.randomUUID().toString()),
-            new Plant("Lärche", UUID.randomUUID().toString()));
+            new Plant("Birke", UUID.randomUUID().toString(), new Position("0", "0")),
+            new Plant("Buche", UUID.randomUUID().toString(), new Position("0", "0")),
+            new Plant("Lärche", UUID.randomUUID().toString(), new Position("0", "0")));
 
     @Test
     void getAllPlantsTest() {
