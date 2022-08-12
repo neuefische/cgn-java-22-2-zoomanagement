@@ -11,7 +11,7 @@ type UseRulesProps = {
     plants: PlantType[],
 }
 
-export default function useRules(props: UseRulesProps) {
+export default function useRules(employees: Employee[], animals: Animal[], trucks: Truck[], plants: PlantType[]) {
     const [missingPositionPlant, setMissingPositionPlant] = useState<PlantType[]>([]);
 
     const addMissingPlant = (newPlant: PlantType) => {
@@ -30,8 +30,8 @@ export default function useRules(props: UseRulesProps) {
 
     useEffect(() => {
         setMissingPositionPlant([]);
-        props.plants.forEach(checkPositionPlant);
-    }, [props.plants]);
+        plants.forEach(checkPositionPlant);
+    }, [plants]);
 
     return (
         missingPositionPlant

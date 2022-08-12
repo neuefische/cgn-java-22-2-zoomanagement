@@ -20,10 +20,6 @@ export default function CheckPositionRules(props:checkPositionRulesProps){
      return (
 
          <>
-             <useRules employees={props.employees}
-                       animals={props.animals}
-                       trucks={props.trucks}
-                       plants={props.plants}/>
              <p>folgende Elemente haben keine Position:</p>
              <ul>  {props.missingPositionPlant.map((element) => <li>{element.name}</li>)
              }
@@ -35,4 +31,4 @@ export default function CheckPositionRules(props:checkPositionRulesProps){
 //<useRules employees={props.employees}
 //             animals={props.animals}
 //             trucks={props.trucks}
-//             plants
+//             plants={props.plants}/>

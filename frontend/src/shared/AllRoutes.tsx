@@ -16,13 +16,16 @@ export default function AllRoutes() {
     const truckHook = useTrucks();
     const employeeHook = useEmployee();
 
+
     return (
 
         <Routes>
             <Route path={"/"} element={<Home animalHook={animalHook}
                                              truckHook={truckHook}
                                              employeeHook={employeeHook}
-                                             plantHook={plantHook}/>}/>
+                                             plantHook={plantHook}
+
+            />}/>
             <Route path={"/plant/:id"}
                    element={<DetailPlant plants={plantHook.plants} updatePlant={plantHook.updatePlant}/>}/>
         </Routes>

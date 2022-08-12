@@ -43,7 +43,11 @@ export default function Home(props: HomeProps) {
                         onDeleteAnimal={props.animalHook.onDeleteAnimal}/>
             <Employees employees={props.employeeHook.employees} addEmployee={props.employeeHook.addEmployee}
                        onDeleteEmployee={props.employeeHook.deleteEmployee}/>
-            <CheckPositionRules missingPositionPlant={props.rulesHook.missingPositionPlant}/>
+            <CheckPositionRules missingPositionPlant={props.rulesHook.missingPositionPlant}
+                                plants={props.plantHook.plants}
+                                trucks={props.truckHook.trucks}
+                                animals={props.animalHook.animals}
+                                employees={props.employeeHook.employees}/>
             <ToastContainer/>
         </>);
 }
