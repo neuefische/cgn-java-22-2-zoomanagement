@@ -1,6 +1,7 @@
 import {FormEvent, useState} from "react";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import "../App.css"
 
 type AddPlantProps = {
     addPlant: (name: string) => Promise<void>;
@@ -21,11 +22,10 @@ export default function AddPlant(props: AddPlantProps) {
         } else {
             notify("Bitte geben Sie einen Pflanzennamen ein!");
         }
-
     }
     return <form onSubmit={submitInput}>
         <input type={"input"} value={plantNameToAdd} onChange={event => setPlantNameToAdd(event.target.value)}/>
-        <button type={"submit"}>hinzufügen</button>
+        <button type={"submit"}><img src={"../pictures/save.png"} alt={"hinzufügen"}/></button>
         <ToastContainer/>
     </form>
 }

@@ -35,7 +35,7 @@ export default function AddAnimal(props: AddAnimalProps) {
     return (
         <form onSubmit={handleSubmit}>
             <input onChange={handleChange} value={animalName}/>
-            <button type={"submit"}>hinzufügen</button>
+            <button type={"submit"}><img src={"../pictures/save.png"} alt={"hinzufügen"}/></button>
         </form>
     );
 }
