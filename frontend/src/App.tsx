@@ -10,6 +10,7 @@ import useAnimals from "./animal/useAnimals";
 import AnimalList from "./animal/AnimalList";
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import GameBoard from "./grid/GameBoard";
 
 export default function App() {
 
@@ -26,6 +27,7 @@ export default function App() {
         <Employees employees={employees} addEmployee={addEmployee} onDeleteEmployee={deleteEmployee}/>
 
         <ToastContainer/>
-    </>;
+        <GameBoard cell={cell} gameCells={gameCells}
+        </>;
 
 }
