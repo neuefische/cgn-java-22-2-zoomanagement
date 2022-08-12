@@ -7,7 +7,6 @@ import {Position} from "../shared/Position";
 
 
 export default function useAnimals() {
-
     const [animals, setAnimals] = useState<Animal[]>([]);
 
     useEffect(() => {
