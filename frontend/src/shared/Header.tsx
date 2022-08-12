@@ -9,7 +9,7 @@ export default function Header() {
         document.title = tab;
     });
     return (
-        <>
+        <header>
             <h1> Zoo-Management</h1>
             <nav className="menu">
             <NavLink className={"nav"} onClick={()=>setTab("Home")} to={'/'}><img src={"../pictures/home.png"} alt={"Home"}/></NavLink>
@@ -18,6 +18,6 @@ export default function Header() {
             <NavLink className={"nav"} onClick={()=>setTab("Employees")} to={'/Employees'}><img src={"../pictures/employees.png"} alt={"Employees"}/></NavLink>
             <NavLink className={"nav"} onClick={()=>setTab("Plants")} to={'/Plants'}><img src={"../pictures/plant.png"} alt={"Plants"}/></NavLink>
             </nav>
-        </>
+        </header>
     );
 }
