@@ -23,7 +23,8 @@ public class AnimalService {
         return animalRepo.save(new Animal(
                 UUID.randomUUID().toString(),
                 newAnimal.name(),
-                newAnimal.position()
+                newAnimal.position(),
+                newAnimal.emoji()
         ));
 
     }
@@ -43,4 +44,15 @@ public class AnimalService {
 
         return animalWithPosition;
     }
+
+
+    public Animal updateAnimalEmoji(Animal animalWithEmoji) {
+
+        animalRepo.deleteById(animalWithEmoji.id());
+        animalRepo.save(animalWithEmoji);
+
+        return animalWithEmoji;
+    }
+
+
 }

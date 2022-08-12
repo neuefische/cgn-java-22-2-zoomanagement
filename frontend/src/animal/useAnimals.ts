@@ -4,6 +4,7 @@ import {Animal} from "./Animal";
 import {toast} from "react-toastify";
 import {NewAnimal} from "./NewAnimal";
 import {Position} from "../shared/Position";
+import {Emoji} from "./Emoji";
 
 
 export default function useAnimals() {
@@ -47,7 +48,7 @@ export default function useAnimals() {
         const newAnimalWithPosition: Animal = {
             name: animal.name,
             id: animal.id,
-            position: position
+            position: position,
         }
         return axios.put(`/api/animals/${animal.id}`, newAnimalWithPosition)
             .catch(error => {
@@ -55,5 +56,22 @@ export default function useAnimals() {
             })
     }
 
-    return {animals, addAnimal, onDeleteAnimal, onPlaceAnimal}
+    const onAddEmoji = (animal: Animal, emoji :Emoji) => {
+        const newAnimalWithEmoji : Animal = {
+            name: animal.name,
+            id: animal.id,
+            emoji: emoji
+        }
+        return axios.put(`/api/animals/emoji/${animal.id}`, newAnimalWithEmoji)
+            .catch(error => {
+                onErrorFunction(error)
+            })
+
+    }
+
+
+
+
+
+    return {animals, addAnimal, onDeleteAnimal, onPlaceAnimal, onAddEmoji}
 }

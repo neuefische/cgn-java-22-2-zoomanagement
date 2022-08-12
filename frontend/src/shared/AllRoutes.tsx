@@ -24,7 +24,7 @@ export default function AllRoutes() {
                                              employeeHook={employeeHook}
                                              plantHook={plantHook}/>}/>
             <Route path={"/animals/:id"}
-                   element={<AnimalDetails animal={animalHook.animals} onPlaceAnimal={animalHook.onPlaceAnimal}/>}/>
+                   element={<AnimalDetails animal={animalHook.animals} onPlaceAnimal={animalHook.onPlaceAnimal} onAddEmoji={animalHook.onAddEmoji}/>}/>
             <Route path={"/plant/:id"}
                    element={<DetailPlant plants={plantHook.plants} updatePlant={plantHook.updatePlant}/>}/>
             <Route path={"/employees/:id"}
