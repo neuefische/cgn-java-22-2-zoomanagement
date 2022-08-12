@@ -1,7 +1,8 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {NewPlantType, PlantType, PositionType} from "./PlantType";
+import {NewPlantType, PlantType} from "./PlantType";
 import {toast} from "react-toastify";
+import {Position} from "../shared/Position";
 
 
 export default function usePlants() {
@@ -35,7 +36,7 @@ export default function usePlants() {
     }
 
 
-    const updatePlant = (plant: PlantType, position: PositionType) => {
+    const updatePlant = (plant: PlantType, position: Position) => {
         const updatedPlantWithNewPosition = {
             id: plant.id,
             name: plant.name,

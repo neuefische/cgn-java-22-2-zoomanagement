@@ -3,9 +3,11 @@ import Employee from "./Employee";
 import axios from "axios";
 import {NewEmployee} from "./NewEmployee";
 import {showError} from "./ErrorEmployee";
+import {useNavigate} from "react-router-dom";
 
 export default function useEmployee() {
 
+    const navigate = useNavigate();
     const [employees, setEmployees] = useState<Employee[]>([]);
 
     useEffect(() => {
@@ -35,9 +37,19 @@ export default function useEmployee() {
             .catch(error => showError(error));
     }
 
+    const updateEmployee = (updatedEmployee: Employee) => {
+        return axios.put("/api/employees/" + updatedEmployee.id, updatedEmployee)
+            .then(() => {
+                    getAllEmployees();
+                    navigate('/employees');
+                }
+            ).catch(error => showError(error));
+    }
+
     return {
         deleteEmployee,
         addEmployee,
         employees,
+        updateEmployee
     }
 }

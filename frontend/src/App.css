@@ -1,4 +1,5 @@
 
+
 .GameButton button {
 
     margin: 0;
@@ -16,4 +17,55 @@
     left: 0;
     bottom: 0;
     right: 0;
+    }
+
+body{
+    margin:0;
+    background-color: #EDF6F9;
+}
+
+main{
+    min-height: 100vh;
+    background-color: #EDF6F9;
+}
+
+h2{
+    padding-left: 10pt;
+}
+
+input{
+    border-radius: 0.7em;
+    margin-left: 30pt;
+    padding: 2pt;
+}
+
+button{
+    background-color: transparent;
+    margin-left: 5pt;
+}
+
+button img{
+    width: 40px;
+    height: 40px;
+}
+
+li{
+    margin-left: 5pt;
+}
+
+.nameStyle{
+    display: inline-flex;
+    width:100pt;
+    margin-top: 5pt;
+    margin-bottom: 5pt;
+}
+
+label{
+    padding-left: 10pt;
+    padding-bottom: 8pt;
+    display: block;
+}
+
+form{
+    margin-bottom: 3rem;
 }

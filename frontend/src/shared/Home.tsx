@@ -2,10 +2,8 @@ import PlantList from "../plant/PlantList";
 import TruckGallery from "../truck/TruckGallery";
 import AnimalList from "../animal/AnimalList";
 import Employees from "../employee/Employees";
-import {ToastContainer} from "react-toastify";
 import React from "react";
 import {Animal} from "../animal/Animal";
-
 import Truck from "../truck/Truck";
 import Employee from "../employee/Employee";
 import {PlantType} from "../plant/PlantType";
@@ -16,6 +14,7 @@ type HomeProps = {
         animals: Animal[],
         addAnimal: (animalName: string) => Promise<void>,
         onDeleteAnimal: (id: string) => Promise<void>,
+        apiAnimals: string[],
     },
     plantHook: {
         plants: PlantType[],
@@ -37,10 +36,13 @@ export default function Home(props: HomeProps) {
                        deletePlant={props.plantHook.deletePlant}/>
             <TruckGallery trucks={props.truckHook.trucks} addTruck={props.truckHook.addTruck}/>
             <AnimalList animals={props.animalHook.animals} addAnimal={props.animalHook.addAnimal}
-                        onDeleteAnimal={props.animalHook.onDeleteAnimal}/>
+                        onDeleteAnimal={props.animalHook.onDeleteAnimal} apiAnimals={props.animalHook.apiAnimals}/>
             <Employees employees={props.employeeHook.employees} addEmployee={props.employeeHook.addEmployee}
                        onDeleteEmployee={props.employeeHook.deleteEmployee}/>
+
             <GameButton/>
             <ToastContainer/>
         </>);
+        </>
+    );
 }
