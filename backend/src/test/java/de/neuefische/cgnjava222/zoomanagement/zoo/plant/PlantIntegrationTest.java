@@ -1,6 +1,8 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.plant;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.neuefische.cgnjava222.zoomanagement.zoo.Position;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,11 +12,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.hamcrest.Matchers.hasSize;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+@WireMockTest(httpPort = 1234)
 @SpringBootTest
 @AutoConfigureMockMvc
 class PlantIntegrationTest {
@@ -30,7 +37,7 @@ class PlantIntegrationTest {
 
         mockMvc
                 .perform(
-                        get("/api/plants")
+                        MockMvcRequestBuilders.get("/api/plants")
                 )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(0)));
@@ -50,7 +57,7 @@ class PlantIntegrationTest {
 
 
         mockMvc.perform(
-                        get("/api/plants")
+                        MockMvcRequestBuilders.get("/api/plants")
                 )
                 .andExpect(status().is(200))
                 .andExpect(jsonPath("$", hasSize(1)));
@@ -78,7 +85,7 @@ class PlantIntegrationTest {
                 .andExpect(status().is(201));
 
         mockMvc.perform(
-                        get("/api/plants")
+                        MockMvcRequestBuilders.get("/api/plants")
                 )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)));
@@ -102,7 +109,7 @@ class PlantIntegrationTest {
         mockMvc.perform(delete("http://localhost:8080/api/plants/" + id))
                 .andExpect(status().is(204));
 
-        mockMvc.perform(get("http://localhost:8080/api/plants"))
+        mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/api/plants"))
                 .andExpect(status().is(200))
                 .andExpect(content().json("""
                         []
@@ -137,7 +144,7 @@ class PlantIntegrationTest {
 
         mockMvc
                 .perform(
-                        get("/api/plants/" + id)
+                        MockMvcRequestBuilders.get("/api/plants/" + id)
                 )
                 .andExpect(status().isOk())
                 .andExpect(content().json(teststring));
@@ -160,7 +167,7 @@ class PlantIntegrationTest {
         Plant updatedPlant = new Plant(saveResultPlant.name(), saveResultPlant.id(),
                 newPosition);
         String updatedResult = mockMvc.perform(
-                        put("/api/plants/" + saveResultPlant.id())
+                        MockMvcRequestBuilders.put("/api/plants/" + saveResultPlant.id())
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(objectMapper.writeValueAsString(updatedPlant))
                 )
@@ -172,4 +179,23 @@ class PlantIntegrationTest {
 
     }
 
+
+    @DirtiesContext
+    @Test
+    void plantsFromApi() throws Exception {
+        stubFor(get("/")
+                .willReturn(aResponse()
+                        .withStatus(200)
+                        .withBody("""
+                                ["test1","test2","test3"]
+                                """)
+                        .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/plants/apiplants"))
+                .andExpect(status().isOk())
+                .andExpect(content().json("""
+                        ["test1","test2","test3"]
+                        """));
+
+    }
 }

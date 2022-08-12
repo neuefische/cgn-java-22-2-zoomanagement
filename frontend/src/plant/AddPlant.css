@@ -1,0 +1,24 @@
+.selectDropdown {
+    border-radius: 15px;
+    background-color: white;
+    border-color: white;
+    position: relative;
+    display: inline-block;
+    -webkit-appearance: none;
+    padding: 0.5em;
+    margin-right: 1em;
+}
+
+.selectDropdown:hover {
+    cursor: pointer;
+    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.select-selected {
+    background-color: var(--darkBeige);
+}
+
+.option {
+    position: absolute;
+    background-color: var(--brightBeige);
+}

@@ -1,30 +1,33 @@
 import DetailPlant from "../plant/DetailPlant";
 import {useEffect, useState} from "react";
+import DetailEmployee from "../employee/DetailEmployee";
+import React from "react";
 import {Route, Routes} from "react-router-dom";
 import Home from "./Home";
 import useAnimals from "../animal/useAnimals";
 import usePlants from "../plant/usePlants";
 import useTrucks from "../truck/useTrucks";
+import AnimalDetails from "../animal/AnimalDetails";
 import useEmployee from "../employee/useEmployee";
 import Login from "./LogIn";
 import Signup from "./Signup";
 import useMe from "./useMe";
 import useLogin from "./useLogin";
+import AnimalList from "../animal/AnimalList";
+import Employees from "../employee/Employees";
+import TruckGallery from "../truck/TruckGallery";
+import PlantList from "../plant/PlantList";
 
 export default function AllRoutes() {
 
-    let animalHook = useAnimals();
-    let plantHook = usePlants();
+    const animalHook = useAnimals();
+    const plantHook = usePlants();
     const truckHook = useTrucks();
     const employeeHook = useEmployee();
     const meHook = useMe();
     const loginHook = useLogin();
 
     const [username, setUsername] = useState(meHook.me)
-    // const [animals,setAnimals]=useState(animalHook.animals)
-    // const [plants,setPlants]=useState(plantHook.plants)
-    // const [trucks,setTrucks]=useState(truckHook.trucks)
-    // const [employees,setEmployees]=useState(employeeHook.employees)
 
     useEffect(() => {
         setUsername(meHook.me)
@@ -42,7 +45,7 @@ export default function AllRoutes() {
             {
                 !username
                     ? "Lade..."
-                    : (
+                    :(
                         (username !== "anonymousUser") ?
                             (
                                 <>
@@ -54,9 +57,31 @@ export default function AllRoutes() {
                                                                          truckHook={truckHook}
                                                                          employeeHook={employeeHook}
                                                                          plantHook={plantHook}/>}/>
+                                        <Route path={"/animals/:id"}
+                                               element={<AnimalDetails animal={animalHook.animals} onPlaceAnimal={animalHook.onPlaceAnimal}/>}/>
                                         <Route path={"/plant/:id"}
-                                               element={<DetailPlant plants={plantHook.plants}
-                                                                     updatePlant={plantHook.updatePlant}/>}/>
+                                               element={<DetailPlant plants={plantHook.plants} updatePlant={plantHook.updatePlant}/>}/>
+                                        <Route path={"/employees/:id"}
+                                               element={<DetailEmployee employees={employeeHook.employees}
+                                                                        employeeUpdate={employeeHook.updateEmployee}/>}/>
+
+
+                                        <Route path={"/animals"} element={<AnimalList animals={animalHook.animals}
+                                                                                      addAnimal={animalHook.addAnimal}
+                                                                                      onDeleteAnimal={animalHook.onDeleteAnimal}
+                                                                                      apiAnimals={animalHook.apiAnimals}/>}/>
+                                        <Route path={"/employees"}
+                                               element={<Employees employees={employeeHook.employees}
+                                                                   addEmployee={employeeHook.addEmployee}
+                                                                   onDeleteEmployee={employeeHook.deleteEmployee}/>}/>
+                                        <Route path={"/trucks"} element={<TruckGallery trucks={truckHook.trucks}
+                                                                                       addTruck={truckHook.addTruck}
+                                                                                       deleteTruck={truckHook.deleteTrucks}/>}/>
+                                        <Route path={"/plants"} element={<PlantList plants={plantHook.plants}
+                                                                                    addPlant={plantHook.addPlant}
+                                                                                    deletePlant={plantHook.deletePlant}
+                                                                                    apiPlants={plantHook.apiPlants}/>}/>
+
                                     </Routes>
                                 </>
                             )
