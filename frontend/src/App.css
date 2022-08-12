@@ -6,53 +6,61 @@
     --darkBeige: #E29578;
 }
 
-body{
-    margin:0;
+body {
+    margin: 0;
     background-color: #EDF6F9;
 }
 
-main{
+main {
     min-height: 100vh;
     background-color: #EDF6F9;
 }
 
-h2{
+h2 {
     padding-left: 10pt;
 }
 
-input{
+input {
     border-radius: 0.7em;
     margin-left: 30pt;
     padding: 2pt;
 }
 
-button{
+button {
     background-color: transparent;
     margin-left: 5pt;
 }
 
-button img{
+button img {
     width: 40px;
     height: 40px;
 }
 
-li{
+li {
     margin-left: 5pt;
 }
 
-.nameStyle{
+.nameStyle {
     display: inline-flex;
-    width:100pt;
+    width: 100pt;
     margin-top: 5pt;
     margin-bottom: 5pt;
 }
 
-label{
+label {
     padding-left: 10pt;
     padding-bottom: 8pt;
     display: block;
 }
 
-form{
+form {
     margin-bottom: 3rem;
+}
+
+fieldset {
+    border: none;
+    display: flex;
+    justify-items: center;
+    align-items: baseline;
+    margin-top: 1rem;
 }
