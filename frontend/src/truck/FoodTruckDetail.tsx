@@ -15,7 +15,6 @@ export default function FoodTruckDetail(props: FoodTruckDetailsProps) {
     const [valueY, setValueY] = useState("");
     const truck: Truck | undefined = props.getTruckById(id);
 
-
     const updatedTruck = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const newTruck: Truck | undefined = truck;
@@ -37,11 +36,9 @@ export default function FoodTruckDetail(props: FoodTruckDetailsProps) {
             <form onSubmit={updatedTruck}>
 
                 <label> X - Koordinate : <input type="text" value={valueX}
-                                                onChange={(e) => setValueX(e.target.value)}></input></label> <br/>
-                <br/>
+                                                onChange={(e) => setValueX(e.target.value)}></input></label>
                 <label>Y - Koordinate : <input type="text" value={valueY}
-                                               onChange={(e) => setValueY(e.target.value)}></input></label> <br/>
-                <br/>
+                                               onChange={(e) => setValueY(e.target.value)}></input></label>
                 <button type={"submit"}>speichern</button>
 
             </form>
