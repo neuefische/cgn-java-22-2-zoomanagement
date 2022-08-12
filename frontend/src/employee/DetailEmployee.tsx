@@ -36,7 +36,7 @@ export default function DetailEmployee(props: DetailEmployeesProps) {
 
     return (<>
 
-            <h2>{employee?.name}</h2>
+            <h2>{employee.name}</h2>
             <form onSubmit={handleUpdate}>
                 <label htmlFor="xInput">X - Koordinate : <input id="xInput" type="text"
                                                                 defaultValue={valueX}
