@@ -40,12 +40,8 @@ class EmployeeServiceTest {
     void deleteEmployeeTest() {
         Employee employee = new Employee("Hans", "9", new Position("2", "5"));
 
-        EmployeeRepo employeeRepo = mock(EmployeeRepo.class);
         when(employeeRepo.existsById(employee.id())).thenReturn(true);
-
         doNothing().when(employeeRepo).deleteById(employee.id());
-
-        EmployeeService employeeService = new EmployeeService(employeeRepo);
 
         employeeService.deleteEmployee(employee.id());
         verify(employeeRepo).deleteById(employee.id());
@@ -55,11 +51,8 @@ class EmployeeServiceTest {
     void deleteEmployeeDontExistTest() {
         Employee employee = new Employee("Hans", "9", new Position("2", "5"));
 
-        EmployeeRepo employeeRepo = mock(EmployeeRepo.class);
         when(employeeRepo.existsById(employee.id())).thenReturn(false);
         doNothing().when(employeeRepo).deleteById(employee.id());
-
-        EmployeeService employeeService = new EmployeeService(employeeRepo);
 
         employeeService.deleteEmployee(employee.id());
         verify(employeeRepo, times(0)).deleteById(employee.id());
