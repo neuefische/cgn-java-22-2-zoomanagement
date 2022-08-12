@@ -1,9 +1,12 @@
 .selectDropdown {
-    color: var(--darkGreen);
-    background-color: var(--white);
-    border-radius: 10px;
-    margin-right: 1em;
+    border-radius: 15px;
+    background-color: white;
+    border-color: white;
+    position: relative;
+    display: inline-block;
+    -webkit-appearance: none;
     padding: 0.5em;
+    margin-right: 1em;
 }
 
 .selectDropdown:hover {
@@ -11,19 +14,11 @@
     box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.addPlantBtn {
-    background-color: transparent;
-    color: var(--darkGreen);
-    border: var(--brightGreen) 2px solid;
-    border-radius: 5px;
-    padding: 0.5em;
+.select-selected {
+    background-color: var(--darkBeige);
 }
 
-.addPlantBtn:hover {
-    cursor: pointer;
-    background-color: var(--darkGreen);
-    color: var(--white);
-    border-color: transparent;
-    transition: ease 0.5s;
-    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.option {
+    position: absolute;
+    background-color: var(--brightBeige);
 }
