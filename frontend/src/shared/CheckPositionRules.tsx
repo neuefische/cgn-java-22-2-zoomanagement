@@ -2,49 +2,37 @@ import Truck from "../truck/Truck";
 import {PlantType} from "../plant/PlantType";
 import Employee from "../employee/Employee";
 import {Animal} from "../animal/Animal";
-import {useEffect, useState} from "react";
+import useRules from "../rules/useRules";
 
-type checkPositionRulesProps ={
-    trucks:Truck[],
-    plants:PlantType[],
-    employees:Employee[],
-    animals:Animal[],
+type checkPositionRulesProps = {
+    employees: Employee[],
+    animals: Animal[],
+    trucks: Truck[],
+    plants: PlantType[],
+    missingPositionPlant: PlantType[],
 }
 export default function CheckPositionRules(props:checkPositionRulesProps){
 
-const [missingPositionPlant,setMissingPositionPlant]=useState<PlantType[]>([]);
-
-const addMissingPlant=(newPlant:PlantType)=>{
-    setMissingPositionPlant(state=>[...state,newPlant])
-}
-const checkPositionPlant=(element :PlantType)=> {
-    console.log(element);
-
-     if(!element.position){
-         console.log("keine Position")
-          addMissingPlant(element)}
-     else{
-         if(element.position.x===null||element.position.y===null){
-             console.log("keine Position")
-              addMissingPlant(element)}
-         else{
-
-         console.log("mit Position");
-     }}}
+    useRules(props.employees, props.animals, props.trucks, props.plants)
 
 
-useEffect(()=>{
-    console.log("props.plants");
-    console.log(props.plants);
-    setMissingPositionPlant([]);
-    props.plants.forEach(checkPositionPlant);
-     },[props.plants]);
 
-     return(
-        <>
-        <p>folgende Elemente haben keine Position:</p>
-            {missingPositionPlant.map(( element)=>element.name )
+     return (
+
+         <>
+             <useRules employees={props.employees}
+                       animals={props.animals}
+                       trucks={props.trucks}
+                       plants={props.plants}/>
+             <p>folgende Elemente haben keine Position:</p>
+             <ul>  {props.missingPositionPlant.map((element) => <li>{element.name}</li>)
              }
-        </>
-    )
+             </ul>
+         </>
+     )
 }
+
+//<useRules employees={props.employees}
+//             animals={props.animals}
+//             trucks={props.trucks}
+//             plants

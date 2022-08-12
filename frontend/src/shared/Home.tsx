@@ -28,6 +28,9 @@ type HomeProps = {
     employeeHook: {
         deleteEmployee: (id: string) => Promise<void>, addEmployee: (newName: string) => Promise<any>, employees: Employee[]
     },
+    rulesHook: {
+        missingPositionPlant: PlantType[]
+    }
 }
 export default function Home(props: HomeProps) {
 
@@ -40,10 +43,7 @@ export default function Home(props: HomeProps) {
                         onDeleteAnimal={props.animalHook.onDeleteAnimal}/>
             <Employees employees={props.employeeHook.employees} addEmployee={props.employeeHook.addEmployee}
                        onDeleteEmployee={props.employeeHook.deleteEmployee}/>
-            <CheckPositionRules trucks={props.truckHook.trucks}
-                                plants={props.plantHook.plants}
-                                employees={props.employeeHook.employees}
-                                animals={props.animalHook.animals}/>
+            <CheckPositionRules missingPositionPlant={props.rulesHook.missingPositionPlant}/>
             <ToastContainer/>
         </>);
 }
