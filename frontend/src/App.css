@@ -10,7 +10,7 @@
 }
 
 .GameButton{
-    position: fixed;
+    position: sticky;
     height: 75pt;
     width: 100%;
     left: 0;
