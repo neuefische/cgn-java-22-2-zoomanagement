@@ -9,7 +9,6 @@ export default function AnimalList(props:
                                            addAnimal: (animalName: string) => Promise<void>,
                                            onDeleteAnimal: (id: string) => Promise<void>,
                                        }) {
-
     return (
         <>
             <h2>Tiere</h2>
@@ -23,5 +22,4 @@ export default function AnimalList(props:
             <AddAnimal addAnimal={props.addAnimal}/>
         </>
     );
-
 }

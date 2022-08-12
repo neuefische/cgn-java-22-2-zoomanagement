@@ -11,19 +11,18 @@ import useEmployee from "../employee/useEmployee";
 
 export default function AllRoutes() {
 
-    const animalHook = useAnimals();
     const plantHook = usePlants();
+    const animalHook = useAnimals(plantHook.plants);
     const truckHook = useTrucks();
     const employeeHook = useEmployee();
 
     return (
-
         <Routes>
             <Route path={"/"} element={<Home animalHook={animalHook}
-
                                              truckHook={truckHook}
                                              employeeHook={employeeHook}
-                                             plantHook={plantHook}/>}/>
+                                             plantHook={plantHook}
+            />}/>
             <Route path={"/plant/:id"}
                    element={<DetailPlant plants={plantHook.plants} updatePlant={plantHook.updatePlant}/>}/>
         </Routes>
