@@ -32,8 +32,8 @@ export default function AddTruck(props: AddTruckProps) {
     
     return (
         <form onSubmit={onTruckSubmit}>
-            <label>Neuen Truck hinzufügen
-                <input type="text" onChange={onNameChange} value={truckName}/>
+            <label htmlFor="truckName">Neuen Truck hinzufügen
+                <input id="truckName" type="text" onChange={onNameChange} value={truckName}/>
             </label>
             <button>hinzufügen</button>
         </form>
