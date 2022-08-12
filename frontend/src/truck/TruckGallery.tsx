@@ -7,7 +7,7 @@ type TruckGalleryProps = {
     trucks: Truck[],
     addTruck: (name: string) => Promise<void>,
     deleteTruck: (id: string) => Promise<void>,
-    getTruckById: (id: string) => Truck | undefined
+    getTruckById: (id: string) => Truck | undefined,
     updatedTruck: (truck: Truck) => Promise<void>,
 }
 
