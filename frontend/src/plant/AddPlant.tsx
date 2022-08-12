@@ -3,8 +3,7 @@ import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 type AddPlantProps = {
-    addPlant: (name: string) => Promise<void>;
-
+    addPlant: (name: string) => Promise<void>,
 }
 export default function AddPlant(props: AddPlantProps) {
     const [plantNameToAdd, setPlantNameToAdd] = useState<string>('')

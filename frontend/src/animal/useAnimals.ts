@@ -39,5 +39,5 @@ export default function useAnimals() {
                 })
     }
 
-    return {animals, addAnimal, onDeleteAnimal}
+    return {animals, addAnimal, onDeleteAnimal, getAnimalList}
 }

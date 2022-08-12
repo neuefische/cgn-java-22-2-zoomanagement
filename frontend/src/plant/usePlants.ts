@@ -20,6 +20,7 @@ export default function usePlants() {
     useEffect(
         () => getAllPlants(), []
     )
+
     const addPlant = (name: string) => {
         const newPlant: NewPlantType = {"name": name};
         return axios.post("/api/plants", newPlant)
@@ -34,13 +35,13 @@ export default function usePlants() {
             })
     }
 
-
     const updatePlant = (plant: PlantType, position: PositionType) => {
         const updatedPlantWithNewPosition = {
             id: plant.id,
             name: plant.name,
             position: position
         }
+
         return axios.put(`/api/plants/${plant.id}`, updatedPlantWithNewPosition)
             .then(getAllPlants)
             .catch(error => {
@@ -48,6 +49,6 @@ export default function usePlants() {
             })
     }
 
-    return {plants, addPlant, deletePlant, updatePlant, setPlants}
+    return {plants, addPlant, deletePlant, updatePlant, setPlants, getAllPlants}
 
 }

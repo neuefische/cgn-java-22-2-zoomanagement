@@ -24,5 +24,5 @@ export default function useTrucks() {
         return axios.post("/api/trucks", newTruck)
             .then(() => getAllTrucks())
     }
-    return {trucks, addTruck}
+    return {trucks, addTruck, getAllTrucks}
 }
