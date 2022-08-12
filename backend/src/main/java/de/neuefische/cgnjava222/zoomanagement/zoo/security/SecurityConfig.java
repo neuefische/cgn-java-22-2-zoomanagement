@@ -23,8 +23,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                .antMatchers("/api/users/newuser")
+                .permitAll()
                 .antMatchers("/**")
                 .permitAll()
+
                 .and()
                 .httpBasic().and().csrf().disable();
     }

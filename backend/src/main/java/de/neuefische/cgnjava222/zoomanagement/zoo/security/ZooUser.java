@@ -8,6 +8,7 @@ public record ZooUser(
         String username,
         String password
 
+
 ) {
 
 }
