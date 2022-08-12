@@ -1,5 +1,6 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.employee;
 
+import de.neuefische.cgnjava222.zoomanagement.zoo.Position;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class EmployeeService {
     }
 
     public Employee addEmployee(NewEmployee newEmployee) {
-        return employeeRepo.save(new Employee(newEmployee.name(), getRandomId()));
+        return employeeRepo.save(new Employee(newEmployee.name(), getRandomId(), new Position(null, null)));
     }
 
     public String getRandomId() {

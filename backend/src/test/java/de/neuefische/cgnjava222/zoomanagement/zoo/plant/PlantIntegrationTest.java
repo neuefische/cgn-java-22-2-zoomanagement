@@ -1,6 +1,7 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.plant;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.neuefische.cgnjava222.zoomanagement.zoo.Position;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

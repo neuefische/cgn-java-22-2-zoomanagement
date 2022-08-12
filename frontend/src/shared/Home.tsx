@@ -2,10 +2,8 @@ import PlantList from "../plant/PlantList";
 import TruckGallery from "../truck/TruckGallery";
 import AnimalList from "../animal/AnimalList";
 import Employees from "../employee/Employees";
-import {ToastContainer} from "react-toastify";
 import React from "react";
 import {Animal} from "../animal/Animal";
-
 import Truck from "../truck/Truck";
 import Employee from "../employee/Employee";
 import {PlantType} from "../plant/PlantType";
@@ -33,12 +31,12 @@ export default function Home(props: HomeProps) {
     return (
         <>
             <PlantList plants={props.plantHook.plants} addPlant={props.plantHook.addPlant}
-                       deletePlant={props.plantHook.deletePlant}/>
-            <TruckGallery trucks={props.truckHook.trucks} addTruck={props.truckHook.addTruck}/>
-            <AnimalList animals={props.animalHook.animals} addAnimal={props.animalHook.addAnimal}
-                        onDeleteAnimal={props.animalHook.onDeleteAnimal}/>
-            <Employees employees={props.employeeHook.employees} addEmployee={props.employeeHook.addEmployee}
-                       onDeleteEmployee={props.employeeHook.deleteEmployee}/>
-            <ToastContainer/>
-        </>);
+                   deletePlant={props.plantHook.deletePlant}/>
+        <TruckGallery trucks={props.truckHook.trucks} addTruck={props.truckHook.addTruck}/>
+        <AnimalList animals={props.animalHook.animals} addAnimal={props.animalHook.addAnimal}
+                    onDeleteAnimal={props.animalHook.onDeleteAnimal}/>
+        <Employees employees={props.employeeHook.employees} addEmployee={props.employeeHook.addEmployee}
+                   onDeleteEmployee={props.employeeHook.deleteEmployee}/>
+        </>
+    );
 }
