@@ -35,4 +35,8 @@ public class EmployeeService {
 
         return false;
     }
+
+    public Employee updateEmployee(Employee employee) {
+        return employeeRepo.save(new Employee(employee.name(), employee.id(), employee.position()));
+    }
 }
