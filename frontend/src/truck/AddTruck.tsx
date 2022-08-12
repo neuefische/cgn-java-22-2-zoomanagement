@@ -2,6 +2,7 @@ import {ChangeEvent, FormEvent, useState} from "react";
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 type AddTruckProps = {
     addTruck: (name: string) => Promise<void>
 }
@@ -12,10 +13,12 @@ export default function AddTruck(props: AddTruckProps) {
         setTruckName(event.target.value)
     }
     const onTruckSubmit = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault()
+        event.preventDefault();
+        if(truckName==="")return;
+
         props.addTruck(truckName)
             .catch((error) => {
-                notify("Hi sorrry!!! " + error.message)
+                notify("Truck kann nicht hinzugefügt werden! Datenbankfehler " + error.message)
             })
 
         setTruckName("")
