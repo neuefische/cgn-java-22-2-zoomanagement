@@ -29,8 +29,9 @@ type HomeProps = {
 }
 export default function Home(props: HomeProps) {
 
-    return (<>
-        <PlantList plants={props.plantHook.plants} addPlant={props.plantHook.addPlant}
+    return (
+        <>
+            <PlantList plants={props.plantHook.plants} addPlant={props.plantHook.addPlant}
                    deletePlant={props.plantHook.deletePlant} apiPlants={props.plantHook.apiPlants}/>
         <TruckGallery trucks={props.truckHook.trucks} addTruck={props.truckHook.addTruck}/>
         <AnimalList animals={props.animalHook.animals} addAnimal={props.animalHook.addAnimal}

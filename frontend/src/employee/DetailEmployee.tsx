@@ -17,7 +17,6 @@ export default function DetailEmployee(props: DetailEmployeesProps) {
     useEffect(() => {
         setValueX(employee?.position?.x || "");
         setValueY(employee?.position?.y || "")
-        console.log(employee)
     }, [employee])
 
 

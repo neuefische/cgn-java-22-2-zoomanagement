@@ -8,7 +8,6 @@ type AddPlantProps = {
     apiPlants: string[],
 }
 export default function AddPlant(props: AddPlantProps) {
-
     const [plantNameToAdd, setPlantNameToAdd] = useState<string>('')
 
     useEffect(
@@ -33,7 +32,6 @@ export default function AddPlant(props: AddPlantProps) {
         } else {
             notify("Bitte geben Sie einen Pflanzennamen ein!");
         }
-
     }
     return <form onSubmit={submitInput}>
         <select className={"selectDropdown"} value={plantNameToAdd}
@@ -41,7 +39,7 @@ export default function AddPlant(props: AddPlantProps) {
             {props.apiPlants.map(plant =>
                 <option className={"option"} value={plant}>{plant}</option>)}
         </select>
-        <button className={"addPlantBtn"} type={"submit"}>hinzufügen</button>
+        <button className={"addPlantBtn"} type={"submit"}><img src={"../pictures/save.png"} alt={"hinzufügen"}/></button>
         <ToastContainer/>
     </form>
 }
