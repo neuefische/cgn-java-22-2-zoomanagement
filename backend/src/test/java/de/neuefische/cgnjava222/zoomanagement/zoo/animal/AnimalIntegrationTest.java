@@ -10,9 +10,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
-
-
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -113,8 +112,8 @@ class AnimalIntegrationTest {
     @DirtiesContext
     @Test
     void addPosition() throws Exception {
-        String saveResult = mockMvc.perform(post(
-                        "/api/animals")
+        String saveResult = mockMvc.perform(MockMvcRequestBuilders.post(
+                                "/api/animals")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {"name": "Katze"}
@@ -127,7 +126,7 @@ class AnimalIntegrationTest {
         Animal saveResultAnimal = objectMapper.readValue(saveResult, Animal.class);
         String id = saveResultAnimal.id();
 
-        mockMvc.perform(put("/api/animals/" + id)
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/animals/" + id)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
