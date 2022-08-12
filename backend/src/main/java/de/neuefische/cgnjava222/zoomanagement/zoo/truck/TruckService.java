@@ -19,4 +19,13 @@ public class TruckService {
     public Truck addTruck(NewTruck newTruck) {
         return truckRepo.save(newTruck.withRandomId());
     }
+
+    public boolean deleteTruck(String truckToDelete) {
+        boolean doesTruckExist = truckRepo.existsById(truckToDelete);
+         if (doesTruckExist) {
+            truckRepo.deleteById(truckToDelete);
+
+        }
+        return doesTruckExist;
+    }
 }

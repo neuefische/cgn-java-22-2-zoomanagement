@@ -13,14 +13,16 @@ type HomeProps = {
         animals: Animal[],
         addAnimal: (animalName: string) => Promise<void>,
         onDeleteAnimal: (id: string) => Promise<void>,
+        apiAnimals: string[],
     },
     plantHook: {
         plants: PlantType[],
         addPlant: (name: string) => Promise<void>,
         deletePlant: (id: string) => Promise<void>,
+        apiPlants: string[],
     },
     truckHook: {
-        trucks: Truck[], addTruck: (name: string) => Promise<void>
+        trucks: Truck[], addTruck: (name: string) => Promise<void>, deleteTrucks: (id: string) => Promise<void>
     },
     employeeHook: {
         deleteEmployee: (id: string) => Promise<void>, addEmployee: (newName: string) => Promise<any>, employees: Employee[]
@@ -31,12 +33,13 @@ export default function Home(props: HomeProps) {
     return (
         <>
             <PlantList plants={props.plantHook.plants} addPlant={props.plantHook.addPlant}
-                   deletePlant={props.plantHook.deletePlant}/>
-        <TruckGallery trucks={props.truckHook.trucks} addTruck={props.truckHook.addTruck}/>
-        <AnimalList animals={props.animalHook.animals} addAnimal={props.animalHook.addAnimal}
-                    onDeleteAnimal={props.animalHook.onDeleteAnimal}/>
-        <Employees employees={props.employeeHook.employees} addEmployee={props.employeeHook.addEmployee}
-                   onDeleteEmployee={props.employeeHook.deleteEmployee}/>
+                       deletePlant={props.plantHook.deletePlant} apiPlants={props.plantHook.apiPlants}/>
+            <TruckGallery trucks={props.truckHook.trucks} addTruck={props.truckHook.addTruck}
+                          deleteTruck={props.truckHook.deleteTrucks}/>
+            <AnimalList animals={props.animalHook.animals} addAnimal={props.animalHook.addAnimal}
+                        onDeleteAnimal={props.animalHook.onDeleteAnimal} apiAnimals={props.animalHook.apiAnimals}/>
+            <Employees employees={props.employeeHook.employees} addEmployee={props.employeeHook.addEmployee}
+                       onDeleteEmployee={props.employeeHook.deleteEmployee}/>
         </>
     );
 }

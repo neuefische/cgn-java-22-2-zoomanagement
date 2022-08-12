@@ -1,17 +1,25 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.plant;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
 import de.neuefische.cgnjava222.zoomanagement.zoo.Position;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
 @Service
 public class PlantService {
     private final PlantRepo plantRepo;
+    @Value("${plantsApiUrl}")
+    private String plantsApiUrl;
+    private final WebClient webClient = WebClient.create();
 
     public PlantService(PlantRepo plantRepo) {
         this.plantRepo = plantRepo;
@@ -43,6 +51,19 @@ public class PlantService {
     public Plant updatePlantWithNewPosition(String id, Plant plantWithPosition) {
         if (!id.equals(plantWithPosition.id())) throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         return plantRepo.save(plantWithPosition);
+    }
+
+    public List<String> getPlantsFromApi() {
+        ResponseEntity<List<String>> getPlantsFromApiResult = webClient.get().uri(plantsApiUrl)
+                .retrieve()
+                .toEntity(new ParameterizedTypeReference<List<String>>() {
+                })
+                .block();
+        if (getPlantsFromApiResult == null)
+            return Collections.emptyList();
+        return getPlantsFromApiResult
+                .getBody();
+
     }
 }
 
