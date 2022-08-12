@@ -48,6 +48,6 @@ export default function usePlants() {
             })
     }
 
-    return {plants, addPlant, deletePlant, updatePlant}
+    return {plants, addPlant, deletePlant, updatePlant, setPlants}
 
 }

@@ -1,11 +1,13 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
+import usePlants from "../plant/usePlants";
 
 
-export default function useMe(username: string, password: string) {
+export default function useMe() {
 
 
     const [me, setMe] = useState<string>();
+    const plants=usePlants();
 
     const fetchMe = () => {
         axios.get("/api/users/me")
@@ -17,17 +19,13 @@ export default function useMe(username: string, password: string) {
         []
     )
 
-    const login = () => {
-        axios.get("/api/users/login", {auth: {username, password: password}})
-            .then(response => response.data)
-            .then(setMe)
-    }
+
 
     const logout = () => {
         axios.get("api/users/logout")
             .then(response => response.data)
-            .then(() => setMe("You´re logged out."))
+            .then(() => setMe("anonymousUser")).then(()=>plants.setPlants([]))
     }
 
-    return {me, login, logout}
+    return {me,setMe,  logout}
 }

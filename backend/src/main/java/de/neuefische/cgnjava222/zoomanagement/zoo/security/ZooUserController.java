@@ -18,6 +18,7 @@ public class ZooUserController {
 
     @GetMapping(path = "/me")
     String getUsername() {
+
         return SecurityContextHolder
                 .getContext()
                 .getAuthentication()

@@ -29,7 +29,7 @@ export default function AllRoutes() {
                                              plantHook={plantHook}/>}/>
             <Route path={"/plant/:id"}
                    element={<DetailPlant plants={plantHook.plants} updatePlant={plantHook.updatePlant}/>}/>
-            <Route path={"/login"} element={<Login/>}/>
+            {/*<Route path={"/login"} element={<Login/>}/>*/}
         </Routes>
 
     )

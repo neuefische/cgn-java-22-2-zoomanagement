@@ -47,6 +47,8 @@ class PlantIntegrationTest {
                                  {"name": "Birke"}
                                 """))
                 .andExpect(status().is(201));
+
+
         mockMvc.perform(
                         get("/api/plants")
                 )
@@ -74,6 +76,7 @@ class PlantIntegrationTest {
                                 """)
                 )
                 .andExpect(status().is(201));
+
         mockMvc.perform(
                         get("/api/plants")
                 )
