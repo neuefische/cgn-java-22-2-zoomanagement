@@ -34,14 +34,11 @@ class TruckServiceTest {
         // given
         Truck truck = new Truck("Currywurst", new Position("0", "0"), "0a628570-01ed-4599-92e8-127fefce9f2e");
 
-        TruckRepo truckRepo = mock(TruckRepo.class);
-        when(truckRepo.existsById(truck.id())).thenReturn(true);
-        doNothing().when(truckRepo).deleteById(truck.id());
+        when(testTruckRepo.existsById(truck.id())).thenReturn(true);
+        doNothing().when(testTruckRepo).deleteById(truck.id());
 
-        TruckService truckService = new TruckService(truckRepo);
-
-        truckService.deleteTruck((truck.id()));
-        verify(truckRepo).deleteById((truck.id()));
+        testTruckService.deleteTruck((truck.id()));
+        verify(testTruckRepo).deleteById((truck.id()));
     }
 
     @Test

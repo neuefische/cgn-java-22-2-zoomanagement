@@ -1,11 +1,11 @@
 import {useParams} from "react-router-dom";
-import Truck from "./Truck";
+import {Truck} from "./Truck";
 import {FormEvent, useState} from "react";
 
 type FoodTruckDetailsProps = {
     trucks: Truck[], getTruckById: (id: string | undefined) => Truck | undefined,
-    updatedTruck: (truck: Truck) => void
-};
+    updateTruck: (truck: Truck) => void
+}
 
 export default function FoodTruckDetail(props: FoodTruckDetailsProps) {
 
@@ -14,25 +14,24 @@ export default function FoodTruckDetail(props: FoodTruckDetailsProps) {
     const [valueY, setValueY] = useState("");
     const truck: Truck | undefined = props.getTruckById(id);
 
-    const updatedTruck = (event: FormEvent<HTMLFormElement>) => {
+    const updateTruck = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const newTruck: Truck | undefined = truck;
         if (newTruck !== undefined) {
             newTruck.position = {x: valueX, y: valueY};
-            props.updatedTruck(newTruck);
+            props.updateTruck(newTruck);
         }
     }
 
     if (!truck) {
-        return <>Truck nicht vorhanden</>
+        return <>Truck nicht vorhanden</>;
     }
 
 
     return (
         <>
-            
             <h2>{truck?.name}</h2>
-            <form onSubmit={updatedTruck}>
+            <form onSubmit={updateTruck}>
 
                 <label> X - Koordinate : <input type="text" value={valueX}
                                                 onChange={(e) => setValueX(e.target.value)}></input></label>
@@ -41,8 +40,6 @@ export default function FoodTruckDetail(props: FoodTruckDetailsProps) {
                 <button type={"submit"}>speichern</button>
 
             </form>
-
         </>
     )
-
 }

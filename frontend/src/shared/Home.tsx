@@ -4,7 +4,7 @@ import AnimalList from "../animal/AnimalList";
 import Employees from "../employee/Employees";
 import React from "react";
 import {Animal} from "../animal/Animal";
-import Truck from "../truck/Truck";
+import {Truck} from "../truck/Truck";
 import Employee from "../employee/Employee";
 import {PlantType} from "../plant/PlantType";
 
@@ -25,7 +25,7 @@ type HomeProps = {
         addTruck: (name: string) => Promise<any>,
         deleteTruck: (id: string) => Promise<void>,
         getTruckById: (id: string) => Truck | undefined,
-        updatedTruck: (truck: Truck) => Promise<void>,
+        updateTruck: (truck: Truck) => Promise<void>,
     },
     employeeHook: {
         deleteEmployee: (id: string) => Promise<void>,
@@ -43,7 +43,7 @@ export default function Home(props: HomeProps) {
                        deletePlant={props.plantHook.deletePlant}/>
             <TruckGallery trucks={props.truckHook.trucks} addTruck={props.truckHook.addTruck}
                           deleteTruck={props.truckHook.deleteTruck} getTruckById={props.truckHook.getTruckById}
-                          updatedTruck={props.truckHook.updatedTruck}/>
+                          updatedTruck={props.truckHook.updateTruck}/>
             <AnimalList animals={props.animalHook.animals} addAnimal={props.animalHook.addAnimal}
                         onDeleteAnimal={props.animalHook.onDeleteAnimal}/>
             <Employees employees={props.employeeHook.employees} addEmployee={props.employeeHook.addEmployee}

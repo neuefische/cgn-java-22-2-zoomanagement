@@ -1,4 +1,4 @@
-import Truck from "./Truck";
+import {Truck} from "./Truck";
 import AddTruck from "./AddTruck";
 import {useNavigate} from "react-router-dom";
 

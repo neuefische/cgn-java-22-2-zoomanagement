@@ -24,7 +24,7 @@ export default function AllRoutes() {
                                              employeeHook={employeeHook}
             />}/>
             <Route path={"/trucks/:id"} element={<FoodTruckDetail
-                trucks={truckHook.trucks} getTruckById={truckHook.getTruckById} updatedTruck={truckHook.updatedTruck}
+                trucks={truckHook.trucks} getTruckById={truckHook.getTruckById} updateTruck={truckHook.updateTruck}
             />}/>
             <Route path={"/plant/:id"}
                    element={<DetailPlant plants={plantHook.plants} updatePlant={plantHook.updatePlant}/>}/>
