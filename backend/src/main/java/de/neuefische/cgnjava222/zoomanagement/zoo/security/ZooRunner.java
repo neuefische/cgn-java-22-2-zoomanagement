@@ -21,9 +21,9 @@ public class ZooRunner implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
 
 
-        ZooUser zooUser = zooUserRepo.findById("frank").orElse(
+        ZooUser zooUser = zooUserRepo.findById("anton").orElse(
 
-            zooUserRepo.save( new ZooUser("frank2.0", passwordEncoder.encode("frank123")))
+            zooUserRepo.save( new ZooUser("anton", passwordEncoder.encode("anton123")))
 
         );
 

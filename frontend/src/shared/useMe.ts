@@ -23,5 +23,11 @@ export default function useMe(username: string, password: string) {
             .then(setMe)
     }
 
-    return {me, login}
+    const logout = () => {
+        axios.get("api/users/logout")
+            .then(response => response.data)
+            .then(() => setMe("You´re logged out."))
+    }
+
+    return {me, login, logout}
 }
