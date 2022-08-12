@@ -1,6 +1,5 @@
 import DetailPlant from "../plant/DetailPlant";
-
-
+import DetailEmployee from "../employee/DetailEmployee";
 import React from "react";
 import {Route, Routes} from "react-router-dom";
 import Home from "./Home";
@@ -20,12 +19,15 @@ export default function AllRoutes() {
 
         <Routes>
             <Route path={"/"} element={<Home animalHook={animalHook}
-
                                              truckHook={truckHook}
                                              employeeHook={employeeHook}
                                              plantHook={plantHook}/>}/>
             <Route path={"/plant/:id"}
                    element={<DetailPlant plants={plantHook.plants} updatePlant={plantHook.updatePlant}/>}/>
+            <Route path={"/employees/:id"}
+                   element={<DetailEmployee employees={employeeHook.employees}
+                                            employeeUpdate={employeeHook.updateEmployee}/>}/>
+
         </Routes>
 
     )
