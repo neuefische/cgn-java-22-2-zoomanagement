@@ -129,4 +129,39 @@ class AnimalIntegrationTest {
                         }
                         """.replaceFirst("<ID>", id)));
     }
+
+    @DirtiesContext
+    @Test
+    void addEmoji() throws Exception {
+        String saveResult = mockMvc.perform(post(
+                        "/api/animals/")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"name": "Katze"}
+                                """)
+                )
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+
+        Animal saveResultAnimal = objectMapper.readValue(saveResult, Animal.class);
+        String id = saveResultAnimal.id();
+
+        mockMvc.perform(put("/api/animals/emoji/" + id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {
+                                "id": "<ID>",
+                                "name": "Katze",
+                                "emoji" : {"emoji": "&#128513"}}
+                                """.replaceFirst("<ID>", id))
+                ).andExpect(status().isOk())
+                .andExpect(content().json("""
+                        {
+                        "id": "<ID>",
+                        "name": "Katze",
+                        "emoji" : {"emoji": "&#128513"}}
+                        """.replaceFirst("<ID>", id)));
+    }
+
 }
