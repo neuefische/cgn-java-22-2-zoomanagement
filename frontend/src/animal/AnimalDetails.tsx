@@ -2,6 +2,7 @@ import {Animal} from "./Animal";
 import {useState} from "react";
 import {useParams} from "react-router-dom";
 import {Position} from "../shared/Position";
+import AddEmoji from "./AddEmoji";
 
 
 export default function AnimalDetails(props: { animal: Animal[], onPlaceAnimal: (animal: Animal, position: Position) => void }) {
@@ -27,6 +28,7 @@ export default function AnimalDetails(props: { animal: Animal[], onPlaceAnimal: 
                 setYCoordinate('')
             }}>save
             </button>
+            <AddEmoji/>
         </>
     )
 }
