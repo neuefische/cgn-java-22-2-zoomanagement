@@ -8,7 +8,7 @@ type TruckGalleryProps = {
     addTruck: (name: string) => Promise<void>,
     deleteTruck: (id: string) => Promise<void>,
     getTruckById: (id: string) => Truck | undefined,
-    updatedTruck: (truck: Truck) => Promise<void>,
+    updateTruck: (truck: Truck) => Promise<void>,
 }
 
 export default function TruckGallery(props: TruckGalleryProps) {
@@ -23,9 +23,10 @@ export default function TruckGallery(props: TruckGalleryProps) {
                     .map(truck =>
                         <li key={truck.id}>
                             <div className={"nameStyle"}>{truck.name}
-                            <button onClick={() => props.deleteTruck(truck.id)}>Löschen</button>
-                            <button onClick={() => navigate("/trucks/" + truck.id)}>Details</button>
-                        </div></li>
+                                <button onClick={() => props.deleteTruck(truck.id)}>Löschen</button>
+                                <button onClick={() => navigate("/trucks/" + truck.id)}>Details</button>
+                            </div>
+                        </li>
                     )}
             </ul>
             <AddTruck addTruck={props.addTruck}/>

@@ -47,7 +47,9 @@ export default function AllRoutes() {
                                            onDeleteEmployee={employeeHook.deleteEmployee}/>}/>
                 <Route path={"/trucks"} element={<TruckGallery trucks={truckHook.trucks}
                                                                addTruck={truckHook.addTruck}
-                                                               deleteTruck={truckHook.deleteTruck}/>}/>
+                                                               deleteTruck={truckHook.deleteTruck}
+                                                               getTruckById={truckHook.getTruckById}
+                                                               updateTruck={truckHook.updateTruck}/>}/>
                 <Route path={"/plants"} element={<PlantList plants={plantHook.plants}
                                                             addPlant={plantHook.addPlant}
                                                             deletePlant={plantHook.deletePlant}/>}/>
