@@ -30,7 +30,9 @@ export default function AnimalDetails(props: { animal: Animal[], onPlaceAnimal: 
 
     return (
         <>
-            <h2>{animalToUpdate.name}</h2>
+            <h2>{animalToUpdate.name}
+
+            <span>{animalToUpdate.emoji !==null ? animalToUpdate.emoji?.emoji : "" }</span>   </h2>
             <p> X - Coordinate: {animalToUpdate.position?.x}<input type={"input"} value={xCoordinate}
                                                                    onChange={event => setXCoordinate(event.target.value)}/></p>
             <p> Y - Coordinate: {animalToUpdate.position?.y}<input type={"input"} value={yCoordinate}
