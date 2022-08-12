@@ -2,7 +2,6 @@ import {useParams} from "react-router-dom";
 import Truck from "./Truck";
 import {FormEvent, useState} from "react";
 
-
 type FoodTruckDetailsProps = {
     trucks: Truck[], getTruckById: (id: string | undefined) => Truck | undefined,
     updatedTruck: (truck: Truck) => void
