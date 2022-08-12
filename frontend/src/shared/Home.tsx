@@ -9,6 +9,7 @@ import {Animal} from "../animal/Animal";
 import Truck from "../truck/Truck";
 import Employee from "../employee/Employee";
 import {PlantType} from "../plant/PlantType";
+import GameButton from "./GameButton";
 
 type HomeProps = {
     animalHook: {
@@ -39,6 +40,7 @@ export default function Home(props: HomeProps) {
                         onDeleteAnimal={props.animalHook.onDeleteAnimal}/>
             <Employees employees={props.employeeHook.employees} addEmployee={props.employeeHook.addEmployee}
                        onDeleteEmployee={props.employeeHook.deleteEmployee}/>
+            <GameButton/>
             <ToastContainer/>
         </>);
 }

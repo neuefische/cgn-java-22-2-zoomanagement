@@ -1,6 +1,4 @@
 import DetailPlant from "../plant/DetailPlant";
-
-
 import React from "react";
 import {Route, Routes} from "react-router-dom";
 import Home from "./Home";
@@ -8,6 +6,10 @@ import useAnimals from "../animal/useAnimals";
 import usePlants from "../plant/usePlants";
 import useTrucks from "../truck/useTrucks";
 import useEmployee from "../employee/useEmployee";
+import ZooGame from "./ZooGame";
+
+
+
 
 export default function AllRoutes() {
 
@@ -20,13 +22,13 @@ export default function AllRoutes() {
 
         <Routes>
             <Route path={"/"} element={<Home animalHook={animalHook}
-
                                              truckHook={truckHook}
                                              employeeHook={employeeHook}
                                              plantHook={plantHook}/>}/>
+
             <Route path={"/plant/:id"}
                    element={<DetailPlant plants={plantHook.plants} updatePlant={plantHook.updatePlant}/>}/>
-            <Route path={"/zooGame"} element={<p>Game</p>}/>
+            <Route path={"/zooGame"} element={<ZooGame/>}/>
         </Routes>
 
     )
