@@ -6,6 +6,9 @@ import {NewAnimal} from "./NewAnimal";
 import {PlantType} from "../plant/PlantType";
 import {Position} from "../shared/Position";
 
+export default function useAnimals(plants: PlantType[]) {
+
+
 
 export default function useAnimals(plants: PlantType[]) {
 

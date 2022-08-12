@@ -22,7 +22,6 @@ export default function AllRoutes() {
 
     return (
         <>
-
             <Routes>
                 <Route path={"/"} element={<Home animalHook={animalHook}
                                                  truckHook={truckHook}
@@ -52,7 +51,6 @@ export default function AllRoutes() {
                                                             addPlant={plantHook.addPlant}
                                                             deletePlant={plantHook.deletePlant}
                                                             apiPlants={plantHook.apiPlants}/>}/>
-
             </Routes>
         </>
     )

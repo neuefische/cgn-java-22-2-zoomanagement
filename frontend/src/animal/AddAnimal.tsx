@@ -20,14 +20,11 @@ export default function AddAnimal(props: AddAnimalProps) {
                 notify("Hi sorrry!!! " + error.message)
             })
     }
-
     const notify = (message: string) => {
         toast.error(message, {
             position: toast.POSITION.TOP_LEFT
         });
     };
-
-
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setAnimalName(event.target.value);
     }
