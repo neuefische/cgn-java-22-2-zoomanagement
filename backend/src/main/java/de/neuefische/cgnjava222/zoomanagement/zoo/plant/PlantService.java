@@ -1,8 +1,9 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.plant;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.server.ResponseStatusException;
@@ -14,7 +15,9 @@ import java.util.UUID;
 @Service
 public class PlantService {
     private final PlantRepo plantRepo;
-    private final WebClient webClient = WebClient.create("https://my-json-server.typicode.com/alanmiste/plants/Trees");
+    @Value("${plantsApiUrl}")
+    private String plantsApiUrl;
+    private final WebClient webClient = WebClient.create();
 
     public PlantService(PlantRepo plantRepo) {
         this.plantRepo = plantRepo;
@@ -49,14 +52,14 @@ public class PlantService {
     }
 
     public List<String> getPlantsFromApi() {
-        ResponseEntity<List<String>> result = webClient.get()
+        ResponseEntity<List<String>> getPlantsFromApiResult = webClient.get().uri(plantsApiUrl)
                 .retrieve()
                 .toEntity(new ParameterizedTypeReference<List<String>>() {
                 })
                 .block();
-        if (result == null)
+        if (getPlantsFromApiResult == null)
             return Collections.emptyList();
-        return result
+        return getPlantsFromApiResult
                 .getBody();
 
     }
