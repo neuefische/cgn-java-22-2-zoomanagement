@@ -9,9 +9,6 @@ import {Position} from "../shared/Position";
 export default function useAnimals(plants: PlantType[]) {
 
 
-
-export default function useAnimals(plants: PlantType[]) {
-
     const [animals, setAnimals] = useState<Animal[]>([]);
 
     useEffect(() => {
