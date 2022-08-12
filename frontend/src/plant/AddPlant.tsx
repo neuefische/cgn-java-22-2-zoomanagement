@@ -1,4 +1,4 @@
-import {ChangeEvent, useEffect, useState} from "react";
+import {ChangeEvent, FormEvent, useEffect, useState} from "react";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import "./AddPlant.css"
@@ -15,7 +15,7 @@ export default function AddPlant(props: AddPlantProps) {
             if (props.apiPlants && props.apiPlants.length > 0) {
                 setPlantNameToAdd(props.apiPlants[0])
             }
-        }, [props.apiPlants]
+        }, [props.addPlant, props.apiPlants]
     )
 
     const notify = (message: string) => {
@@ -24,7 +24,8 @@ export default function AddPlant(props: AddPlantProps) {
         });
     };
 
-    const submitInput = () => {
+    const submitInput = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
         props.addPlant(plantNameToAdd)
             .then(() => setPlantNameToAdd(''))
             .catch((error) => {
