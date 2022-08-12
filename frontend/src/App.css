@@ -1,3 +1,11 @@
+:root {
+    --darkGreen: #006D77;
+    --brightGreen: #83C5BE;
+    --white: #EDF6F9;
+    --brightBeige: #FFDDD2;
+    --darkBeige: #E29578;
+}
+
 body{
     margin:0;
     background-color: #EDF6F9;

@@ -1,15 +1,25 @@
-import {FormEvent, useState} from "react";
+import {FormEvent, useEffect, useState} from "react";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import "../App.css"
+import "./AddPlant.css"
 
 type AddPlantProps = {
-    addPlant: (name: string) => Promise<void>;
-
+    addPlant: (name: string) => Promise<void>,
+    apiPlants: string[],
 }
 export default function AddPlant(props: AddPlantProps) {
     const [plantNameToAdd, setPlantNameToAdd] = useState<string>('')
+
+    useEffect(
+        () => {
+            if (props.apiPlants && props.apiPlants.length > 0) {
+                setPlantNameToAdd(props.apiPlants[0])
+            }
+        }, [props.apiPlants]
+    )
+
     const notify = (message: string) => toast(message);
+
     const submitInput = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (plantNameToAdd !== "") {
@@ -24,8 +34,12 @@ export default function AddPlant(props: AddPlantProps) {
         }
     }
     return <form onSubmit={submitInput}>
-        <input type={"input"} value={plantNameToAdd} onChange={event => setPlantNameToAdd(event.target.value)}/>
-        <button type={"submit"}><img src={"../pictures/save.png"} alt={"hinzufügen"}/></button>
+        <select className={"selectDropdown"} value={plantNameToAdd}
+                onChange={event => setPlantNameToAdd(event.target.value)}>
+            {props.apiPlants.map(plant =>
+                <option className={"option"} value={plant}>{plant}</option>)}
+        </select>
+        <button className={"addPlantBtn"} type={"submit"}><img src={"../pictures/save.png"} alt={"hinzufügen"}/></button>
         <ToastContainer/>
     </form>
 }
