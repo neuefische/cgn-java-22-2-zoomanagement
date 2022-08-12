@@ -30,9 +30,22 @@ public class PlantController {
                 );
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Plant> getPlantById(@PathVariable String id) {
+        Plant plant = plantService.getPlantById(id);
+        return new ResponseEntity<>(plant, HttpStatus.OK);
+    }
+
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePlant(@PathVariable String id) {
         boolean deleteSuccess = plantService.deletePlant(id);
         return new ResponseEntity<>(deleteSuccess ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Plant> updatePlantWithNewPosition(@PathVariable String id, @RequestBody Plant plantWithPosition) {
+        Plant updatedPlant = plantService.updatePlantWithNewPosition(id, plantWithPosition);
+        return new ResponseEntity<>(updatedPlant, HttpStatus.OK);
     }
 }
