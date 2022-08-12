@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import {Animal} from "./Animal";
 import {toast} from "react-toastify";
 import {NewAnimal} from "./NewAnimal";
+import {Position} from "../shared/Position";
 
 
 export default function useAnimals() {
@@ -13,6 +14,12 @@ export default function useAnimals() {
         getAnimalList()
     }, [])
 
+    const onErrorFunction = (error: Error) => {
+        toast.error(error.message, {
+                position: toast.POSITION.TOP_LEFT
+            }
+        )
+    }
     const getAnimalList = () => {
         axios.get("/api/animals")
             .then(response => response.data)
@@ -32,11 +39,20 @@ export default function useAnimals() {
             .then(getAnimalList)
             .catch(
                 error => {
-                    toast.error(error.message, {
-                            position: toast.POSITION.TOP_LEFT
-                        }
-                    )
+                    onErrorFunction(error)
                 })
+    }
+
+    const onPlaceAnimal = (animal: Animal, position: Position) => {
+        const newAnimalWithPosition: Animal = {
+            name: animal.name,
+            id: animal.id,
+            position: position
+        }
+        return axios.put(`/api/animals/${animal.id}`, newAnimalWithPosition)
+            .catch(error => {
+                onErrorFunction(error)
+            })
     }
     const [apiAnimals, setApiAnimals] = useState<string[]>([])
     useEffect(() => {
@@ -48,5 +64,5 @@ export default function useAnimals() {
             .then(response => response.data)
             .then(data => setApiAnimals(data))
     }
-    return {animals, addAnimal, onDeleteAnimal, apiAnimals}
+    return {animals, addAnimal, onDeleteAnimal, onPlaceAnimal, apiAnimals}
 }

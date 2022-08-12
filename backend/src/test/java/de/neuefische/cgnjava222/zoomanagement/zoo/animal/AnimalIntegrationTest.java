@@ -10,8 +10,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
+
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -109,4 +110,44 @@ class AnimalIntegrationTest {
 
     }
 
+    @DirtiesContext
+    @Test
+    void addPosition() throws Exception {
+        String saveResult = mockMvc.perform(post(
+                        "/api/animals")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"name": "Katze"}
+                                """)
+                )
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+
+        Animal saveResultAnimal = objectMapper.readValue(saveResult, Animal.class);
+        String id = saveResultAnimal.id();
+
+        mockMvc.perform(put("/api/animals/" + id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {
+                                "id": "<ID>",
+                                "name": "Katze",
+                                "position":
+                                    {"x": "5",
+                                    "y": "6"
+                                    }
+                                }
+                                """.replaceFirst("<ID>", id))
+                ).andExpect(status().isOk())
+                .andExpect(content().json("""
+                        {
+                        "name": "Katze",
+                        "position": {
+                        "x": "5",
+                        "y": "6"},
+                        "id": "<ID>"
+                        }
+                        """.replaceFirst("<ID>", id)));
+    }
 }

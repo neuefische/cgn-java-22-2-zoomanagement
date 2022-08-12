@@ -1,12 +1,10 @@
+import {Position} from "../shared/Position";
+
 export type PlantType = {
     name: string,
     id: string,
-    position?: PositionType,
+    position?: Position,
 
-}
-export type PositionType = {
-    x: string,
-    y: string,
 }
 
 export type NewPlantType = Omit<PlantType, "id">;
