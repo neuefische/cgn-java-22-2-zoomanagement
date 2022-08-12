@@ -21,7 +21,7 @@ export default function useEmployee() {
     }
 
     const addEmployee = (newName: string) => {
-        const newEmployee: NewEmployee = {name: newName, position: undefined}
+        const newEmployee: NewEmployee = {name: newName}
         return axios.post("/api/employees", newEmployee)
             .then((response) => {
                     getAllEmployees()

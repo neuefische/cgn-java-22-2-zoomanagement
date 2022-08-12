@@ -8,7 +8,6 @@ import {Emoji} from "./Emoji";
 
 
 export default function useAnimals() {
-
     const [animals, setAnimals] = useState<Animal[]>([]);
 
     useEffect(() => {
@@ -55,6 +54,16 @@ export default function useAnimals() {
                 onErrorFunction(error)
             })
     }
+    const [apiAnimals, setApiAnimals] = useState<string[]>([])
+    useEffect(() => {
+        getAnimalAPIList()
+    }, [])
+
+    const getAnimalAPIList = () => {
+        axios.get("/api/animals/apianimals")
+            .then(response => response.data)
+            .then(data => setApiAnimals(data))
+    }
 
     const onAddEmoji = (animal: Animal, emoji :Emoji) => {
         const newAnimalWithEmoji : Animal = {
@@ -69,9 +78,5 @@ export default function useAnimals() {
 
     }
 
-
-
-
-
-    return {animals, addAnimal, onDeleteAnimal, onPlaceAnimal, onAddEmoji}
+    return {animals, addAnimal, onDeleteAnimal, onPlaceAnimal, apiAnimals,onAddEmoji}
 }

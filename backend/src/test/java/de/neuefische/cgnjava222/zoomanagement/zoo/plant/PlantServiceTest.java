@@ -79,9 +79,6 @@ class PlantServiceTest {
 
         //then
         assertThat(actualPlant).isEqualTo(plantWithPosition);
-
-
     }
-
 
 }

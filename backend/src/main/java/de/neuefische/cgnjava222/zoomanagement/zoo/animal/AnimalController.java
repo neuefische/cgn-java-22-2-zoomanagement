@@ -59,4 +59,9 @@ public class AnimalController {
                 .body(updatedAnimal);
 
 }
+    @GetMapping("/apianimals")
+    public List<String> getAnimalsFromAPI() {
+        return animalService.getAnimalsFromAPI();
+    }
+
 }

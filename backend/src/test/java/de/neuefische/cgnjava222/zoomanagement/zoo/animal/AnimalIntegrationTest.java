@@ -1,6 +1,7 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.animal;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -8,11 +9,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@WireMockTest(httpPort = 1234)
 @SpringBootTest
 @AutoConfigureMockMvc
 class AnimalIntegrationTest {
@@ -27,7 +30,7 @@ class AnimalIntegrationTest {
     @Test
     void listAnimals() throws Exception {
 
-        mockMvc.perform(get("/api/animals"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/animals"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
                         []
@@ -38,8 +41,8 @@ class AnimalIntegrationTest {
     @Test
     void addAnimal() throws Exception {
 
-        mockMvc.perform(post(
-                        "/api/animals")
+        mockMvc.perform(MockMvcRequestBuilders.post(
+                                "/api/animals")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {"name": "Schmetterlong"}
@@ -57,8 +60,8 @@ class AnimalIntegrationTest {
     @DirtiesContext
     @Test
     void deleteAnimal() throws Exception {
-        String saveResult = mockMvc.perform(post(
-                        "/api/animals")
+        String saveResult = mockMvc.perform(MockMvcRequestBuilders.post(
+                                "/api/animals")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {"name": "Katze"}
@@ -70,10 +73,10 @@ class AnimalIntegrationTest {
         Animal saveResultAnimal = objectMapper.readValue(saveResult, Animal.class);
         String id = saveResultAnimal.id();
 
-        mockMvc.perform(delete("http://localhost:8080/api/animals/" + id))
+        mockMvc.perform(MockMvcRequestBuilders.delete("http://localhost:8080/api/animals/" + id))
                 .andExpect(status().is(204));
 
-        mockMvc.perform(get("http://localhost:8080/api/animals"))
+        mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/api/animals"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
                         []
@@ -85,15 +88,32 @@ class AnimalIntegrationTest {
     void deleteAnimalDoesNotExist() throws Exception {
 
         String id = "111";
-        mockMvc.perform(delete("http://localhost:8080/api/animals/" + id))
+        mockMvc.perform(MockMvcRequestBuilders.delete("http://localhost:8080/api/animals/" + id))
                 .andExpect(status().is(404));
     }
 
     @DirtiesContext
     @Test
+    void animalsFromApi() throws Exception {
+        stubFor(get("/")
+                .willReturn(aResponse().withStatus(200).withBody("""
+                                ["Coala", "Panda", "Tiger", "Penguin"]
+                                """)
+                        .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/animals/apianimals"))
+                .andExpect(status().isOk())
+                .andExpect(content().json("""
+                        ["Coala", "Panda", "Tiger", "Penguin"]
+                        """));
+
+    }
+
+    @DirtiesContext
+    @Test
     void addPosition() throws Exception {
-        String saveResult = mockMvc.perform(post(
-                        "/api/animals")
+        String saveResult = mockMvc.perform(MockMvcRequestBuilders.post(
+                                "/api/animals")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {"name": "Katze"}
@@ -106,7 +126,7 @@ class AnimalIntegrationTest {
         Animal saveResultAnimal = objectMapper.readValue(saveResult, Animal.class);
         String id = saveResultAnimal.id();
 
-        mockMvc.perform(put("/api/animals/" + id)
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/animals/" + id)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
