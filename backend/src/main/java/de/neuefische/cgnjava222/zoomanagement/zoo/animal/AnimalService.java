@@ -1,5 +1,6 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.animal;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,11 @@ import java.util.UUID;
 public class AnimalService {
 
     private final AnimalRepo animalRepo;
-    private final WebClient webClient = WebClient.create("https://my-json-server.typicode.com/sofia-shchukina/fakeAPI/Animals");
+    @Value("${apiUrl}")
+    private String apiUrl;
+    private final WebClient webClient = WebClient.create(
+
+    );
 
 
     AnimalService(AnimalRepo animalRepo) {
@@ -44,7 +49,7 @@ public class AnimalService {
 
     public List<String> getAnimalsFromAPI() {
 
-        ResponseEntity<List<String>> getAnimalsFromAPIResult = webClient.get()
+        ResponseEntity<List<String>> getAnimalsFromAPIResult = webClient.get().uri(apiUrl)
                 .retrieve()
                 .toEntity(new ParameterizedTypeReference<List<String>>() {
                 })
