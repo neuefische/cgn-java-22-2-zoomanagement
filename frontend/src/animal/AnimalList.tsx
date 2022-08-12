@@ -24,5 +24,4 @@ export default function AnimalList(props:
             <AddAnimal addAnimal={props.addAnimal} apiAnimals={props.apiAnimals}/>
         </>
     );
-
 }
