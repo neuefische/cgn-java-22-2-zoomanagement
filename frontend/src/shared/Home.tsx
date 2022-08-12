@@ -43,8 +43,5 @@ export default function Home(props: HomeProps) {
                        onDeleteEmployee={props.employeeHook.deleteEmployee}/>
 
             <GameButton/>
-            <ToastContainer/>
         </>);
-        </>
-    );
 }

@@ -23,17 +23,6 @@ export default function AllRoutes() {
 
     return (
 
-        <Routes>
-            <Route path={"/"} element={<Home animalHook={animalHook}
-                                             truckHook={truckHook}
-                                             employeeHook={employeeHook}
-                                             plantHook={plantHook}/>}/>
-
-            <Route path={"/plant/:id"}
-                   element={<DetailPlant plants={plantHook.plants} updatePlant={plantHook.updatePlant}/>}/>
-            <Route path={"/zooGame"} element={<ZooGame/>}/>
-        </Routes>
-
         <>
 
             <Routes>
@@ -65,6 +54,7 @@ export default function AllRoutes() {
                                                             addPlant={plantHook.addPlant}
                                                             deletePlant={plantHook.deletePlant}
                                                             apiPlants={plantHook.apiPlants}/>}/>
+                <Route path={"/zooGame"} element={<ZooGame/>}/>
 
             </Routes>
         </>
