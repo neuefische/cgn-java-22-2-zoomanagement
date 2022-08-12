@@ -26,8 +26,10 @@ public class TruckService {
         boolean doesTruckExist = truckRepo.existsById(truckToDelete);
         if (doesTruckExist) {
             truckRepo.deleteById(truckToDelete);
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                    "Truck mit id" + truckToDelete + "nicht gefunden");
         }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Truck mit id" + truckToDelete + "nicht gefunden");
     }
 
     public Truck updateTruck(Truck truck) {

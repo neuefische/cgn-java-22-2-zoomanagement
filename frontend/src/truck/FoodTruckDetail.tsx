@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
 import {Truck} from "./Truck";
-import {FormEvent, useState} from "react";
+import {FormEvent, useEffect, useState} from "react";
 
 type FoodTruckDetailsProps = {
     trucks: Truck[], getTruckById: (id: string | undefined) => Truck | undefined,
@@ -13,6 +13,12 @@ export default function FoodTruckDetail(props: FoodTruckDetailsProps) {
     const [valueX, setValueX] = useState("");
     const [valueY, setValueY] = useState("");
     const truck: Truck | undefined = props.getTruckById(id);
+
+    useEffect(() => {
+        setValueX(truck?.position?.x || "");
+        setValueY(truck?.position?.y || "")
+    }, [truck])
+
 
     const updateTruck = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
