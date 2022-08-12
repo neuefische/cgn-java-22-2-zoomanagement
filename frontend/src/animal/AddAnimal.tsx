@@ -35,7 +35,7 @@ export default function AddAnimal(props: AddAnimalProps) {
         if (props.apiAnimals && props.apiAnimals.length > 0) {
             setAnimalName(props.apiAnimals[0]);
         }
-    }, [props.addAnimal])
+    }, [props.addAnimal, props.apiAnimals])
 
     return (
         <form onSubmit={handleSubmit}>
