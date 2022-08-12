@@ -1,11 +1,12 @@
 import {ChangeEvent, useEffect, useState} from "react";
-import {PlantType, PositionType} from "./PlantType";
+import {PlantType} from "./PlantType";
 import {useParams} from "react-router-dom";
+import {Position} from "../shared/Position";
 
 type DetailPlantProps = {
 
     plants: PlantType[],
-    updatePlant: (plant: PlantType, position: PositionType) => Promise<void>,
+    updatePlant: (plant: PlantType, position: Position) => Promise<void>,
 }
 
 export default function DetailPlant(props: DetailPlantProps) {

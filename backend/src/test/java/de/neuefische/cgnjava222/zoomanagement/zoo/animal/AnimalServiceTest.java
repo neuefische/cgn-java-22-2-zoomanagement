@@ -1,5 +1,6 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.animal;
 
+import de.neuefische.cgnjava222.zoomanagement.zoo.Position;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

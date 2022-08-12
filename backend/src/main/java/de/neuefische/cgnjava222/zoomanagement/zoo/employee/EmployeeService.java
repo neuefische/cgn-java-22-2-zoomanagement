@@ -1,6 +1,6 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.employee;
 
-import de.neuefische.cgnjava222.zoomanagement.zoo.plant.Position;
+import de.neuefische.cgnjava222.zoomanagement.zoo.Position;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

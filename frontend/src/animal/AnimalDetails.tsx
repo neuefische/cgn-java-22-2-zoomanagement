@@ -1,6 +1,7 @@
-import {Animal, Position} from "./Animal";
+import {Animal} from "./Animal";
 import {useState} from "react";
 import {useParams} from "react-router-dom";
+import {Position} from "../shared/Position";
 
 
 export default function AnimalDetails(props: { animal: Animal[], onPlaceAnimal: (animal: Animal, position: Position) => void }) {
@@ -16,12 +17,12 @@ export default function AnimalDetails(props: { animal: Animal[], onPlaceAnimal: 
     return (
         <>
             <h2>{animalToUpdate.name}</h2>
-            <p> X - Coordinate: <input type={"input"} value={xCoordinate}
-                                       onChange={event => setXCoordinate(event.target.value)}/></p>
-            <p> Y - Coordinate: <input type={"input"} value={yCoordinate}
+            <p> X - Coordinate: {animalToUpdate.position?.x}<input type={"input"} value={xCoordinate}
+                                                                   onChange={event => setXCoordinate(event.target.value)}/></p>
+            <p> Y - Coordinate: {animalToUpdate.position?.y}<input type={"input"} value={yCoordinate}
                                        onChange={event => setYCoordinate(event.target.value)}/></p>
             <button onClick={() => {
-                props.onPlaceAnimal(animalToUpdate, {xCoordinate, yCoordinate})
+                props.onPlaceAnimal(animalToUpdate, {x: xCoordinate, y: yCoordinate})
                 setXCoordinate('')
                 setYCoordinate('')
             }}>save

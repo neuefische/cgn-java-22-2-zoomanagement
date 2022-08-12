@@ -113,8 +113,8 @@ class AnimalIntegrationTest {
                                 "id": "<ID>",
                                 "name": "Katze",
                                 "position":
-                                    {"xCoordinate": "5",
-                                    "yCoordinate": "6"
+                                    {"x": "5",
+                                    "y": "6"
                                     }
                                 }
                                 """.replaceFirst("<ID>", id))
@@ -123,8 +123,8 @@ class AnimalIntegrationTest {
                         {
                         "name": "Katze",
                         "position": {
-                        "xCoordinate": "5",
-                        "yCoordinate": "6"},
+                        "x": "5",
+                        "y": "6"},
                         "id": "<ID>"
                         }
                         """.replaceFirst("<ID>", id)));
