@@ -48,7 +48,8 @@ export default function AllRoutes() {
                                                                addTruck={truckHook.addTruck}/>}/>
                 <Route path={"/plants"} element={<PlantList plants={plantHook.plants}
                                                             addPlant={plantHook.addPlant}
-                                                            deletePlant={plantHook.deletePlant}/>}/>
+                                                            deletePlant={plantHook.deletePlant}
+                                                            apiPlants={plantHook.apiPlants}/>}/>
 
             </Routes>
         </>
