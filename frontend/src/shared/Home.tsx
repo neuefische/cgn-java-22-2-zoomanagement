@@ -40,13 +40,14 @@ export default function Home(props: HomeProps) {
     return (
         <>
             <PlantList plants={props.plantHook.plants} addPlant={props.plantHook.addPlant}
-                       deletePlant={props.plantHook.deletePlant}/>
-            <TruckGallery trucks={props.truckHook.trucks} addTruck={props.truckHook.addTruck}
+                   deletePlant={props.plantHook.deletePlant}/>
+        <TruckGallery trucks={props.truckHook.trucks} addTruck={props.truckHook.addTruck}
                           deleteTruck={props.truckHook.deleteTruck} getTruckById={props.truckHook.getTruckById}
                           updatedTruck={props.truckHook.updateTruck}/>
             <AnimalList animals={props.animalHook.animals} addAnimal={props.animalHook.addAnimal}
                         onDeleteAnimal={props.animalHook.onDeleteAnimal}/>
             <Employees employees={props.employeeHook.employees} addEmployee={props.employeeHook.addEmployee}
                        onDeleteEmployee={props.employeeHook.deleteEmployee}/>
-        </>);
+        </>
+    );
 }

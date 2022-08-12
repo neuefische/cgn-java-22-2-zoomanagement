@@ -18,17 +18,17 @@ export default function TruckGallery(props: TruckGalleryProps) {
     return (
         <>
             <h2>Food-Trucks</h2>
-            <AddTruck addTruck={props.addTruck}/>
             <ul>
                 {props.trucks
                     .map(truck =>
                         <li key={truck.id}>
-                            {truck.name}
+                            <div className={"nameStyle"}>{truck.name}
                             <button onClick={() => props.deleteTruck(truck.id)}>Löschen</button>
                             <button onClick={() => navigate("/trucks/" + truck.id)}>Details</button>
-                        </li>
+                        </div></li>
                     )}
             </ul>
+            <AddTruck addTruck={props.addTruck}/>
         </>
     )
 }
