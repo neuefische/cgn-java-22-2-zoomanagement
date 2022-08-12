@@ -1,7 +1,8 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {PlantType, NewPlantType} from "./PlantType";
+import {NewPlantType, PlantType, PositionType} from "./PlantType";
 import {toast} from "react-toastify";
+
 
 export default function usePlants() {
 
@@ -25,10 +26,28 @@ export default function usePlants() {
             .then(getAllPlants)
     }
 
-    const deletePlant = (id : string) => {
-        return axios.delete("/api/plants/" + id)
+    const deletePlant = (id: string) => {
+        return axios.delete(`/api/plants/${id}`)
             .then(getAllPlants)
-            .catch(error => toast("Leider ist ein Fehler aufgetreten "+error.message))
+            .catch(error => {
+                toast.error("Leider ist ein Fehler aufgetreten " + error.message)
+            })
     }
-    return {plants, addPlant, deletePlant}
+
+
+    const updatePlant = (plant: PlantType, position: PositionType) => {
+        const updatedPlantWithNewPosition = {
+            id: plant.id,
+            name: plant.name,
+            position: position
+        }
+        return axios.put(`/api/plants/${plant.id}`, updatedPlantWithNewPosition)
+            .then(getAllPlants)
+            .catch(error => {
+                toast("Leider ist ein Fehler aufgetreten " + error.message)
+            })
+    }
+
+    return {plants, addPlant, deletePlant, updatePlant}
+
 }
