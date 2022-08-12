@@ -16,9 +16,7 @@ public class AnimalService {
     private final AnimalRepo animalRepo;
     @Value("${apiUrl}")
     private String apiUrl;
-    private final WebClient webClient = WebClient.create(
-
-    );
+    private final WebClient webClient = WebClient.create();
 
 
     AnimalService(AnimalRepo animalRepo) {
