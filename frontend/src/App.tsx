@@ -6,11 +6,15 @@ import {HashRouter} from "react-router-dom";
 import AllRoutes from "./shared/AllRoutes";
 import Header from "./shared/Header";
 
+
 export default function App() {
     return <>
-        <Header/>
+
         <HashRouter>
-            <AllRoutes/>
+            <Header/>
+            <main>
+                <AllRoutes/>
+            </main>
         </HashRouter>
         <ToastContainer/>
     </>;
