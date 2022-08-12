@@ -8,6 +8,7 @@ export default function AnimalList(props:
                                            animals: Animal[],
                                            addAnimal: (animalName: string) => Promise<void>,
                                            onDeleteAnimal: (id: string) => Promise<void>,
+                                           apiAnimals: string[],
                                        }) {
     return (
         <>
@@ -19,7 +20,7 @@ export default function AnimalList(props:
 
             </ul>
 
-            <AddAnimal addAnimal={props.addAnimal}/>
+            <AddAnimal addAnimal={props.addAnimal} apiAnimals={props.apiAnimals}/>
         </>
     );
 }

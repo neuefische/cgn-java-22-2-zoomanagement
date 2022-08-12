@@ -1,6 +1,7 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.truck;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,5 +26,16 @@ public class TruckController {
     @ResponseStatus(code = HttpStatus.CREATED)
     public Truck addTruck(@RequestBody NewTruck truck) {
         return truckService.addTruck(truck);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteTruck(@PathVariable String id) {
+
+         if (truckService.deleteTruck(id)) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+
     }
 }

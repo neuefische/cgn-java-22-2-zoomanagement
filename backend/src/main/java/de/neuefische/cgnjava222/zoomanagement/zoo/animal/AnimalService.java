@@ -1,7 +1,12 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.animal;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -9,6 +14,10 @@ import java.util.UUID;
 public class AnimalService {
 
     private final AnimalRepo animalRepo;
+    @Value("${apiUrl}")
+    private String apiUrl;
+    private final WebClient webClient = WebClient.create();
+
 
     AnimalService(AnimalRepo animalRepo) {
         this.animalRepo = animalRepo;
@@ -22,7 +31,8 @@ public class AnimalService {
 
         return animalRepo.save(new Animal(
                 UUID.randomUUID().toString(),
-                newAnimal.name()
+                newAnimal.name(),
+                newAnimal.position()
         ));
 
     }
@@ -33,6 +43,27 @@ public class AnimalService {
             return true;
         }
         return false;
+    }
+
+    public Animal updateAnimalPosition(Animal animalWithPosition) {
+
+        animalRepo.deleteById(animalWithPosition.id());
+        animalRepo.save(animalWithPosition);
+
+        return animalWithPosition;
+    }
+
+    public List<String> getAnimalsFromAPI() {
+
+        ResponseEntity<List<String>> getAnimalsFromAPIResult = webClient.get().uri(apiUrl)
+                .retrieve()
+                .toEntity(new ParameterizedTypeReference<List<String>>() {
+                })
+                .block();
+        if (getAnimalsFromAPIResult == null)
+            return Collections.emptyList();
+        return getAnimalsFromAPIResult
+                .getBody();
     }
 
 }

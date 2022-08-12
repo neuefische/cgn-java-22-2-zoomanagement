@@ -8,12 +8,22 @@ import {PlantType} from "../plant/PlantType";
 
 export default function useAnimals(plants: PlantType[]) {
 
+import {Position} from "../shared/Position";
+
+
+export default function useAnimals() {
     const [animals, setAnimals] = useState<Animal[]>([]);
 
     useEffect(() => {
         getAnimalList()
     }, [])
 
+    const onErrorFunction = (error: Error) => {
+        toast.error(error.message, {
+                position: toast.POSITION.TOP_LEFT
+            }
+        )
+    }
     const getAnimalList = () => {
         axios.get("/api/animals")
             .then(response => response.data)
@@ -42,12 +52,30 @@ export default function useAnimals(plants: PlantType[]) {
             .then(getAnimalList)
             .catch(
                 error => {
-                    toast.error(error.message, {
-                            position: toast.POSITION.TOP_LEFT
-                        }
-                    )
+                    onErrorFunction(error)
                 })
     }
 
-    return {animals, addAnimal, onDeleteAnimal}
+    const onPlaceAnimal = (animal: Animal, position: Position) => {
+        const newAnimalWithPosition: Animal = {
+            name: animal.name,
+            id: animal.id,
+            position: position
+        }
+        return axios.put(`/api/animals/${animal.id}`, newAnimalWithPosition)
+            .catch(error => {
+                onErrorFunction(error)
+            })
+    }
+    const [apiAnimals, setApiAnimals] = useState<string[]>([])
+    useEffect(() => {
+        getAnimalAPIList()
+    }, [])
+
+    const getAnimalAPIList = () => {
+        axios.get("/api/animals/apianimals")
+            .then(response => response.data)
+            .then(data => setApiAnimals(data))
+    }
+    return {animals, addAnimal, onDeleteAnimal, onPlaceAnimal, apiAnimals}
 }
