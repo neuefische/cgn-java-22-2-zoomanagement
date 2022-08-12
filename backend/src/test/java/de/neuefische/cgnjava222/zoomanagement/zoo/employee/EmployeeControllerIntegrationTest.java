@@ -83,41 +83,4 @@ class EmployeeControllerIntegrationTest {
         mockMvc.perform(delete("http://localhost:8080/api/employees/" + id))
                 .andExpect(status().is(404));
     }
-
-    @DirtiesContext
-    @Test
-    void updatePositioningTest() throws Exception {
-
-
-        String saveResult = mockMvc.perform(post(
-                "/api/employees")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("""
-                        {"name": "Hainz Ketchup"}
-                        """)
-        ).andReturn().getResponse().getContentAsString();
-
-        Employee saveResultEmployee = objectMapper.readValue(saveResult, Employee.class);
-        String id = saveResultEmployee.id();
-
-        mockMvc.perform(put(
-                        "/api/employees/"+id)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("""
-                               {      
-                                "name":"Hainz Ketchup",
-                                "id":"<ID>",
-                                "position":{"x":"9","y":"5"}
-                                }
-                                """.replaceFirst("<ID>",id))
-                )
-                .andExpect(status().is(200))
-                .andExpect(content().json("""
-                        {
-                                "name":"Hainz Ketchup",
-                                "id":"<ID>",
-                                "position":{"x":"9","y":"5"}
-                        }
-                        """.replaceFirst("<ID>",id)));
-    }
 }

@@ -44,7 +44,7 @@ export default function AddAnimal(props: AddAnimalProps) {
                 {props.apiAnimals.map(apiAnimal => (<option className="option" value={apiAnimal}>{apiAnimal}</option>))}
             </select>
 
-            <button type={"submit"}>hinzufügen</button>
+            <button type={"submit"}><img src={"../pictures/save.png"} alt={"hinzufügen"}/></button>
         </form>
     );
 }
