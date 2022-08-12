@@ -44,3 +44,7 @@ label{
     padding-bottom: 8pt;
     display: block;
 }
+
+form{
+    margin-bottom: 3rem;
+}
