@@ -1,7 +1,6 @@
 import DetailPlant from "../plant/DetailPlant";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import DetailEmployee from "../employee/DetailEmployee";
-import React from "react";
 import {Route, Routes} from "react-router-dom";
 import Home from "./Home";
 import useAnimals from "../animal/useAnimals";
@@ -34,7 +33,7 @@ export default function AllRoutes() {
         if (meHook.me !== "anonymousUser") {
             animalHook.getAnimalList()
             plantHook.getAllPlants()
-            truckHook.getAllTrucks()
+            truckHook.fetchAllTrucks()
             employeeHook.getAllEmployees()
         }
 

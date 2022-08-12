@@ -36,7 +36,7 @@ export default function usePlants() {
             })
     }
 
-    const updatePlant = (plant: PlantType, position: PositionType) => {
+    const updatePlant = (plant: PlantType, position: Position) => {
         const updatedPlantWithNewPosition = {
             id: plant.id,
             name: plant.name,
