@@ -2,6 +2,8 @@ package de.neuefische.cgnjava222.zoomanagement.zoo.plant;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
+import de.neuefische.cgnjava222.zoomanagement.zoo.Position;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

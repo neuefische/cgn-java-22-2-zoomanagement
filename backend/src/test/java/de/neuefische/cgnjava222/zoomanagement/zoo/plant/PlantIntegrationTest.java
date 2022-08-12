@@ -1,6 +1,7 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.plant;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.neuefische.cgnjava222.zoomanagement.zoo.Position;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
