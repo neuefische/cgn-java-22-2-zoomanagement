@@ -3,10 +3,15 @@ import Truck, {NewTruck} from "./Truck";
 import axios from "axios";
 import {toast} from "react-toastify";
 
-
 export default function useTrucks() {
 
     const [trucks, setTrucks] = useState<Truck[]>([]);
+    
+    const notify = (message: string) => {
+        toast.error(message, {
+            position: toast.POSITION.TOP_LEFT
+        });
+    }
 
     useEffect(() => {
         fetchAllTrucks()
@@ -25,11 +30,6 @@ export default function useTrucks() {
         return axios.post("/api/trucks", newTruck)
             .then(() => fetchAllTrucks())
     }
-    const notify = (message: string) => {
-        toast.error(message, {
-            position: toast.POSITION.TOP_LEFT
-        });
-    }
 
     const deleteTruck = (id: string) => {
         return axios.delete("/api/trucks/" + id)
@@ -38,12 +38,10 @@ export default function useTrucks() {
             .catch(error => notify("existiert nicht"));
     }
 
-
     const getTruckById = (id: string | undefined) => {
         return trucks.find(thisTruck => {
             if (thisTruck.id === id) return true
         })
-
     }
 
     const updatedTruck = (truck: Truck) => {
@@ -51,10 +49,7 @@ export default function useTrucks() {
             .then((response) => response.status)
             .then(fetchAllTrucks)
             .catch(error => notify("Netzwerkrequest fehlgeschlagen."));
-
     }
 
-
     return {trucks, addTruck, deleteTruck, getTruckById, updatedTruck}
-
 }
