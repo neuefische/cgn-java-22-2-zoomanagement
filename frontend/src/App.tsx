@@ -5,7 +5,7 @@ import {HashRouter} from "react-router-dom";
 import AllRoutes from "./shared/AllRoutes";
 import Header from "./shared/Header";
 import {ToastContainer} from "react-toastify";
-import Footer from "./shared/Footer";
+
 
 export default function App() {
 
@@ -16,9 +16,7 @@ export default function App() {
             <main>
             <AllRoutes/>
             </main>
-            <Footer/>
         </HashRouter>
-
         <ToastContainer/>
     </>;
 }

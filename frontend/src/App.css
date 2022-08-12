@@ -1,60 +1,46 @@
 body{
-
-
-    margin:0pt;
+    margin:0;
     background-color: #EDF6F9;
 }
 
 main{
-
     height:100vh;
     background-color: #EDF6F9;
 }
+
 h2{
-
     padding-left: 10pt;
-
-
 }
-input{
 
+input{
     border-radius: 0.7em;
     margin-left: 30pt;
     padding: 2pt;
-
 }
-button{
 
+button{
     background-color: transparent;
     margin-left: 5pt;
 }
-button img{
 
+button img{
     width: 40px;
     height: 40px;
-
 }
+
 li{
-
-
     margin-left: 5pt;
 }
+
 .nameStyle{
     display: inline-flex;
     width:100pt;
     margin-top: 5pt;
     margin-bottom: 5pt;
 }
-label{
 
+label{
     padding-left: 10pt;
     padding-bottom: 8pt;
     display: block;
-
-}
-form button {
-
-
-
-
 }
