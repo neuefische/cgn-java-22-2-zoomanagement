@@ -8,6 +8,7 @@ import {Position} from "../shared/Position";
 export default function usePlants() {
 
     const [plants, setPlants] = useState<PlantType[]>([])
+    const [apiPlants, setApiPlants] = useState<string[]>([])
 
     const getAllPlants = () => {
         axios.get("/api/plants")
@@ -49,6 +50,20 @@ export default function usePlants() {
             })
     }
 
-    return {plants, addPlant, deletePlant, updatePlant}
+    const getPlantsFromApi = () => {
+        axios.get("/api/plants/apiplants")
+            .then(response => {
+                return response.data
+            })
+            .then(data => setApiPlants(data))
+            .catch(error => console.error(error))
+    }
+
+    useEffect(
+        () => getPlantsFromApi(), []
+    )
+
+
+    return {plants, addPlant, deletePlant, updatePlant, apiPlants}
 
 }
