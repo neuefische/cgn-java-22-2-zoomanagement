@@ -1,5 +1,5 @@
 import {Cell} from "./Cell";
-import "./BoardModel.css";
+import "./GameBoard.css";
 
 export default function GameBoard() {
 
@@ -21,7 +21,7 @@ export default function GameBoard() {
         <>
             <h2>Game-Board</h2>
             <div className={"board"}>
-                {gameCells.map(cell => <div className={"cell"} key={cell.index}>
+                {gameCells.map(cell => <div className={"cell"} key={cell.index}>{cell.index}
                 </div>)}
             </div>
         </>

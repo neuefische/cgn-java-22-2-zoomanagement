@@ -3,6 +3,8 @@
     grid-template-rows: repeat(10, 1fr);
     grid-template-columns: repeat(10, 1fr);
     border: black solid 1px;
+    background-image: url(/public/pictures/background-GameBoard.png);
+    background-size: cover;
 }
 
 .cell {

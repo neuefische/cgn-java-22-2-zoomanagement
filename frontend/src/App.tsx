@@ -17,6 +17,5 @@ export default function App() {
             </main>
         </HashRouter>
         <ToastContainer/>
-        <GameBoard cell={cell} gameCells={gameCells}
         </>;
 }
