@@ -127,7 +127,7 @@ class AnimalIntegrationTest {
         String id = saveResultAnimal.id();
 
         mockMvc.perform(MockMvcRequestBuilders.put("/api/animals/" + id)
-                        .contentType(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
                                 "id": "<ID>",
@@ -153,7 +153,7 @@ class AnimalIntegrationTest {
     @DirtiesContext
     @Test
     void addEmoji() throws Exception {
-        String saveResult = mockMvc.perform(post(
+        String saveResult = mockMvc.perform(MockMvcRequestBuilders.post(
                         "/api/animals/")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
@@ -167,7 +167,7 @@ class AnimalIntegrationTest {
         Animal saveResultAnimal = objectMapper.readValue(saveResult, Animal.class);
         String id = saveResultAnimal.id();
 
-        mockMvc.perform(put("/api/animals/emoji/" + id)
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/animals/emoji/" + id)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
