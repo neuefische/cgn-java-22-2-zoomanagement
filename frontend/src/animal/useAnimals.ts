@@ -63,5 +63,5 @@ export default function useAnimals() {
             .then(response => response.data)
             .then(data => setApiAnimals(data))
     }
-    return {animals, addAnimal, onDeleteAnimal, onPlaceAnimal, apiAnimals}
+    return {animals, addAnimal, onDeleteAnimal, onPlaceAnimal, apiAnimals, getAnimalList}
 }

@@ -36,13 +36,13 @@ export default function usePlants() {
             })
     }
 
-
     const updatePlant = (plant: PlantType, position: Position) => {
         const updatedPlantWithNewPosition = {
             id: plant.id,
             name: plant.name,
             position: position
         }
+
         return axios.put(`/api/plants/${plant.id}`, updatedPlantWithNewPosition)
             .then(getAllPlants)
             .catch(error => {
@@ -64,6 +64,6 @@ export default function usePlants() {
     )
 
 
-    return {plants, addPlant, deletePlant, updatePlant, apiPlants}
+    return {plants, addPlant, deletePlant, updatePlant, apiPlants,getAllPlants}
 
 }

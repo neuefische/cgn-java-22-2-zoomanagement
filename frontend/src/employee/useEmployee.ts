@@ -50,6 +50,7 @@ export default function useEmployee() {
         deleteEmployee,
         addEmployee,
         employees,
-        updateEmployee
+        updateEmployee,
+        getAllEmployees,
     }
 }

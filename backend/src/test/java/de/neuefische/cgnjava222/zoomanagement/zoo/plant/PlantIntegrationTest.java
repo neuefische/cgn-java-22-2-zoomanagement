@@ -1,8 +1,8 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.plant;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.neuefische.cgnjava222.zoomanagement.zoo.Position;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
+import de.neuefische.cgnjava222.zoomanagement.zoo.Position;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -24,6 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WireMockTest(httpPort = 1234)
 @SpringBootTest
 @AutoConfigureMockMvc
+@WithMockUser(username = "wer")
 class PlantIntegrationTest {
 
     @Autowired
@@ -54,6 +56,8 @@ class PlantIntegrationTest {
                                  {"name": "Birke"}
                                 """))
                 .andExpect(status().is(201));
+
+
         mockMvc.perform(
                         MockMvcRequestBuilders.get("/api/plants")
                 )
@@ -81,6 +85,7 @@ class PlantIntegrationTest {
                                 """)
                 )
                 .andExpect(status().is(201));
+
         mockMvc.perform(
                         MockMvcRequestBuilders.get("/api/plants")
                 )

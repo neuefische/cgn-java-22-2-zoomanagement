@@ -38,6 +38,6 @@ export default function useTrucks() {
             .catch(() => notify("existiert nicht"));
     }
 
-    return {trucks, addTruck, deleteTrucks}
+    return {trucks, addTruck, deleteTrucks, fetchAllTrucks}
 
 }
