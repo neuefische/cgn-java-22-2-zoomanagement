@@ -1,3 +1,24 @@
+
+
+
+.GameButton button {
+
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #E29578;
+    border: none;
+    font-size: 40pt;
+}
+
+.GameButton{
+    position: sticky;
+    height: 75pt;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    }
 :root {
     --darkGreen: #006D77;
     --brightGreen: #83C5BE;
@@ -5,7 +26,6 @@
     --brightBeige: #FFDDD2;
     --darkBeige: #E29578;
 }
-
 body{
     margin:0;
     background-color: #EDF6F9;

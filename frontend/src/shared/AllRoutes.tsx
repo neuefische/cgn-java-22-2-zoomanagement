@@ -9,6 +9,7 @@ import useTrucks from "../truck/useTrucks";
 import AnimalDetails from "../animal/AnimalDetails";
 import useEmployee from "../employee/useEmployee";
 import FoodTruckDetail from "../truck/FoodTruckDetail";
+import ZooGame from "./ZooGame";
 import AnimalList from "../animal/AnimalList";
 import Employees from "../employee/Employees";
 import TruckGallery from "../truck/TruckGallery";
@@ -22,6 +23,7 @@ export default function AllRoutes() {
     const employeeHook = useEmployee();
 
     return (
+
         <>
 
             <Routes>
@@ -58,6 +60,7 @@ export default function AllRoutes() {
                 <Route path={"/trucks/:id"} element={<FoodTruckDetail
                     trucks={truckHook.trucks} getTruckById={truckHook.getTruckById} updateTruck={truckHook.updateTruck}
                 />}/>
+                <Route path={"/zooGame"} element={<ZooGame/>}/>
 
             </Routes>
         </>
