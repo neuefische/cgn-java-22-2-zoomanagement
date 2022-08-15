@@ -1,6 +1,8 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.truck;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -20,12 +22,17 @@ public class TruckService {
         return truckRepo.save(newTruck.withRandomId());
     }
 
-    public boolean deleteTruck(String truckToDelete) {
+    public void deleteTruck(String truckToDelete) {
         boolean doesTruckExist = truckRepo.existsById(truckToDelete);
-         if (doesTruckExist) {
+        if (doesTruckExist) {
             truckRepo.deleteById(truckToDelete);
-
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                    "Truck mit id" + truckToDelete + "nicht gefunden");
         }
-        return doesTruckExist;
+    }
+
+    public Truck updateTruck(Truck truck) {
+        return truckRepo.save(truck);
     }
 }

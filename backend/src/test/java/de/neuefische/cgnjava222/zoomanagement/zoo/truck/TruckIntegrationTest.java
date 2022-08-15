@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class TruckControllerIntegrationTest {
+class TruckIntegrationTest {
 
     @Autowired
     MockMvc mockMvc;
@@ -61,7 +61,6 @@ class TruckControllerIntegrationTest {
         Assertions.assertTrue(content.contains("Dner1"));
     }
 
-
     @DirtiesContext
     @Test
     void deleteTrucks() throws Exception {
@@ -87,6 +86,47 @@ class TruckControllerIntegrationTest {
                         """));
     }
 
+    @DirtiesContext
+    @Test
+    void deleteTrucksNoExist() throws Exception {
+        String id="2000";
+        mockMvc.perform(delete("http://localhost:8080/api/trucks/" + id))
+                .andExpect(status().is(404));
+    }
+
+    @DirtiesContext
+    @Test
+    void updatePositioningTest() throws Exception {
+        String saveResult = mockMvc.perform(post(
+                "/api/trucks")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("""
+                        {"name": "Arnold Schwarzenegger"}
+                        """)
+        ).andReturn().getResponse().getContentAsString();
+
+        Truck saveResultEmployee = objectMapper.readValue(saveResult, Truck.class);
+        String id = saveResultEmployee.id();
+
+        mockMvc.perform(put(
+                        "/api/trucks/" + id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"name":"Arnold Schwarzenegger",
+                                 "id":"<ID>",
+                                 "position":{"x":"3","y":"5"}
+                                 }
+                                 """.replaceFirst("<ID>", id))
+                )
+                .andExpect(status().is(200))
+                .andExpect(content().json("""
+                        {
+                                "name":"Arnold Schwarzenegger",
+                                "id":"<ID>",
+                                "position":{"x":"3","y":"5"}
+                        }
+                        """.replaceFirst("<ID>", id)));
+    }
 
     @DirtiesContext
     @Test
