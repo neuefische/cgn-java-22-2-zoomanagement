@@ -1,11 +1,14 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.truck;
 
-import de.neuefische.cgnjava222.zoomanagement.zoo.plant.Position;
+
+import de.neuefische.cgnjava222.zoomanagement.zoo.Position;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -44,7 +47,8 @@ class TruckServiceTest {
 
     @Test
     void deleteTruckDoesNotExistTest() {
-        Truck truck = new Truck("Currywurst", "0a628570-01ed-4599-92e8-127fefce9f2e");
+        String id = "0a628570-01ed-4599-92e8-127fefce9f2e";
+        Truck truck = new Truck("Currywurst", new Position("3", "6"), id);
 
         TruckRepo truckRepo = mock(TruckRepo.class);
         when(truckRepo.existsById(truck.id())).thenReturn(false);
@@ -52,9 +56,7 @@ class TruckServiceTest {
 
         TruckService truckService = new TruckService(truckRepo);
 
-        truckService.deleteTruck((truck.id()));
-        verify(truckRepo, times(0)).deleteById((truck.id()));
-
+        assertThrows(ResponseStatusException.class, () -> truckService.deleteTruck(id));
     }
 
 
