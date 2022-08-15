@@ -2,7 +2,6 @@ import {ChangeEvent, FormEvent, useState} from "react";
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 type AddTruckProps = {
     addTruck: (name: string) => Promise<void>
 }
@@ -12,25 +11,30 @@ export default function AddTruck(props: AddTruckProps) {
     const onNameChange = (event: ChangeEvent<HTMLInputElement>) => {
         setTruckName(event.target.value)
     }
+    
     const onTruckSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if(truckName==="")return;
+        if (truckName === "") return;
 
         props.addTruck(truckName)
             .catch((error) => {
-                notify("Truck kann nicht hinzugefügt werden! Datenbankfehler " + error.message)
+                notify("Truck kann nicht hinzugefügt werden! Datenbankfehler " + error.message);
             })
 
-        setTruckName("")
+        setTruckName("");
     }
+    
     const notify = (message: string) => {
         toast.error(message, {
             position: toast.POSITION.TOP_LEFT
         });
     };
+    
     return (
         <form onSubmit={onTruckSubmit}>
-                <input type="text" onChange={onNameChange} value={truckName}/>
+            <label htmlFor="truckName">Neuen Truck hinzufügen
+                <input id="truckName" type="text" onChange={onNameChange} value={truckName}/>
+            </label>
             <button><img src={"../pictures/save.png"} alt={"hinzufügen"}/></button>
         </form>
     )

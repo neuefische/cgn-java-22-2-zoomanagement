@@ -30,12 +30,13 @@ public class TruckController {
 
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteTruck(@PathVariable String id) {
-
-         if (truckService.deleteTruck(id)) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
-
+        truckService.deleteTruck(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @PutMapping("{id}")
+    public Truck updateTruck(@PathVariable String id, @RequestBody Truck truck) {
+        return truckService.updateTruck(truck);
+    }
+
 }

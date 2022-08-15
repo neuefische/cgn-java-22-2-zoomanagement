@@ -8,6 +8,7 @@ import usePlants from "../plant/usePlants";
 import useTrucks from "../truck/useTrucks";
 import AnimalDetails from "../animal/AnimalDetails";
 import useEmployee from "../employee/useEmployee";
+import FoodTruckDetail from "../truck/FoodTruckDetail";
 import ZooGame from "./ZooGame";
 import AnimalList from "../animal/AnimalList";
 import Employees from "../employee/Employees";
@@ -49,11 +50,16 @@ export default function AllRoutes() {
                                            onDeleteEmployee={employeeHook.deleteEmployee}/>}/>
                 <Route path={"/trucks"} element={<TruckGallery trucks={truckHook.trucks}
                                                                addTruck={truckHook.addTruck}
-                                                               deleteTruck={truckHook.deleteTrucks}/>}/>
+                                                               deleteTruck={truckHook.deleteTruck}
+                                                               getTruckById={truckHook.getTruckById}
+                                                               updateTruck={truckHook.updateTruck}/>}/>
                 <Route path={"/plants"} element={<PlantList plants={plantHook.plants}
                                                             addPlant={plantHook.addPlant}
                                                             deletePlant={plantHook.deletePlant}
                                                             apiPlants={plantHook.apiPlants}/>}/>
+                <Route path={"/trucks/:id"} element={<FoodTruckDetail
+                    trucks={truckHook.trucks} getTruckById={truckHook.getTruckById} updateTruck={truckHook.updateTruck}
+                />}/>
                 <Route path={"/zooGame"} element={<ZooGame/>}/>
 
             </Routes>
