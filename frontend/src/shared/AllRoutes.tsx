@@ -40,7 +40,8 @@ export default function AllRoutes() {
 
                 <Route path={"/animals"} element={<AnimalList animals={animalHook.animals}
                                                               addAnimal={animalHook.addAnimal}
-                                                              onDeleteAnimal={animalHook.onDeleteAnimal}/>}/>
+                                                              onDeleteAnimal={animalHook.onDeleteAnimal}
+                                                              apiAnimals={animalHook.apiAnimals}/>}/>
                 <Route path={"/employees"}
                        element={<Employees employees={employeeHook.employees}
                                            addEmployee={employeeHook.addEmployee}
@@ -52,11 +53,11 @@ export default function AllRoutes() {
                                                                updateTruck={truckHook.updateTruck}/>}/>
                 <Route path={"/plants"} element={<PlantList plants={plantHook.plants}
                                                             addPlant={plantHook.addPlant}
-                                                            deletePlant={plantHook.deletePlant}/>}/>
+                                                            deletePlant={plantHook.deletePlant}
+                                                            apiPlants={plantHook.apiPlants}/>}/>
                 <Route path={"/trucks/:id"} element={<FoodTruckDetail
                     trucks={truckHook.trucks} getTruckById={truckHook.getTruckById} updateTruck={truckHook.updateTruck}
                 />}/>
-
 
             </Routes>
         </>

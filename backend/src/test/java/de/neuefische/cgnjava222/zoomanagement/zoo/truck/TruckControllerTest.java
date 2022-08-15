@@ -1,6 +1,5 @@
 package de.neuefische.cgnjava222.zoomanagement.zoo.truck;
 
-import de.neuefische.cgnjava222.zoomanagement.zoo.plant.Position;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -39,5 +38,4 @@ class TruckControllerTest {
         //then
         Assertions.assertEquals(testTruck, actual);
     }
-
 }

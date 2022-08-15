@@ -7,6 +7,7 @@ type PlantListProps = {
     plants: PlantType[],
     addPlant: (name: string) => Promise<void>,
     deletePlant: (id: string) => Promise<void>,
+    apiPlants: string[],
 }
 export default function PlantList(props: PlantListProps) {
 
@@ -18,7 +19,7 @@ export default function PlantList(props: PlantListProps) {
                     <Plant plant={plant} deletePlant={props.deletePlant}/>
                 </li>)}
             </ul>
-            <AddPlant addPlant={props.addPlant}/>
+            <AddPlant addPlant={props.addPlant} apiPlants={props.apiPlants}/>
         </>
     )
 }
