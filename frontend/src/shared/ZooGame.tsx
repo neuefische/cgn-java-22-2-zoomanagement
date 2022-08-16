@@ -1,13 +1,12 @@
-
 import ReturnToHomeButton from "./ReturnToHomeButton";
+import GameBoard from "../grid/GameBoard";
 
 export default function ZooGame() {
 
-    return(
-<>
-<div>Hier bitte das Game einfügen</div>
-
-        <ReturnToHomeButton/>
-</>
+    return (
+        <>
+            <GameBoard/>
+            <ReturnToHomeButton/>
+        </>
     )
 }
