@@ -5,6 +5,7 @@ import {toast} from "react-toastify";
 import {NewAnimal} from "./NewAnimal";
 import {PlantType} from "../plant/PlantType";
 import {Position} from "../shared/Position";
+import {Emoji} from "./Emoji";
 
 export default function useAnimals(plants: PlantType[]) {
 
@@ -57,7 +58,7 @@ export default function useAnimals(plants: PlantType[]) {
         const newAnimalWithPosition: Animal = {
             name: animal.name,
             id: animal.id,
-            position: position
+            position: position,
         }
         return axios.put(`/api/animals/${animal.id}`, newAnimalWithPosition)
             .catch(error => {
@@ -74,5 +75,19 @@ export default function useAnimals(plants: PlantType[]) {
             .then(response => response.data)
             .then(data => setApiAnimals(data))
     }
-    return {animals, addAnimal, onDeleteAnimal, onPlaceAnimal, apiAnimals}
+
+    const onAddEmoji = (animal: Animal, emoji :Emoji) => {
+        const newAnimalWithEmoji : Animal = {
+            name: animal.name,
+            id: animal.id,
+            emoji: emoji
+        }
+        return axios.put(`/api/animals/emoji/${animal.id}`, newAnimalWithEmoji)
+            .catch(error => {
+                onErrorFunction(error)
+            })
+
+    }
+
+    return {animals, addAnimal, onDeleteAnimal, onPlaceAnimal, apiAnimals,onAddEmoji}
 }

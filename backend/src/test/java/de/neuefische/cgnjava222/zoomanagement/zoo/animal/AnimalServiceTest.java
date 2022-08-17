@@ -14,9 +14,9 @@ class AnimalServiceTest {
     @Test
     void getAnimals() {
         List<Animal> animals = List.of(
-                new Animal("1", "Eisbär", null),
-                new Animal("2", "Tiger", null),
-                new Animal("3", "Giraffe", null)
+                new Animal("1", "Eisbär", null,null),
+                new Animal("2", "Tiger", null, null),
+                new Animal("3", "Giraffe", null, null)
         );
 
         AnimalRepo animalRepo = mock(AnimalRepo.class);
@@ -26,9 +26,9 @@ class AnimalServiceTest {
 
         List<Animal> actualResult = animalService.getAnimals();
         List<Animal> expectedResult = List.of(
-                new Animal("1", "Eisbär", null),
-                new Animal("2", "Tiger", null),
-                new Animal("3", "Giraffe", null)
+                new Animal("1", "Eisbär", null, null),
+                new Animal("2", "Tiger", null, null),
+                new Animal("3", "Giraffe", null, null)
         );
 
         assertThat(actualResult).hasSameElementsAs(expectedResult);
@@ -37,14 +37,14 @@ class AnimalServiceTest {
     @Test
     void addAnimals() {
 
-        Animal animal = new Animal("1", "Schmetterling", null);
+        Animal animal = new Animal("1", "Schmetterling", null, null);
 
         AnimalRepo animalRepo = mock(AnimalRepo.class);
         when(animalRepo.save(any(Animal.class)))
                 .thenReturn(animal);
 
         AnimalService animalService = new AnimalService(animalRepo);
-        Animal actualResult = animalService.addAnimal(new NewAnimal("Schmetterling", null));
+        Animal actualResult = animalService.addAnimal(new NewAnimal("Schmetterling", null, null));
 
         assertThat(actualResult).isEqualTo(animal);
 
@@ -53,7 +53,7 @@ class AnimalServiceTest {
 
     @Test
     void deleteAnimalTest() {
-        Animal animal = new Animal("1", "Katze", null);
+        Animal animal = new Animal("1", "Katze", null, null);
 
         AnimalRepo animalRepo = mock(AnimalRepo.class);
         when(animalRepo.existsById(animal.id())).thenReturn(true);
@@ -68,7 +68,7 @@ class AnimalServiceTest {
 
     @Test
     void deleteAnimalDoesNotExistTest() {
-        Animal animal = new Animal("1", "Katze", null);
+        Animal animal = new Animal("1", "Katze", null, null);
 
         AnimalRepo animalRepo = mock(AnimalRepo.class);
         when(animalRepo.existsById(animal.id())).thenReturn(false);
@@ -82,7 +82,7 @@ class AnimalServiceTest {
 
     @Test
     void addAnimalPositionTest() {
-        Animal animal = new Animal("1", "Katze", new Position("5", "6"));
+        Animal animal = new Animal("1", "Katze", new Position("5", "6"), null);
 
         AnimalRepo animalRepo = mock(AnimalRepo.class);
         when(animalRepo.existsById(animal.id())).thenReturn(true);
@@ -95,4 +95,21 @@ class AnimalServiceTest {
 
         assertThat(actualResult).isEqualTo(animal);
     }
+
+    @Test
+    void addAnimalEmojiTest() {
+        Animal animal = new Animal("1", "Katze", new Position("5", "6"), new Emoji("&#128513"));
+
+        AnimalRepo animalRepo = mock(AnimalRepo.class);
+        when(animalRepo.existsById(animal.id())).thenReturn(true);
+
+        when(animalRepo.save(any(Animal.class)))
+                .thenReturn(animal);
+
+        AnimalService animalService = new AnimalService(animalRepo);
+        Animal actualResult = animalService.updateAnimalEmoji(animal);
+
+        assertThat(actualResult).isEqualTo(animal);
+    }
+
 }

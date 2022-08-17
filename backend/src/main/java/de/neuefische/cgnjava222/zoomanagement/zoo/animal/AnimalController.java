@@ -49,6 +49,16 @@ public class AnimalController {
                 .body(updatedAnimal);
     }
 
+    @PutMapping("/emoji/{id}")
+    public ResponseEntity<Animal> addAnimalEmoji(
+            @PathVariable String id,
+            @RequestBody Animal animalWithEmoji) {
+        Animal updatedAnimal = animalService.updateAnimalEmoji(animalWithEmoji);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(updatedAnimal);
+
+}
     @GetMapping("/apianimals")
     public List<String> getAnimalsFromAPI() {
         return animalService.getAnimalsFromAPI();

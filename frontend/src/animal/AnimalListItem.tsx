@@ -12,7 +12,7 @@ export default function AnimalListItem(props:
 
     return (
          <li key={props.animal.id}>
-            <div className={"nameStyle"}> {props.animal.name} </div>
+            <div className={"nameStyle"}> {props.animal.name} {props.animal.emoji !==null ? props.animal.emoji?.emoji : "" } </div>
             <button onClick={() => props.onDeleteAnimal(props.animal.id)}><img src={"../pictures/trash.png"} alt={"Delete"}/></button>
             <button onClick={() => {
                 navigate(`/animals/${props.animal.id}`)
