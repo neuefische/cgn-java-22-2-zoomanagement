@@ -3,10 +3,12 @@ import {useEffect, useState} from "react";
 import {Animal} from "./Animal";
 import {toast} from "react-toastify";
 import {NewAnimal} from "./NewAnimal";
+import {PlantType} from "../plant/PlantType";
 import {Position} from "../shared/Position";
 
+export default function useAnimals(plants: PlantType[]) {
 
-export default function useAnimals() {
+
     const [animals, setAnimals] = useState<Animal[]>([]);
 
     useEffect(() => {
@@ -25,12 +27,21 @@ export default function useAnimals() {
             .then(data => setAnimals(data))
     }
 
+    const notify = (message: string) => {
+        toast.error(message, {
+            position: toast.POSITION.TOP_LEFT
+        });
+    };
+
     const addAnimal = (animalName: string) => {
-
         const newAnimal: NewAnimal = {name: animalName}
-
-        return axios.post("/api/animals", newAnimal)
-            .then(getAnimalList)
+        if (animals.length < plants.length) {
+            return axios.post("/api/animals", newAnimal)
+                .then(getAnimalList)
+        } else {
+            notify("not enough plants");
+            return Promise.reject();
+        }
     }
 
     const onDeleteAnimal = (id: string) => {

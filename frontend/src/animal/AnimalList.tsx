@@ -13,11 +13,9 @@ export default function AnimalList(props:
                                            apiAnimals: string[],
                                        }) {
 
-
     const [filterValue, setFilterValue] = useState<string>("");
     const [radioValue, setRadioValue] = useState<string>("all");
     const objectList = props.animals;
-
 
     return (
         <>
