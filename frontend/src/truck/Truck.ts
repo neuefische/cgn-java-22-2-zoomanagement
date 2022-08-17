@@ -1,9 +1,7 @@
-type Truck = {
+export type Truck = {
     name: string,
-    id: string
+    id: string,
+    position?: { x: string, y: string },
 }
 
-export type NewTruck = Omit<Truck, "id">
-
-
-export default Truck
+export type NewTruck = Omit<Truck, "id">;

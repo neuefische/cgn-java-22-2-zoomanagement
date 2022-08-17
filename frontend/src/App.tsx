@@ -9,7 +9,6 @@ import Header from "./shared/Header";
 
 export default function App() {
     return <>
-
         <HashRouter>
             <Header/>
             <main>
@@ -17,5 +16,5 @@ export default function App() {
             </main>
         </HashRouter>
         <ToastContainer/>
-    </>;
+        </>;
 }
