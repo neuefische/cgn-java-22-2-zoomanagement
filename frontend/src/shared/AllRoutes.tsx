@@ -17,15 +17,14 @@ import PlantList from "../plant/PlantList";
 
 export default function AllRoutes() {
 
-    const animalHook = useAnimals();
     const plantHook = usePlants();
+    const animalHook = useAnimals(plantHook.plants);
     const truckHook = useTrucks();
     const employeeHook = useEmployee();
 
     return (
 
         <>
-
             <Routes>
                 <Route path={"/"} element={<Home animalHook={animalHook}
                                                  truckHook={truckHook}
@@ -57,11 +56,11 @@ export default function AllRoutes() {
                                                             addPlant={plantHook.addPlant}
                                                             deletePlant={plantHook.deletePlant}
                                                             apiPlants={plantHook.apiPlants}/>}/>
+
                 <Route path={"/trucks/:id"} element={<FoodTruckDetail
                     trucks={truckHook.trucks} getTruckById={truckHook.getTruckById} updateTruck={truckHook.updateTruck}
                 />}/>
                 <Route path={"/zooGame"} element={<ZooGame/>}/>
-
             </Routes>
         </>
     )
