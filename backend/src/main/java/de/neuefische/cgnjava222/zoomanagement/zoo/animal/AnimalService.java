@@ -19,7 +19,6 @@ public class AnimalService {
     }
 
     public Animal addAnimal(NewAnimal newAnimal) {
-
         return animalRepo.save(new Animal(
                 UUID.randomUUID().toString(),
                 newAnimal.name()
@@ -27,12 +26,12 @@ public class AnimalService {
 
     }
 
-    public boolean deleteAnimal(String id) {
+    public boolean deleteAnimal(String id) throws AnimalNotFoundException {
         if (animalRepo.existsById(id)) {
             animalRepo.deleteById(id);
             return true;
+        } else {
+            throw new AnimalNotFoundException("Animal with ID "+ id + " not found");
         }
-        return false;
     }
-
 }
